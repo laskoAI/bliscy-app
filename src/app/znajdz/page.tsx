@@ -36,8 +36,6 @@ const NEEDS = [
   { key: "Inne",                label: "Coś innego",            emoji: "✍️" },
 ] as const;
 
-const CITIES = ["Warszawa"];
-
 type Match = { helper: Helper; user: User; matches: number };
 
 export default function ZnajdzLanding() {
@@ -46,7 +44,7 @@ export default function ZnajdzLanding() {
 
   // Wybory kreatora
   const [relation, setRelation] = useState<string>("");
-  const [city, setCity] = useState<string>("");
+  const [city] = useState<string>("Warszawa"); // na razie tylko Warszawa
   const [ageRange, setAgeRange] = useState<string>("");
   const [needs, setNeeds] = useState<string[]>([]);
   const [otherNeed, setOtherNeed] = useState<string>("");
@@ -83,7 +81,7 @@ export default function ZnajdzLanding() {
       .slice(0, 6);
   }, [db, city, needs]);
 
-  const canSeeResults = city && needs.length > 0;
+  const canSeeResults = needs.length > 0;
 
   function toggleNeed(k: string) {
     setNeeds((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
@@ -267,44 +265,29 @@ export default function ZnajdzLanding() {
                 ))}
               </div>
 
-              {/* Krok 2 */}
-              <div className="mt-8 grid sm:grid-cols-2 gap-6">
-                <div>
-                  <StepHeader n={2} title="Miasto" small />
-                  <div className="mt-3 grid gap-2">
-                    {CITIES.map((c) => (
-                      <button
-                        key={c}
-                        onClick={() => setCity(c)}
-                        className={`rounded-xl border-2 px-4 py-3 text-left ${city === c ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                      >
-                        <span className="font-semibold">{c}</span>
-                      </button>
-                    ))}
-                    <p className="text-xs text-brand-500 mt-1">Na razie działamy tylko w Warszawie. Wkrótce więcej miast.</p>
-                  </div>
+              {/* Krok 2 — wiek (miasto na razie ustawione na Warszawę automatycznie) */}
+              <div className="mt-8">
+                <StepHeader n={2} title="Wiek seniora" small />
+                <div className="mt-3 grid sm:grid-cols-3 gap-2">
+                  {AGE_RANGES.map((a) => (
+                    <button
+                      key={a.key}
+                      onClick={() => setAgeRange(a.key)}
+                      className={`rounded-xl border-2 px-4 py-3 text-left flex items-center gap-3 ${ageRange === a.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
+                    >
+                      <span className="text-xl">{a.emoji}</span>
+                      <span className="font-semibold">{a.label}</span>
+                    </button>
+                  ))}
                 </div>
-
-                <div>
-                  <StepHeader n={3} title="Wiek" small />
-                  <div className="mt-3 grid gap-2">
-                    {AGE_RANGES.map((a) => (
-                      <button
-                        key={a.key}
-                        onClick={() => setAgeRange(a.key)}
-                        className={`rounded-xl border-2 px-4 py-3 text-left flex items-center gap-3 ${ageRange === a.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                      >
-                        <span className="text-xl">{a.emoji}</span>
-                        <span className="font-semibold">{a.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <p className="mt-2 text-xs text-brand-500">
+                  Miasto: Warszawa <span className="text-brand-400">· na razie działamy tylko tutaj</span>
+                </p>
               </div>
 
-              {/* Krok 3 */}
+              {/* Krok 3 — potrzeby */}
               <div className="mt-8">
-                <StepHeader n={4} title="W czym potrzebna jest pomoc?" small />
+                <StepHeader n={3} title="W czym potrzebna jest pomoc?" small />
                 <p className="mt-1 text-sm text-brand-600">Zaznacz wszystko, co pasuje.</p>
                 <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {NEEDS.map((n) => {
@@ -346,7 +329,7 @@ export default function ZnajdzLanding() {
                 </button>
                 {!canSeeResults && (
                   <p className="mt-2 text-xs text-brand-500 text-center">
-                    Wybierz miasto i przynajmniej jedną potrzebę.
+                    Zaznacz przynajmniej jedną potrzebę.
                   </p>
                 )}
               </div>
