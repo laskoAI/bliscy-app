@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { loadDB, type Helper, type User } from "@/lib/store";
+import { useEffect, useState } from "react";
 
 // ------------------------------
 // Konfiguracja kreatora (public)
@@ -36,8 +34,6 @@ const NEEDS = [
   { key: "Inne",                label: "Coś innego",            emoji: "✍️" },
 ] as const;
 
-type Match = { helper: Helper; user: User; matches: number };
-
 export default function ZnajdzLanding() {
   // Czy kreator jest już otwarty (po kliknięciu "Zaczynamy")
   const [wizardOpen, setWizardOpen] = useState(false);
@@ -50,14 +46,9 @@ export default function ZnajdzLanding() {
   const [otherNeed, setOtherNeed] = useState<string>("");
   const [showResults, setShowResults] = useState(false);
 
-  // Kontakt na końcu
-  const [contactOpen, setContactOpen] = useState(false);
-  const [contactHelperId, setContactHelperId] = useState<string | null>(null);
+  // Kontakt na końcu (inline w sekcji, nie w modalu)
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [contactSent, setContactSent] = useState(false);
-
-  const [db, setDb] = useState(() => (typeof window !== "undefined" ? loadDB() : null));
-  useEffect(() => { if (!db) setDb(loadDB()); }, [db]);
 
   // Kliknięcie "Zaczynamy" w globalnej nawigacji
   useEffect(() => {
@@ -66,20 +57,6 @@ export default function ZnajdzLanding() {
     return () => window.removeEventListener("znajdz-start", h);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const matches: Match[] = useMemo(() => {
-    if (!db) return [];
-    return db.helpers
-      .filter((h) => h.verified)
-      .filter((h) => (city ? h.city.toLowerCase() === city.toLowerCase() : true))
-      .map((h) => {
-        const overlap = h.services.filter((s) => needs.includes(s)).length;
-        return { helper: h, user: db.users.find((u) => u.id === h.id)!, matches: overlap };
-      })
-      .filter((x) => x.user)
-      .sort((a, b) => b.matches - a.matches)
-      .slice(0, 6);
-  }, [db, city, needs]);
 
   const canSeeResults = needs.length > 0;
 
@@ -97,24 +74,21 @@ export default function ZnajdzLanding() {
   function scrollToResults() {
     setShowResults(true);
     setTimeout(() => {
-      document.getElementById("wyniki")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
-  }
-
-  function openContact(helperId: string) {
-    setContactHelperId(helperId);
-    setContactOpen(true);
-    setContactSent(false);
   }
 
   function sendContact(e: React.FormEvent) {
     e.preventDefault();
+    // W tej wersji tylko demo — normalnie wysłalibyśmy do Supabase lub e-mailem.
     console.log("Zgłoszenie zapotrzebowania:", {
-      helperId: contactHelperId,
-      relation, city, ageRange, needs, otherNeed,
+      relation, ageRange, needs, otherNeed, city,
       contact,
     });
     setContactSent(true);
+    setTimeout(() => {
+      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   }
 
   return (
@@ -338,93 +312,108 @@ export default function ZnajdzLanding() {
         </section>
       )}
 
-      {/* WYNIKI */}
+      {/* KONTAKT — zamiast wyników, na razie prosimy o numer telefonu */}
       {wizardOpen && showResults && canSeeResults && (
-        <section id="wyniki" className="py-12 sm:py-16">
-          <div className="max-w-4xl mx-auto px-5">
-            <div className="text-center">
-              <span className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1">
-                Twoje dopasowania
-              </span>
-              <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">
-                {matches.length === 0
-                  ? "Nie znaleźliśmy jeszcze nikogo"
-                  : `Znaleźliśmy ${matches.length} osob${matches.length === 1 ? "ę" : "y"}`}
-              </h2>
-              <p className="mt-2 text-brand-700 text-sm">
-                {matches.length === 0
-                  ? "Zostaw namiary — odezwiemy się, gdy będzie ktoś w Twojej okolicy."
-                  : `Bliscy w ${city}, którzy oferują to, czego potrzebujesz.`}
-              </p>
-            </div>
-
-            {matches.length === 0 ? (
-              <div className="mt-8 max-w-md mx-auto rounded-2xl bg-white border border-brand-200 p-6 text-center">
-                <button
-                  onClick={() => openContact("no-match")}
-                  className="rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
-                >
-                  Zgłoś zapotrzebowanie
-                </button>
+        <section id="kontakt" className="py-12 sm:py-16 bg-brand-100">
+          <div className="max-w-2xl mx-auto px-5">
+            {contactSent ? (
+              <div className="rounded-3xl bg-white border border-brand-200 p-8 md:p-10 text-center shadow-sm">
+                <div className="text-5xl">💛</div>
+                <h2 className="wordmark mt-4 text-3xl sm:text-4xl text-brand-800">Dziękujemy!</h2>
+                <p className="mt-3 text-brand-700">
+                  Zapisaliśmy Twoje zgłoszenie. Zadzwonimy w ciągu 24 godzin i pomożemy znaleźć
+                  Bliskiego, który będzie pasować do Waszych potrzeb.
+                </p>
+                <p className="mt-4 text-sm text-brand-500">
+                  Możesz teraz zamknąć tę stronę.
+                </p>
               </div>
             ) : (
-              <div className="mt-8 grid md:grid-cols-2 gap-4">
-                {matches.map(({ helper, user, matches: m }) => (
-                  <article
-                    key={helper.id}
-                    className="bg-white rounded-2xl border border-brand-200 p-5"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="w-14 h-14 rounded-full bg-warm-100 flex items-center justify-center text-2xl shrink-0">
-                        {user.fullName.charAt(0)}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex justify-between gap-2">
-                          <div className="font-semibold">{user.fullName}</div>
-                          {m > 0 && (
-                            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-semibold whitespace-nowrap">
-                              ✓ {m} z {needs.filter((n) => n !== "Inne").length} pasuje
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-sm text-brand-500">
-                          {helper.city} · {helper.hourlyRate} zł/h
-                          {helper.transport && <span> · 🚗 auto</span>}
-                        </div>
-                        <p className="mt-2 text-sm text-brand-700 line-clamp-3">{helper.bio}</p>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                          {helper.services.map((s) => {
-                            const highlighted = needs.includes(s);
-                            return (
-                              <span
-                                key={s}
-                                className={`text-xs px-2 py-0.5 rounded-full ${highlighted ? "bg-warm-100 text-warm-600 font-semibold" : "bg-brand-100 text-brand-700"}`}
-                              >
-                                {s}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
+              <div className="rounded-3xl bg-white border border-brand-200 p-6 md:p-10 shadow-sm">
+                <div className="text-center">
+                  <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+                    Ostatni krok
+                  </span>
+                  <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">
+                    Skontaktuj się z nami
+                  </h2>
+                  <p className="mt-3 text-brand-700">
+                    Zostaw numer telefonu — <strong>oddzwonimy w ciągu 24 godzin</strong> i pomożemy
+                    znaleźć osobę, która najlepiej dopasuje się do Waszych potrzeb.
+                  </p>
+                </div>
 
-                    <button
-                      onClick={() => openContact(helper.id)}
-                      className="mt-4 w-full rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-4 py-2.5"
-                    >
-                      Umów spotkanie
-                    </button>
-                  </article>
-                ))}
+                {/* Podsumowanie tego co wybrał */}
+                <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
+                  <div className="font-semibold text-brand-800 mb-2">Twoje potrzeby:</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {relation && (
+                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                        {RELATIONS.find((r) => r.key === relation)?.emoji}{" "}
+                        {RELATIONS.find((r) => r.key === relation)?.label}
+                      </span>
+                    )}
+                    {ageRange && (
+                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                        {AGE_RANGES.find((a) => a.key === ageRange)?.label}
+                      </span>
+                    )}
+                    {needs.filter((n) => n !== "Inne").map((k) => {
+                      const n = NEEDS.find((x) => x.key === k);
+                      return (
+                        <span key={k} className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                          {n?.emoji} {n?.label}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <form onSubmit={sendContact} className="mt-6 space-y-3">
+                  <div>
+                    <label className="text-sm font-semibold">Imię i nazwisko</label>
+                    <input
+                      required
+                      value={contact.name}
+                      onChange={(e) => setContact({ ...contact, name: e.target.value })}
+                      placeholder="Twoje imię i nazwisko"
+                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-semibold">Numer telefonu</label>
+                    <input
+                      required
+                      type="tel"
+                      value={contact.phone}
+                      onChange={(e) => setContact({ ...contact, phone: e.target.value })}
+                      placeholder="+48 ..."
+                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-semibold">E-mail (opcjonalnie)</label>
+                    <input
+                      type="email"
+                      value={contact.email}
+                      onChange={(e) => setContact({ ...contact, email: e.target.value })}
+                      placeholder="twoj@email.pl"
+                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-4 text-lg mt-2"
+                  >
+                    Zgłoś się — oddzwonimy w 24h
+                  </button>
+                  <p className="text-xs text-brand-500 text-center">
+                    Nie sprzedajemy Twoich danych. Skontaktujemy się z Tobą tylko w sprawie tego zgłoszenia.
+                  </p>
+                </form>
               </div>
             )}
-
-            <div className="mt-10 rounded-2xl bg-brand-100 border border-brand-200 p-5 text-sm text-brand-700 text-center">
-              Chcesz zarządzać wizytami z jednego panelu?{" "}
-              <Link href="/" className="text-warm-500 underline font-semibold">
-                Załóż konto
-              </Link>
-            </div>
           </div>
         </section>
       )}
@@ -451,72 +440,6 @@ export default function ZnajdzLanding() {
       <footer className="py-8 border-t border-brand-200 text-center text-xs text-brand-500">
         © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · demo publiczne
       </footer>
-
-      {/* Modal kontaktowy */}
-      {contactOpen && (
-        <div className="fixed inset-0 z-50 bg-brand-900/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl">
-            {contactSent ? (
-              <div className="text-center">
-                <div className="text-4xl">💛</div>
-                <h3 className="mt-3 text-xl font-bold">Dziękujemy!</h3>
-                <p className="mt-2 text-sm text-brand-600">
-                  Odezwiemy się w ciągu 24h i pomożemy umówić pierwsze spotkanie.
-                </p>
-                <button
-                  onClick={() => setContactOpen(false)}
-                  className="mt-6 rounded-xl bg-brand-800 hover:bg-brand-700 text-white font-semibold px-6 py-2.5"
-                >
-                  Zamknij
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={sendContact} className="space-y-3">
-                <h3 className="text-xl font-bold">Umów pierwsze spotkanie</h3>
-                <p className="text-sm text-brand-600">
-                  Zostaw namiary, zadzwonimy albo napiszemy w ciągu 24h.
-                </p>
-                <input
-                  required
-                  value={contact.name}
-                  onChange={(e) => setContact({ ...contact, name: e.target.value })}
-                  placeholder="Imię i nazwisko"
-                  className="w-full rounded-xl border border-brand-200 px-4 py-3"
-                />
-                <input
-                  required
-                  type="email"
-                  value={contact.email}
-                  onChange={(e) => setContact({ ...contact, email: e.target.value })}
-                  placeholder="E-mail"
-                  className="w-full rounded-xl border border-brand-200 px-4 py-3"
-                />
-                <input
-                  value={contact.phone}
-                  onChange={(e) => setContact({ ...contact, phone: e.target.value })}
-                  placeholder="Telefon (opcjonalnie)"
-                  className="w-full rounded-xl border border-brand-200 px-4 py-3"
-                />
-                <div className="flex gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setContactOpen(false)}
-                    className="rounded-xl border border-brand-200 hover:bg-brand-100 font-semibold px-4 py-2.5"
-                  >
-                    Anuluj
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-2.5"
-                  >
-                    Wyślij zgłoszenie
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
     </main>
   );
 }
