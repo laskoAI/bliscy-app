@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { submitPhoneLead } from "@/lib/supabase";
 
 // ------------------------------
 // Konfiguracja kreatora (public)
@@ -49,6 +50,8 @@ export default function ZnajdzLanding() {
   // Kontakt na końcu (inline w sekcji, nie w modalu) — tylko numer telefonu
   const [contact, setContact] = useState({ phone: "" });
   const [contactSent, setContactSent] = useState(false);
+  const [contactSending, setContactSending] = useState(false);
+  const [contactError, setContactError] = useState<string>("");
 
   // Kliknięcie "Zaczynamy" w globalnej nawigacji
   useEffect(() => {
@@ -78,13 +81,29 @@ export default function ZnajdzLanding() {
     }, 50);
   }
 
-  function sendContact(e: React.FormEvent) {
+  async function sendContact(e: React.FormEvent) {
     e.preventDefault();
-    // W tej wersji tylko demo — normalnie wysłalibyśmy do Supabase lub e-mailem.
-    console.log("Zgłoszenie zapotrzebowania:", {
-      relation, ageRange, needs, otherNeed, city,
-      contact,
+    if (contactSending) return;
+    setContactError("");
+    setContactSending(true);
+
+    const res = await submitPhoneLead({
+      phone: contact.phone.trim(),
+      relation: relation || undefined,
+      age_range: ageRange || undefined,
+      needs: needs.length ? needs : undefined,
+      other_need: otherNeed.trim() || undefined,
+      city,
+      source: typeof window !== "undefined" ? window.location.href : undefined,
     });
+
+    setContactSending(false);
+
+    if (!res.ok) {
+      setContactError("Coś poszło nie tak. Spróbuj ponownie za chwilę.");
+      return;
+    }
+
     setContactSent(true);
     setTimeout(() => {
       document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -385,10 +404,14 @@ export default function ZnajdzLanding() {
 
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-4 text-lg mt-2"
+                    disabled={contactSending}
+                    className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-60 text-white font-semibold px-6 py-4 text-lg mt-2"
                   >
-                    Zgłoś się — oddzwonimy w 24h
+                    {contactSending ? "Wysyłam..." : "Zgłoś się — oddzwonimy w 24h"}
                   </button>
+                  {contactError && (
+                    <p className="text-sm text-red-600 text-center">{contactError}</p>
+                  )}
                   <p className="text-xs text-brand-500 text-center">
                     Nie sprzedajemy Twoich danych. Zadzwonimy tylko w sprawie tego zgłoszenia.
                   </p>
