@@ -208,11 +208,14 @@ export default function ZnajdzLanding() {
           </div>
 
           <div className="mt-10 rounded-3xl bg-white border border-warm-200 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-            <div className="text-5xl">💰</div>
+            <div className="text-5xl">🤝</div>
             <div className="flex-1">
-              <div className="text-2xl md:text-3xl font-extrabold text-warm-500">Od 100 zł za wizytę</div>
-              <p className="mt-1 text-brand-700">
-                Standardowa wizyta trwa ok. 2 godzin. Pierwsza rozmowa poznawcza — bez zobowiązań.
+              <div className="text-xl md:text-2xl font-extrabold text-brand-800">
+                Pomożemy Ci znaleźć osobę, która zajmie się Twoim seniorem
+              </div>
+              <p className="mt-2 text-brand-700">
+                Powiedz nam, czego potrzebujesz — połączymy Cię z Bliskim, który najlepiej
+                dopasuje się do Waszej sytuacji.
               </p>
             </div>
             <button
