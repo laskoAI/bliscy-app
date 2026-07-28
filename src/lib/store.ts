@@ -120,9 +120,11 @@ function seedDB(): DB {
   };
 
   const helpers: User[] = [
-    { id: "seed-h1", email: "ania@example.com", role: "bliski", fullName: "Ania Nowak", city: "Warszawa" },
+    { id: "seed-h1", email: "ania@example.com",  role: "bliski", fullName: "Ania Nowak",       city: "Warszawa" },
     { id: "seed-h2", email: "kasia@example.com", role: "bliski", fullName: "Kasia Wiśniewska", city: "Warszawa" },
-    { id: "seed-h3", email: "marta@example.com", role: "bliski", fullName: "Marta Kowalska", city: "Kraków" },
+    { id: "seed-h3", email: "marta@example.com", role: "bliski", fullName: "Marta Kowalska",   city: "Kraków" },
+    { id: "seed-h4", email: "piotr@example.com", role: "bliski", fullName: "Piotr Zieliński",  city: "Warszawa" },
+    { id: "seed-h5", email: "ewa@example.com",   role: "bliski", fullName: "Ewa Lewandowska",  city: "Warszawa" },
   ];
 
   const helperProfiles: Helper[] = [
@@ -156,6 +158,26 @@ function seedDB(): DB {
       transport: true,
       verified: true,
     },
+    {
+      id: "seed-h4",
+      bio: "Emerytowany strażak, kocham psy. Wyprowadzam pieski od 20 lat — moje własne trzy, teraz też cudze.",
+      city: "Warszawa",
+      hourlyRate: 45,
+      services: ["Wyprowadzanie psa", "Spacer", "Zakupy", "Drobne naprawy"],
+      languages: ["pl"],
+      transport: false,
+      verified: true,
+    },
+    {
+      id: "seed-h5",
+      bio: "Farmaceutka po pracy. Chętnie pojadę do apteki, pomogę zorganizować leki, wytłumaczę dawkowanie.",
+      city: "Warszawa",
+      hourlyRate: 55,
+      services: ["Apteka i leki", "Zakupy", "Sprawy urzędowe", "Rozmowa"],
+      languages: ["pl", "en"],
+      transport: true,
+      verified: true,
+    },
   ];
 
   const availability: Availability[] = [
@@ -166,6 +188,10 @@ function seedDB(): DB {
     { id: uid(), helperId: "seed-h2", startsAt: inDays(3, 10), endsAt: inDays(3, 13) },
     { id: uid(), helperId: "seed-h3", startsAt: inDays(2, 9),  endsAt: inDays(2, 12) },
     { id: uid(), helperId: "seed-h3", startsAt: inDays(5, 14), endsAt: inDays(5, 17) },
+    { id: uid(), helperId: "seed-h4", startsAt: inDays(1, 8),  endsAt: inDays(1, 10) },
+    { id: uid(), helperId: "seed-h4", startsAt: inDays(3, 16), endsAt: inDays(3, 18) },
+    { id: uid(), helperId: "seed-h5", startsAt: inDays(2, 11), endsAt: inDays(2, 13) },
+    { id: uid(), helperId: "seed-h5", startsAt: inDays(4, 15), endsAt: inDays(4, 17) },
   ];
 
   void in3h;

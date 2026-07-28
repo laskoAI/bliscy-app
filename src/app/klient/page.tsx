@@ -32,6 +32,27 @@ export default function KlientDashboard() {
       <h1 className="text-3xl font-bold">Cześć, {me.fullName.split(" ")[0]} 👋</h1>
       <p className="mt-2 text-brand-600">Panel klienta — zarządzaj seniorami, znajduj Bliskich, rezerwuj wizyty.</p>
 
+      {seniors.length === 0 && (
+        <section className="mt-8 rounded-3xl bg-gradient-to-br from-warm-100 to-warm-100/40 border border-warm-400/30 p-6 md:p-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+            <div className="text-5xl">✨</div>
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-brand-800">Zacznij od krótkiego kreatora</h2>
+              <p className="mt-1 text-sm text-brand-700">
+                W 4 krokach powiedz nam o bliskiej osobie i tym, czego potrzebuje —
+                pokażemy Ci od razu 3 dopasowanych Bliskich.
+              </p>
+            </div>
+            <Link
+              href="/klient/onboarding"
+              className="rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3 whitespace-nowrap"
+            >
+              Zaczynamy →
+            </Link>
+          </div>
+        </section>
+      )}
+
       <div className="mt-10 grid md:grid-cols-3 gap-4">
         <Card
           href="/klient/seniorzy"
@@ -40,10 +61,10 @@ export default function KlientDashboard() {
           desc={`${seniors.length} ${seniors.length === 1 ? "osoba" : "osób"}`}
         />
         <Card
-          href="/klient/szukaj"
+          href="/klient/onboarding"
           icon="🔎"
           title="Znajdź Bliskiego"
-          desc="Przeglądaj profile w Twoim mieście"
+          desc="Krótki kreator dopasowania"
         />
         <Card
           href="/klient/wizyty"

@@ -8,7 +8,8 @@ import { currentUser, loadDB, saveDB } from "@/lib/store";
 
 const AVAILABLE_SERVICES = [
   "Rozmowa", "Spacer", "Zakupy", "Wspólny posiłek",
-  "Transport do lekarza", "Sprawy urzędowe", "Gry i pasje", "Pomoc z telefonem",
+  "Transport do lekarza", "Apteka i leki", "Sprawy urzędowe",
+  "Wyprowadzanie psa", "Gry i pasje", "Pomoc z telefonem", "Drobne naprawy",
 ];
 
 export default function ProfilPage() {

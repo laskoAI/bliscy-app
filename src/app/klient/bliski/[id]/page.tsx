@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useDB, fmtDateTime } from "@/lib/hooks";
 import { currentUser, loadDB, saveDB, uid } from "@/lib/store";
 
@@ -11,7 +11,9 @@ export default function BliskiProfilPage({ params }: { params: Promise<{ id: str
   const db = useDB();
   const me = currentUser(db);
   const router = useRouter();
-  const [seniorId, setSeniorId] = useState<string>("");
+  const searchParams = useSearchParams();
+  const preselectedSenior = searchParams.get("senior") ?? "";
+  const [seniorId, setSeniorId] = useState<string>(preselectedSenior);
   const [slotId, setSlotId] = useState<string>("");
   const [note, setNote] = useState<string>("");
   const [msg, setMsg] = useState<string>("");
