@@ -46,8 +46,8 @@ export default function ZnajdzLanding() {
   const [otherNeed, setOtherNeed] = useState<string>("");
   const [showResults, setShowResults] = useState(false);
 
-  // Kontakt na końcu (inline w sekcji, nie w modalu)
-  const [contact, setContact] = useState({ name: "", email: "", phone: "" });
+  // Kontakt na końcu (inline w sekcji, nie w modalu) — tylko numer telefonu
+  const [contact, setContact] = useState({ phone: "" });
   const [contactSent, setContactSent] = useState(false);
 
   // Kliknięcie "Zaczynamy" w globalnej nawigacji
@@ -371,16 +371,6 @@ export default function ZnajdzLanding() {
 
                 <form onSubmit={sendContact} className="mt-6 space-y-3">
                   <div>
-                    <label className="text-sm font-semibold">Imię i nazwisko</label>
-                    <input
-                      required
-                      value={contact.name}
-                      onChange={(e) => setContact({ ...contact, name: e.target.value })}
-                      placeholder="Twoje imię i nazwisko"
-                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
-                    />
-                  </div>
-                  <div>
                     <label className="text-sm font-semibold">Numer telefonu</label>
                     <input
                       required
@@ -388,17 +378,8 @@ export default function ZnajdzLanding() {
                       value={contact.phone}
                       onChange={(e) => setContact({ ...contact, phone: e.target.value })}
                       placeholder="+48 ..."
-                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-semibold">E-mail (opcjonalnie)</label>
-                    <input
-                      type="email"
-                      value={contact.email}
-                      onChange={(e) => setContact({ ...contact, email: e.target.value })}
-                      placeholder="twoj@email.pl"
-                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3"
+                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3 text-lg"
+                      autoFocus
                     />
                   </div>
 
@@ -409,7 +390,7 @@ export default function ZnajdzLanding() {
                     Zgłoś się — oddzwonimy w 24h
                   </button>
                   <p className="text-xs text-brand-500 text-center">
-                    Nie sprzedajemy Twoich danych. Skontaktujemy się z Tobą tylko w sprawie tego zgłoszenia.
+                    Nie sprzedajemy Twoich danych. Zadzwonimy tylko w sprawie tego zgłoszenia.
                   </p>
                 </form>
               </div>
