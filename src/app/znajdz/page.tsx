@@ -140,14 +140,20 @@ export default function ZnajdzLanding() {
             Bez opieki medycznej. Po prostu drugi człowiek obok.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="mt-10 flex flex-col items-center gap-4">
             <button
               onClick={startWizard}
-              className="w-full sm:w-auto rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg shadow-sm"
+              className="w-full sm:w-auto rounded-full bg-warm-500 hover:bg-warm-600 text-white font-extrabold px-12 py-6 text-2xl sm:text-3xl shadow-lg hover:shadow-xl transition"
             >
               Zaczynamy →
             </button>
-            <span className="text-sm text-brand-500">Bez rejestracji · 3 pytania · 2 minuty</span>
+            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-sm text-brand-500">
+              <span>Bez rejestracji</span>
+              <span className="hidden sm:inline">·</span>
+              <span>3 pytania</span>
+              <span className="hidden sm:inline">·</span>
+              <span>2 minuty</span>
+            </div>
           </div>
         </div>
       </section>
@@ -185,34 +191,35 @@ export default function ZnajdzLanding() {
               rozmowa, wizyta u lekarza, sprawy w urzędzie.
             </p>
           </div>
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {[
               ["☕", "Towarzystwo"],
               ["🚶", "Spacery"],
-              ["🐕", "Wyprowadzić psa"],
-              ["🛒", "Zakupy"],
-              ["💊", "Apteka"],
+              ["🛒", "Zakupy i apteka"],
               ["🏥", "Wizyta u lekarza"],
               ["📋", "Sprawy urzędowe"],
-              ["🍲", "Wspólny posiłek"],
-              ["🎲", "Wspólne pasje"],
-              ["📱", "Pomoc z telefonem"],
-              ["🧹", "Drobne porządki"],
               ["✍️", "Coś innego"],
             ].map(([e, t]) => (
-              <div key={t} className="rounded-2xl bg-white border border-brand-200 p-4 flex items-center gap-3">
-                <span className="text-xl">{e}</span>
-                <span className="font-semibold text-sm">{t}</span>
+              <div key={t} className="rounded-2xl bg-white border border-brand-200 p-5 flex items-center gap-3">
+                <span className="text-2xl">{e}</span>
+                <span className="font-semibold">{t}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-10 rounded-3xl bg-white border border-warm-200 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+            <div className="text-5xl">💰</div>
+            <div className="flex-1">
+              <div className="text-2xl md:text-3xl font-extrabold text-warm-500">Od 100 zł za wizytę</div>
+              <p className="mt-1 text-brand-700">
+                Standardowa wizyta trwa ok. 2 godzin. Pierwsza rozmowa poznawcza — bez zobowiązań.
+              </p>
+            </div>
             <button
               onClick={startWizard}
-              className="rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
+              className="rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3 whitespace-nowrap"
             >
-              Sprawdź kto może pomóc →
+              Sprawdź kto pomoże →
             </button>
           </div>
         </div>
