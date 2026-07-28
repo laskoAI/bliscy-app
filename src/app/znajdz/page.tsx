@@ -41,14 +41,15 @@ const CITIES = ["Warszawa", "Kraków"];
 type Match = { helper: Helper; user: User; matches: number };
 
 export default function ZnajdzLanding() {
+  // Czy kreator jest już otwarty (po kliknięciu "Zaczynamy")
+  const [wizardOpen, setWizardOpen] = useState(false);
+
   // Wybory kreatora
   const [relation, setRelation] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [ageRange, setAgeRange] = useState<string>("");
   const [needs, setNeeds] = useState<string[]>([]);
   const [otherNeed, setOtherNeed] = useState<string>("");
-
-  // Sygnalizacja "wypełnij wszystko" żeby zjechać do wyników
   const [showResults, setShowResults] = useState(false);
 
   // Kontakt na końcu
@@ -57,11 +58,16 @@ export default function ZnajdzLanding() {
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [contactSent, setContactSent] = useState(false);
 
-  // Zbierz helperów raz z seedowanego store (bez subskrybowania — landing publiczny)
   const [db, setDb] = useState(() => (typeof window !== "undefined" ? loadDB() : null));
+  useEffect(() => { if (!db) setDb(loadDB()); }, [db]);
+
+  // Kliknięcie "Zaczynamy" w globalnej nawigacji
   useEffect(() => {
-    if (!db) setDb(loadDB());
-  }, [db]);
+    const h = () => startWizard();
+    window.addEventListener("znajdz-start", h);
+    return () => window.removeEventListener("znajdz-start", h);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const matches: Match[] = useMemo(() => {
     if (!db) return [];
@@ -83,6 +89,13 @@ export default function ZnajdzLanding() {
     setNeeds((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
   }
 
+  function startWizard() {
+    setWizardOpen(true);
+    setTimeout(() => {
+      document.getElementById("kreator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
+
   function scrollToResults() {
     setShowResults(true);
     setTimeout(() => {
@@ -98,7 +111,6 @@ export default function ZnajdzLanding() {
 
   function sendContact(e: React.FormEvent) {
     e.preventDefault();
-    // W tej wersji tylko demo — normalnie wysłalibyśmy do Supabase lub e-mailem.
     console.log("Zgłoszenie zapotrzebowania:", {
       helperId: contactHelperId,
       relation, city, ageRange, needs, otherNeed,
@@ -109,153 +121,242 @@ export default function ZnajdzLanding() {
 
   return (
     <main>
-      {/* HERO */}
+      {/* HERO — czysta propozycja wartości */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
-        <div className="relative max-w-4xl mx-auto px-5 pt-14 pb-10 md:pt-20 md:pb-14 text-center">
+        <div className="relative max-w-5xl mx-auto px-5 pt-16 pb-16 md:pt-24 md:pb-24 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-            <span className="w-2 h-2 rounded-full bg-warm-400" /> Bez rejestracji, bez logowania
+            <span className="w-2 h-2 rounded-full bg-warm-400" /> Zaufany Bliski w Twojej okolicy
           </span>
-          <h1 className="wordmark mt-5 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
-            Znajdź Bliskiego <br className="hidden sm:inline" /> dla mamy, taty albo dziadka
+
+          <h1 className="wordmark mt-6 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
+            Ktoś obok Twoich rodziców, <br className="hidden md:inline" />
+            <span className="text-warm-500">gdy Ciebie akurat nie ma</span>.
           </h1>
-          <p className="mt-5 text-base sm:text-lg text-brand-700 max-w-xl mx-auto">
-            W 3 pytaniach pokażemy zaufane osoby z Twojego miasta, które mogą pomóc.
-            Spacer, apteka, wizyta u lekarza, wyprowadzenie psa albo po prostu rozmowa przy kawie.
+
+          <p className="mt-6 text-base sm:text-lg text-brand-700 max-w-2xl mx-auto">
+            Łączymy seniorów z serdecznymi, sprawdzonymi osobami — Bliskimi.
+            Wyprowadzają psa, jeżdżą do lekarza, robią zakupy, słuchają, są.
+            Bez opieki medycznej. Po prostu drugi człowiek obok.
           </p>
-          <a
-            href="#kreator"
-            className="mt-8 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
-          >
-            Zaczynamy →
-          </a>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-brand-600">
-            <div className="flex items-center gap-2"><span className="text-lg">🛡️</span> Weryfikacja Bliskich</div>
-            <div className="flex items-center gap-2"><span className="text-lg">💛</span> Bez zobowiązań</div>
-            <div className="flex items-center gap-2"><span className="text-lg">🇵🇱</span> Robione w Polsce</div>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              onClick={startWizard}
+              className="w-full sm:w-auto rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg shadow-sm"
+            >
+              Zaczynamy →
+            </button>
+            <span className="text-sm text-brand-500">Bez rejestracji · 3 pytania · 2 minuty</span>
           </div>
         </div>
       </section>
 
-      {/* KREATOR */}
-      <section id="kreator" className="py-12 sm:py-16">
-        <div className="max-w-3xl mx-auto px-5">
-          {/* Krok 1 — dla kogo */}
-          <div className="rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
-            <StepHeader n={1} title="Dla kogo szukasz Bliskiego?" />
-            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {RELATIONS.map((r) => (
-                <button
-                  key={r.key}
-                  onClick={() => setRelation(r.key)}
-                  className={`rounded-2xl border-2 p-4 text-left ${relation === r.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                >
-                  <div className="text-3xl">{r.emoji}</div>
-                  <div className="mt-2 font-semibold text-sm">{r.label}</div>
-                </button>
-              ))}
-            </div>
-
-            {/* Krok 2 — miasto + wiek */}
-            <div className="mt-8 grid sm:grid-cols-2 gap-6">
-              <div>
-                <StepHeader n={2} title="Miasto" small />
-                <div className="mt-3 grid gap-2">
-                  {CITIES.map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => setCity(c)}
-                      className={`rounded-xl border-2 px-4 py-3 text-left ${city === c ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                    >
-                      <span className="font-semibold">{c}</span>
-                    </button>
-                  ))}
-                  <input
-                    type="text"
-                    value={CITIES.includes(city) ? "" : city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Inne miasto..."
-                    className="rounded-xl border border-brand-200 px-4 py-3"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <StepHeader n={3} title="Wiek" small />
-                <div className="mt-3 grid gap-2">
-                  {AGE_RANGES.map((a) => (
-                    <button
-                      key={a.key}
-                      onClick={() => setAgeRange(a.key)}
-                      className={`rounded-xl border-2 px-4 py-3 text-left flex items-center gap-3 ${ageRange === a.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                    >
-                      <span className="text-xl">{a.emoji}</span>
-                      <span className="font-semibold">{a.label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Krok 3 — potrzeby */}
-            <div className="mt-8">
-              <StepHeader n={4} title="W czym potrzebna jest pomoc?" small />
-              <p className="mt-1 text-sm text-brand-600">Zaznacz wszystko, co pasuje.</p>
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {NEEDS.map((n) => {
-                  const on = needs.includes(n.key);
-                  return (
-                    <button
-                      key={n.key}
-                      onClick={() => toggleNeed(n.key)}
-                      className={`rounded-2xl border-2 p-3 text-left ${on ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                    >
-                      <div className="text-xl">{n.emoji}</div>
-                      <div className="mt-1 font-semibold text-sm">{n.label}</div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {needs.includes("Inne") && (
-                <div className="mt-4">
-                  <label className="text-sm font-semibold">Napisz krótko, co jest potrzebne</label>
-                  <textarea
-                    value={otherNeed}
-                    onChange={(e) => setOtherNeed(e.target.value)}
-                    rows={2}
-                    placeholder="Np. pomoc przy porządkach, wspólne oglądanie meczu..."
-                    className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-3"
-                  />
-                </div>
-              )}
-            </div>
-
-            <div className="mt-8">
-              <button
-                onClick={scrollToResults}
-                disabled={!canSeeResults}
-                className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-50 text-white font-semibold px-6 py-3 text-lg"
-              >
-                Pokaż dopasowane osoby →
-              </button>
-              {!canSeeResults && (
-                <p className="mt-2 text-xs text-brand-500 text-center">
-                  Wybierz miasto i przynajmniej jedną potrzebę.
-                </p>
-              )}
-            </div>
+      {/* PROPOZYCJA WARTOŚCI — 3 filary */}
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-5">
+          <div className="grid md:grid-cols-3 gap-6">
+            <ValueCard
+              emoji="🛡️"
+              title="Zweryfikowane osoby"
+              desc="Każdy Bliski przechodzi rozmowę i weryfikację. Nie wpuszczasz do domu przypadkowej osoby."
+            />
+            <ValueCard
+              emoji="⏱️"
+              title="Bez formalności na start"
+              desc="Nie zakładasz konta, nie wpisujesz PESEL-u. Zostawiasz namiary, gdy znajdziesz kogoś dla Was."
+            />
+            <ValueCard
+              emoji="💛"
+              title="Osoby z Twojej okolicy"
+              desc="Bliski to nie firma — to sąsiad, student, emerytka. Ktoś, kto może zajrzeć regularnie."
+            />
           </div>
         </div>
       </section>
 
-      {/* WYNIKI */}
-      {showResults && canSeeResults && (
-        <section id="wyniki" className="py-12 sm:py-16 bg-brand-100">
-          <div className="max-w-4xl mx-auto px-5">
+      {/* CO ROBIĄ BLISCY */}
+      <section className="py-12 sm:py-16 bg-brand-100">
+        <div className="max-w-5xl mx-auto px-5">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Z czym pomagają Bliscy</h2>
+            <p className="mt-3 text-brand-700">
+              To nie opieka medyczna ani pielęgniarska. To codzienna obecność — spacer,
+              rozmowa, wizyta u lekarza, sprawy w urzędzie.
+            </p>
+          </div>
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              ["☕", "Towarzystwo"],
+              ["🚶", "Spacery"],
+              ["🐕", "Wyprowadzić psa"],
+              ["🛒", "Zakupy"],
+              ["💊", "Apteka"],
+              ["🏥", "Wizyta u lekarza"],
+              ["📋", "Sprawy urzędowe"],
+              ["🍲", "Wspólny posiłek"],
+              ["🎲", "Wspólne pasje"],
+              ["📱", "Pomoc z telefonem"],
+              ["🧹", "Drobne porządki"],
+              ["✍️", "Coś innego"],
+            ].map(([e, t]) => (
+              <div key={t} className="rounded-2xl bg-white border border-brand-200 p-4 flex items-center gap-3">
+                <span className="text-xl">{e}</span>
+                <span className="font-semibold text-sm">{t}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <button
+              onClick={startWizard}
+              className="rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
+            >
+              Sprawdź kto może pomóc →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* JAK TO DZIAŁA */}
+      <section className="py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto px-5">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center">Jak to działa</h2>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            <StepCard n={1} title="Powiedz nam czego potrzebujesz" desc="3 krótkie pytania: dla kogo, w jakim mieście, w czym pomóc. Bez rejestracji." />
+            <StepCard n={2} title="Zobacz dopasowane osoby" desc="Pokazujemy zweryfikowanych Bliskich, którzy oferują to, o co pytasz." />
+            <StepCard n={3} title="Umów pierwsze spotkanie" desc="Zostawiasz namiary, my kontaktujemy Was. Pierwsza rozmowa bez zobowiązań." />
+          </div>
+        </div>
+      </section>
+
+      {/* KREATOR — pokazuje się dopiero po kliknięciu "Zaczynamy" */}
+      {wizardOpen && (
+        <section id="kreator" className="py-12 sm:py-16 bg-brand-100">
+          <div className="max-w-3xl mx-auto px-5">
             <div className="text-center">
               <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+                3 krótkie pytania
+              </span>
+              <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">Znajdźmy odpowiednią osobę</h2>
+            </div>
+
+            <div className="mt-8 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
+              {/* Krok 1 */}
+              <StepHeader n={1} title="Dla kogo szukasz Bliskiego?" />
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {RELATIONS.map((r) => (
+                  <button
+                    key={r.key}
+                    onClick={() => setRelation(r.key)}
+                    className={`rounded-2xl border-2 p-4 text-left ${relation === r.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
+                  >
+                    <div className="text-3xl">{r.emoji}</div>
+                    <div className="mt-2 font-semibold text-sm">{r.label}</div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Krok 2 */}
+              <div className="mt-8 grid sm:grid-cols-2 gap-6">
+                <div>
+                  <StepHeader n={2} title="Miasto" small />
+                  <div className="mt-3 grid gap-2">
+                    {CITIES.map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => setCity(c)}
+                        className={`rounded-xl border-2 px-4 py-3 text-left ${city === c ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
+                      >
+                        <span className="font-semibold">{c}</span>
+                      </button>
+                    ))}
+                    <input
+                      type="text"
+                      value={CITIES.includes(city) ? "" : city}
+                      onChange={(e) => setCity(e.target.value)}
+                      placeholder="Inne miasto..."
+                      className="rounded-xl border border-brand-200 px-4 py-3"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <StepHeader n={3} title="Wiek" small />
+                  <div className="mt-3 grid gap-2">
+                    {AGE_RANGES.map((a) => (
+                      <button
+                        key={a.key}
+                        onClick={() => setAgeRange(a.key)}
+                        className={`rounded-xl border-2 px-4 py-3 text-left flex items-center gap-3 ${ageRange === a.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
+                      >
+                        <span className="text-xl">{a.emoji}</span>
+                        <span className="font-semibold">{a.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Krok 3 */}
+              <div className="mt-8">
+                <StepHeader n={4} title="W czym potrzebna jest pomoc?" small />
+                <p className="mt-1 text-sm text-brand-600">Zaznacz wszystko, co pasuje.</p>
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {NEEDS.map((n) => {
+                    const on = needs.includes(n.key);
+                    return (
+                      <button
+                        key={n.key}
+                        onClick={() => toggleNeed(n.key)}
+                        className={`rounded-2xl border-2 p-3 text-left ${on ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
+                      >
+                        <div className="text-xl">{n.emoji}</div>
+                        <div className="mt-1 font-semibold text-sm">{n.label}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {needs.includes("Inne") && (
+                  <div className="mt-4">
+                    <label className="text-sm font-semibold">Napisz krótko, co jest potrzebne</label>
+                    <textarea
+                      value={otherNeed}
+                      onChange={(e) => setOtherNeed(e.target.value)}
+                      rows={2}
+                      placeholder="Np. pomoc przy porządkach, wspólne oglądanie meczu..."
+                      className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-3"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-8">
+                <button
+                  onClick={scrollToResults}
+                  disabled={!canSeeResults}
+                  className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-50 text-white font-semibold px-6 py-3 text-lg"
+                >
+                  Pokaż dopasowane osoby →
+                </button>
+                {!canSeeResults && (
+                  <p className="mt-2 text-xs text-brand-500 text-center">
+                    Wybierz miasto i przynajmniej jedną potrzebę.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* WYNIKI */}
+      {wizardOpen && showResults && canSeeResults && (
+        <section id="wyniki" className="py-12 sm:py-16">
+          <div className="max-w-4xl mx-auto px-5">
+            <div className="text-center">
+              <span className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1">
                 Twoje dopasowania
               </span>
               <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">
@@ -331,8 +432,8 @@ export default function ZnajdzLanding() {
               </div>
             )}
 
-            <div className="mt-10 rounded-2xl bg-white border border-brand-200 p-5 text-sm text-brand-700 text-center">
-              Chcesz zobaczyć więcej opcji albo zarządzać wizytami z jednego panelu?{" "}
+            <div className="mt-10 rounded-2xl bg-brand-100 border border-brand-200 p-5 text-sm text-brand-700 text-center">
+              Chcesz zarządzać wizytami z jednego panelu?{" "}
               <Link href="/" className="text-warm-500 underline font-semibold">
                 Załóż konto
               </Link>
@@ -341,33 +442,24 @@ export default function ZnajdzLanding() {
         </section>
       )}
 
-      {/* JAK TO DZIAŁA */}
-      <section className="py-12 sm:py-16">
-        <div className="max-w-5xl mx-auto px-5">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center">Jak to działa</h2>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <StepCard n={1} title="Powiedz nam czego potrzebujesz" desc="3 krótkie pytania: dla kogo, w jakim mieście, w czym pomóc." />
-            <StepCard n={2} title="Zobacz dopasowane osoby" desc="Pokazujemy zweryfikowanych Bliskich z Twojej okolicy, którzy oferują to, o co pytasz." />
-            <StepCard n={3} title="Umów pierwsze spotkanie" desc="Zostawiasz namiary, my kontaktujemy Ciebie i Bliskiego. Pierwsza rozmowa bez zobowiązań." />
+      {/* CTA końcowe (tylko gdy kreator jeszcze nie otwarty) */}
+      {!wizardOpen && (
+        <section className="py-14 sm:py-20 bg-brand-800 text-white">
+          <div className="max-w-3xl mx-auto px-5 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Ty nie musisz być wszędzie na raz.</h2>
+            <p className="mt-4 text-brand-100 max-w-xl mx-auto">
+              Sprawdź, czy w mieście Twoich rodziców jest ktoś, kto może zajrzeć.
+              To nic nie kosztuje — dopóki nie umówisz spotkania.
+            </p>
+            <button
+              onClick={startWizard}
+              className="mt-8 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg"
+            >
+              Zaczynamy →
+            </button>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-12 sm:py-16 bg-brand-800 text-white">
-        <div className="max-w-3xl mx-auto px-5 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Jesteś na chwilę bliżej.</h2>
-          <p className="mt-3 text-brand-100 max-w-xl mx-auto">
-            Nie musisz się rejestrować, żeby zobaczyć czy w Twoim mieście jest dla Was ktoś odpowiedni.
-          </p>
-          <a
-            href="#kreator"
-            className="mt-6 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
-          >
-            Zacznij od pytań
-          </a>
-        </div>
-      </section>
+        </section>
+      )}
 
       <footer className="py-8 border-t border-brand-200 text-center text-xs text-brand-500">
         © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · demo publiczne
@@ -445,6 +537,16 @@ export default function ZnajdzLanding() {
 // ------------------------------
 // Presentational helpers
 // ------------------------------
+function ValueCard({ emoji, title, desc }: { emoji: string; title: string; desc: string }) {
+  return (
+    <div className="rounded-3xl border border-brand-200 bg-white p-6">
+      <div className="text-3xl">{emoji}</div>
+      <h3 className="mt-3 font-bold text-lg text-brand-800">{title}</h3>
+      <p className="mt-2 text-sm text-brand-700">{desc}</p>
+    </div>
+  );
+}
+
 function StepHeader({ n, title, small }: { n: number; title: string; small?: boolean }) {
   return (
     <div className="flex items-center gap-3">

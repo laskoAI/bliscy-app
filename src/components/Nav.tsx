@@ -41,9 +41,9 @@ export default function Nav() {
         </Link>
         <div className="flex items-center gap-4">
           {isPublic ? (
-            <Link href="/znajdz#szukaj" className="text-sm text-warm-500 hover:text-warm-600 font-semibold">
-              Znajdź Bliskiego
-            </Link>
+            <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event("znajdz-start")); }} className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2">
+              Zaczynamy →
+            </a>
           ) : me ? (
             <>
               <span className="text-sm text-brand-600 hidden sm:inline">
