@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="max-w-5xl mx-auto px-5 py-10 text-xs text-brand-500">
           Wersja demo lokalna. Dane trzymane tylko w Twojej przeglądarce (localStorage).
         </footer>
+        <Analytics />
       </body>
     </html>
   );
