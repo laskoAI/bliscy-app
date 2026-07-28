@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDB } from "@/lib/hooks";
@@ -94,6 +95,12 @@ export default function Home() {
 
       <div className="mt-10 text-center text-xs text-brand-500">
         Tip: możesz założyć dwie sesje (np. w innej przeglądarce lub incognito) — jedną jako klient, drugą jako Bliski.
+      </div>
+
+      <div className="mt-6 text-center">
+        <Link href="/znajdz" className="text-sm text-warm-500 hover:text-warm-600 underline font-semibold">
+          Nie chcesz zakładać konta? Zobacz publiczną wyszukiwarkę →
+        </Link>
       </div>
     </main>
   );

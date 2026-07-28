@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useDB } from "@/lib/hooks";
 import { currentUser, logout, resetDB } from "@/lib/store";
 
@@ -9,6 +9,8 @@ export default function Nav() {
   const db = useDB();
   const me = currentUser(db);
   const router = useRouter();
+  const pathname = usePathname() ?? "";
+  const isPublic = pathname.startsWith("/znajdz");
 
   function handleLogout() {
     logout();
@@ -25,7 +27,7 @@ export default function Nav() {
   return (
     <nav className="border-b border-brand-200 bg-white/80 backdrop-blur sticky top-0 z-30">
       <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link href={me ? (me.role === "klient" ? "/klient" : "/bliski") : "/"} className="flex items-center gap-2">
+        <Link href={isPublic ? "/znajdz" : (me ? (me.role === "klient" ? "/klient" : "/bliski") : "/")} className="flex items-center gap-2">
           <svg viewBox="0 0 120 120" width="32" height="32">
             <path d="M8 108 C 10 82, 22 72, 40 74 L 52 74 L 52 108 Z" fill="#c8622f"/>
             <circle cx="38" cy="52" r="20" fill="#e8a15b"/>
@@ -38,7 +40,11 @@ export default function Nav() {
           <span className="wordmark text-2xl">bliscy</span>
         </Link>
         <div className="flex items-center gap-4">
-          {me ? (
+          {isPublic ? (
+            <Link href="/znajdz#szukaj" className="text-sm text-warm-500 hover:text-warm-600 font-semibold">
+              Znajdź Bliskiego
+            </Link>
+          ) : me ? (
             <>
               <span className="text-sm text-brand-600 hidden sm:inline">
                 {me.fullName} · <span className="text-brand-400">{me.role}</span>

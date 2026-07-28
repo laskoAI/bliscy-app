@@ -34,6 +34,7 @@ const NEEDS = [
   { key: "Wspólny posiłek",     label: "Wspólny posiłek",       emoji: "🍲" },
   { key: "Gry i pasje",         label: "Wspólne pasje",         emoji: "🎲" },
   { key: "Pomoc z telefonem",   label: "Pomoc z telefonem",     emoji: "📱" },
+  { key: "Inne",                label: "Coś innego",            emoji: "✍️" },
 ] as const;
 
 type Step = 0 | 1 | 2 | 3 | 4;
@@ -53,6 +54,7 @@ export default function OnboardingKlient() {
   const [firstName, setFirstName] = useState("");
   const [ageRange, setAgeRange] = useState<string>("");
   const [needs, setNeeds] = useState<string[]>([]);
+  const [otherNeed, setOtherNeed] = useState("");
   const [seniorId, setSeniorId] = useState<string>("");
 
   if (!me || me.role !== "klient") return null;
@@ -75,7 +77,7 @@ export default function OnboardingKlient() {
       fullName: firstName.trim() || relationLabel || "Bliska osoba",
       city: me!.city,
       birthYear: ageRange ? guessBirthYear(ageRange) : undefined,
-      notes: buildNotes(relationLabel, ageRange, needs),
+      notes: buildNotes(relationLabel, ageRange, needs, otherNeed),
     });
     saveDB(d);
     setSeniorId(id);
@@ -206,6 +208,19 @@ export default function OnboardingKlient() {
               );
             })}
           </div>
+
+          {needs.includes("Inne") && (
+            <div className="mt-4">
+              <label className="text-sm font-semibold">Napisz krótko, w czym potrzeba pomocy</label>
+              <textarea
+                value={otherNeed}
+                onChange={(e) => setOtherNeed(e.target.value)}
+                rows={2}
+                placeholder="Np. pomoc przy porządkach, wspólne oglądanie meczu, wyprowadzenie do fryzjera..."
+                className="mt-2 w-full rounded-xl border border-brand-200 bg-white px-4 py-3"
+              />
+            </div>
+          )}
 
           <div className="mt-8 flex justify-between">
             <button onClick={() => setStep(1)} className="text-brand-500 hover:text-brand-800">← Wstecz</button>
@@ -348,10 +363,11 @@ function guessBirthYear(range: string): number {
   return now - 70;
 }
 
-function buildNotes(relation: string, age: string, needs: string[]): string {
+function buildNotes(relation: string, age: string, needs: string[], otherNeed?: string): string {
   const parts: string[] = [];
   if (relation) parts.push(relation);
   if (age) parts.push(`wiek: ${age}`);
   if (needs.length) parts.push(`potrzeby: ${needs.join(", ")}`);
+  if (otherNeed && otherNeed.trim()) parts.push(`inne: ${otherNeed.trim()}`);
   return parts.join(" · ");
 }
