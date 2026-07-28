@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "bliscy — panel",
-  description: "Panel klienta i Bliskiego",
+  title: "bliscy — panel demo",
+  description: "Panel klienta i Bliskiego (demo lokalne)",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -17,7 +18,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Nav />
+        {children}
+        <footer className="max-w-5xl mx-auto px-5 py-10 text-xs text-brand-500">
+          Wersja demo lokalna. Dane trzymane tylko w Twojej przeglądarce (localStorage).
+        </footer>
+      </body>
     </html>
   );
 }

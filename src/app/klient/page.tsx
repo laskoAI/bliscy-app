@@ -1,52 +1,108 @@
-import Link from "next/link";
-import { createClient } from "@/lib/supabase-server";
-import { redirect } from "next/navigation";
+"use client";
 
-export default async function KlientDashboard() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect("/login");
-  const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
-  if (!profile?.role) redirect("/onboarding");
-  if (profile.role !== "klient") redirect("/bliski");
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useDB, fmtDateTime } from "@/lib/hooks";
+import { currentUser } from "@/lib/store";
+
+export default function KlientDashboard() {
+  const db = useDB();
+  const me = currentUser(db);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!me) router.push("/");
+    else if (me.role !== "klient") router.push("/bliski");
+  }, [me, router]);
+
+  if (!me || me.role !== "klient") return null;
+
+  const seniors = db.seniors.filter((s) => s.ownerId === me.id);
+  const visits = db.visits
+    .filter((v) => v.clientId === me.id)
+    .sort((a, b) => a.startsAt.localeCompare(b.startsAt));
+
+  const upcoming = visits.filter(
+    (v) => v.status !== "completed" && v.status !== "cancelled_by_client" && v.status !== "cancelled_by_helper"
+  );
 
   return (
-    <main className="min-h-screen">
-      <nav className="border-b border-brand-200 bg-white">
-        <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
-          <span className="wordmark text-2xl">bliscy</span>
-          <form action="/auth/signout" method="post">
-            <button className="text-sm text-brand-600 hover:text-brand-800">Wyloguj</button>
-          </form>
-        </div>
-      </nav>
-      <div className="max-w-5xl mx-auto px-5 py-10">
-        <h1 className="text-3xl font-bold">Cześć{profile.full_name ? `, ${profile.full_name.split(" ")[0]}` : ""} 👋</h1>
-        <p className="mt-2 text-brand-600">Twój panel klienta. W następnej iteracji: dodawanie seniorów, wyszukiwarka Bliskich, rezerwacja wizyt.</p>
+    <main className="max-w-5xl mx-auto px-5 py-10">
+      <h1 className="text-3xl font-bold">Cześć, {me.fullName.split(" ")[0]} 👋</h1>
+      <p className="mt-2 text-brand-600">Panel klienta — zarządzaj seniorami, znajduj Bliskich, rezerwuj wizyty.</p>
 
-        <div className="mt-10 grid md:grid-cols-3 gap-4">
-          <div className="rounded-2xl bg-white border border-brand-200 p-5">
-            <div className="text-2xl">👵</div>
-            <div className="mt-2 font-semibold">Moi seniorzy</div>
-            <div className="text-sm text-brand-600">Dodaj osobę, dla której szukasz wsparcia.</div>
-            <Link href="#" className="mt-4 inline-block text-sm text-warm-500 font-semibold">Wkrótce →</Link>
-          </div>
-          <div className="rounded-2xl bg-white border border-brand-200 p-5">
-            <div className="text-2xl">🔎</div>
-            <div className="mt-2 font-semibold">Znajdź Bliskiego</div>
-            <div className="text-sm text-brand-600">Przeglądaj profile w Twoim mieście.</div>
-            <Link href="#" className="mt-4 inline-block text-sm text-warm-500 font-semibold">Wkrótce →</Link>
-          </div>
-          <div className="rounded-2xl bg-white border border-brand-200 p-5">
-            <div className="text-2xl">📅</div>
-            <div className="mt-2 font-semibold">Wizyty</div>
-            <div className="text-sm text-brand-600">Twoje rezerwacje i historia.</div>
-            <Link href="#" className="mt-4 inline-block text-sm text-warm-500 font-semibold">Wkrótce →</Link>
-          </div>
-        </div>
-
-        <div className="mt-10 text-xs text-brand-500">DEBUG · rola: {profile.role} · miasto: {profile.city ?? "—"}</div>
+      <div className="mt-10 grid md:grid-cols-3 gap-4">
+        <Card
+          href="/klient/seniorzy"
+          icon="👵"
+          title="Moi seniorzy"
+          desc={`${seniors.length} ${seniors.length === 1 ? "osoba" : "osób"}`}
+        />
+        <Card
+          href="/klient/szukaj"
+          icon="🔎"
+          title="Znajdź Bliskiego"
+          desc="Przeglądaj profile w Twoim mieście"
+        />
+        <Card
+          href="/klient/wizyty"
+          icon="📅"
+          title="Wizyty"
+          desc={`${upcoming.length} nadchodząca(ych)`}
+        />
       </div>
+
+      {upcoming.length > 0 && (
+        <section className="mt-10">
+          <h2 className="text-xl font-bold">Nadchodzące wizyty</h2>
+          <div className="mt-4 space-y-3">
+            {upcoming.slice(0, 5).map((v) => {
+              const senior = db.seniors.find((s) => s.id === v.seniorId);
+              const helperUser = db.users.find((u) => u.id === v.helperId);
+              return (
+                <Link
+                  key={v.id}
+                  href="/klient/wizyty"
+                  className="block bg-white rounded-2xl border border-brand-200 p-5 hover:border-warm-400"
+                >
+                  <div className="flex justify-between gap-4">
+                    <div>
+                      <div className="text-sm text-brand-500">{fmtDateTime(v.startsAt)}</div>
+                      <div className="mt-1 font-semibold">
+                        {senior?.fullName ?? "—"} z {helperUser?.fullName ?? "—"}
+                      </div>
+                    </div>
+                    <StatusBadge status={v.status} />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
     </main>
   );
+}
+
+function Card({ href, icon, title, desc }: { href: string; icon: string; title: string; desc: string }) {
+  return (
+    <Link href={href} className="rounded-2xl bg-white border border-brand-200 p-5 hover:border-warm-400 transition block">
+      <div className="text-2xl">{icon}</div>
+      <div className="mt-2 font-semibold">{title}</div>
+      <div className="text-sm text-brand-600">{desc}</div>
+    </Link>
+  );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const map: Record<string, { label: string; cls: string }> = {
+    pending:   { label: "Oczekuje", cls: "bg-warm-100 text-warm-600" },
+    confirmed: { label: "Potwierdzona", cls: "bg-emerald-100 text-emerald-700" },
+    completed: { label: "Zakończona", cls: "bg-brand-100 text-brand-700" },
+    cancelled_by_client: { label: "Anulowana", cls: "bg-red-100 text-red-700" },
+    cancelled_by_helper: { label: "Odrzucona", cls: "bg-red-100 text-red-700" },
+  };
+  const m = map[status] ?? { label: status, cls: "bg-brand-100 text-brand-700" };
+  return <span className={`text-xs px-2 py-1 rounded-full font-semibold ${m.cls}`}>{m.label}</span>;
 }

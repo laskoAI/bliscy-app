@@ -1,64 +1,84 @@
-# bliscy — aplikacja (test / staging)
+# bliscy — aplikacja (demo lokalne)
 
-Next.js 16 + Supabase (Auth + Postgres + RLS). Iteracja 1: setup + auth (magic link) + schema DB + onboarding.
+Prototyp aplikacji łączącej klientów (rodziny) z **Bliskimi** (osoby oferujące towarzystwo seniorom).
+Wersja **bez backendu** — cały stan trzymany w `localStorage` przeglądarki. Do puszczenia lokalnie
+w kilka sekund, do testowania flow bez ustawiania Supabase / auth / bazy.
 
-## Uruchomienie lokalne
+## Uruchomienie
 
 ```bash
 npm install
-cp .env.example .env.local
-# uzupełnij NEXT_PUBLIC_SUPABASE_URL i NEXT_PUBLIC_SUPABASE_ANON_KEY
 npm run dev
 ```
 
 Otwórz http://localhost:3000
 
-## Konfiguracja Supabase
+## Co można kliknąć
 
-1. Utwórz nowy projekt na https://supabase.com (osobny od landing/waitlist).
-2. Wykonaj `supabase/schema.sql` w SQL Editor.
-3. Auth → URL Configuration → dodaj do "Redirect URLs":
-   - `http://localhost:3000/auth/callback`
-   - `https://<twoj-projekt>.vercel.app/auth/callback` (po deployu)
-4. Skopiuj z Project Settings → API:
-   - Project URL → `NEXT_PUBLIC_SUPABASE_URL`
-   - anon public key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+### Ścieżka klienta
+1. Na stronie startowej wybierz **Klient**, wpisz imię + email + miasto → wejdź do panelu
+2. **Moi seniorzy** → dodaj bliską osobę (rodzic/dziadek)
+3. **Znajdź Bliskiego** → wybierz spośród 3 seedowanych (Warszawa/Kraków)
+4. Wejdź w profil → wybierz seniora + termin → **Zarezerwuj wizytę**
+5. **Wizyty** → widzisz status, możesz anulować
+
+### Ścieżka Bliskiego
+1. Otwórz aplikację w **innej przeglądarce / trybie incognito** (lokalstorage jest oddzielny)
+2. Wybierz **Bliski**, wpisz dane → wejdź do panelu
+3. **Mój profil** → uzupełnij bio, stawkę, usługi
+4. **Dostępność** → dodaj sloty czasowe
+5. **Wizyty** → akceptuj/odrzuć prośby, dodawaj notatki po wizycie
 
 ## Struktura
 
 ```
 src/
 ├── app/
-│   ├── page.tsx              # landing panelu (przekierowuje na dashboard po logowaniu)
-│   ├── login/                # magic link
-│   ├── auth/
-│   │   ├── callback/         # exchange code for session
-│   │   └── signout/          # POST wylogowania
-│   ├── onboarding/           # wybór roli + dane podstawowe
-│   ├── klient/               # dashboard klienta
-│   └── bliski/               # dashboard Bliskiego
+│   ├── page.tsx              # start — logowanie/rejestracja
+│   ├── klient/
+│   │   ├── page.tsx          # dashboard
+│   │   ├── seniorzy/         # zarządzanie seniorami
+│   │   ├── szukaj/           # wyszukiwarka Bliskich
+│   │   ├── bliski/[id]/      # profil + rezerwacja
+│   │   └── wizyty/           # lista wizyt
+│   └── bliski/
+│       ├── page.tsx          # dashboard
+│       ├── profil/           # edycja profilu
+│       ├── dostepnosc/       # sloty
+│       └── wizyty/           # zarządzanie wizytami
 ├── lib/
-│   ├── supabase-browser.ts   # client dla client components
-│   └── supabase-server.ts    # client dla server components
-└── middleware.ts             # ochrona ścieżek + odświeżanie sesji
-supabase/
-└── schema.sql                # tabele + RLS
+│   ├── store.ts              # cały store + seed danych
+│   └── hooks.ts              # useDB, formatowanie dat
+└── components/
+    └── Nav.tsx               # górna nawigacja
 ```
 
-## Model danych
+## Model danych (w localStorage)
 
-- **profiles** — rozszerzenie `auth.users`, przechowuje rolę (`klient` / `bliski` / `admin`)
-- **seniors** — osoby, którymi opiekuje się klient
-- **helpers** — publiczny profil Bliskiego (bio, miasto, stawka, weryfikacja)
-- **availability** — sloty czasowe Bliskiego
-- **visits** — rezerwacje z pełnym cyklem statusów
+- **users** — konta (klient / bliski)
+- **seniors** — osoby dodane przez klienta
+- **helpers** — profile publiczne Bliskich (bio, usługi, stawka)
+- **availability** — sloty dostępności Bliskiego
+- **visits** — rezerwacje z pełnym cyklem statusów: `pending` → `confirmed` → `completed`, plus anulowania
 
-Wszystko chronione przez RLS. Klient widzi swoje, Bliski swoje, publicznie widoczni są tylko zweryfikowani Blisci.
+## Reset danych
+
+W górnej nawigacji jest przycisk **Reset demo** — czyści localStorage i przywraca seedowanych Bliskich.
+
+## Ograniczenia demo
+
+- Dane żyją tylko w jednej przeglądarce. Klient i Bliski to praktycznie dwie osobne "instalacje".
+- Aby zobaczyć jak Bliski reaguje na rezerwację klienta, użyj tego samego browsera — obie strony widzą ten sam localStorage. (Tak, można się przelogować i zobaczyć obie perspektywy w jednej sesji.)
+- Brak walidacji konfliktów slotów, brak stref czasowych, brak powiadomień mailowych.
+- Brak auth — kliknięcie "Wyloguj" tylko czyści aktywnego użytkownika, dane zostają.
 
 ## Roadmap
 
-- [x] **Iteracja 1** — auth, onboarding, schema DB, dashboardy (szkielet)
-- [ ] **Iteracja 2** — profil Bliskiego, dostępność (kalendarz), publiczna lista
-- [ ] **Iteracja 3** — seniorzy klienta, wyszukiwarka Bliskich, rezerwacja wizyt
-- [ ] **Iteracja 4** — powiadomienia mailowe (Supabase Edge Function + Resend), statusy wizyt, oceny
-- [ ] **Później** — płatności (Stripe), moderacja, admin panel
+- [x] Wybór roli, dashboard klienta i Bliskiego
+- [x] Seniorzy klienta
+- [x] Wyszukiwarka + profil + rezerwacja
+- [x] Dostępność (sloty) + zarządzanie wizytami
+- [ ] Podpięcie prawdziwej bazy (Supabase) + auth (magic link)
+- [ ] Powiadomienia mailowe (Resend)
+- [ ] Płatności (Stripe)
+- [ ] Weryfikacja Bliskich, oceny, historia
