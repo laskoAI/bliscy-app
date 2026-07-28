@@ -36,7 +36,7 @@ const NEEDS = [
   { key: "Inne",                label: "Coś innego",            emoji: "✍️" },
 ] as const;
 
-const CITIES = ["Warszawa", "Kraków"];
+const CITIES = ["Warszawa"];
 
 type Match = { helper: Helper; user: User; matches: number };
 
@@ -126,7 +126,7 @@ export default function ZnajdzLanding() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
         <div className="relative max-w-5xl mx-auto px-5 pt-16 pb-16 md:pt-24 md:pb-24 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-            <span className="w-2 h-2 rounded-full bg-warm-400" /> Zaufany Bliski w Twojej okolicy
+            <span className="w-2 h-2 rounded-full bg-warm-400" /> Startujemy w Warszawie
           </span>
 
           <h1 className="wordmark mt-6 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
@@ -281,13 +281,7 @@ export default function ZnajdzLanding() {
                         <span className="font-semibold">{c}</span>
                       </button>
                     ))}
-                    <input
-                      type="text"
-                      value={CITIES.includes(city) ? "" : city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Inne miasto..."
-                      className="rounded-xl border border-brand-200 px-4 py-3"
-                    />
+                    <p className="text-xs text-brand-500 mt-1">Na razie działamy tylko w Warszawie. Wkrótce więcej miast.</p>
                   </div>
                 </div>
 
