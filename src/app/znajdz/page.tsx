@@ -39,6 +39,9 @@ export default function ZnajdzLanding() {
               <span className="hidden sm:inline">·</span>
               <span>2 minuty</span>
             </div>
+            <p className="mt-4 text-sm text-brand-600">
+              📍 Działamy w <strong>Warszawie</strong>. Kolejne miasta wkrótce.
+            </p>
           </div>
         </div>
       </section>

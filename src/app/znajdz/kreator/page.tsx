@@ -205,9 +205,6 @@ export default function KreatorPage() {
                   </button>
                 ))}
               </div>
-              <p className="mt-4 text-xs text-brand-500">
-                Miasto: <strong>Warszawa</strong> · na razie działamy tylko tutaj
-              </p>
             </>
           )}
 
