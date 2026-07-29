@@ -173,9 +173,6 @@ export default function KreatorPage() {
               <h1 className="wordmark text-2xl sm:text-3xl text-brand-800">
                 Dla kogo szukasz Bliskiego?
               </h1>
-              <p className="mt-2 text-sm text-brand-600">
-                Wybierz najbliższą kategorię — pomoże nam w rozmowie.
-              </p>
               <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {RELATIONS.map((r) => (
                   <button
