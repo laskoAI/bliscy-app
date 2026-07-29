@@ -20,9 +20,8 @@ export default function ZnajdzLanding() {
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-brand-700 max-w-2xl mx-auto">
-            Łączymy seniorów z serdecznymi, sprawdzonymi osobami — Bliskimi.
-            Wyprowadzają psa, jeżdżą do lekarza, robią zakupy, słuchają, są.
-            Bez opieki medycznej. Po prostu drugi człowiek obok.
+            Łączymy seniorów z pełnymi energii, młodymi ludźmi. Pomogą w codziennych sprawach,
+            zawiozą do lekarza, wyprowadzą psa — i przyniosą do domu odrobinę słońca.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4">
