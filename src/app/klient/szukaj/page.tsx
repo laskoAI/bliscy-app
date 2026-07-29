@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDB } from "@/lib/hooks";
 import { currentUser } from "@/lib/store";
+import { Avatar } from "@/components/Avatar";
 
 export default function SzukajPage() {
   const db = useDB();
@@ -71,9 +72,7 @@ export default function SzukajPage() {
             className="bg-white rounded-2xl border border-brand-200 p-5 hover:border-warm-400 transition"
           >
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-warm-100 flex items-center justify-center text-xl">
-                {user.fullName.charAt(0)}
-              </div>
+              <Avatar seed={user.fullName} size={48} alt={user.fullName} />
               <div>
                 <div className="font-semibold">{user.fullName}</div>
                 <div className="text-sm text-brand-500">{helper.city} · {helper.hourlyRate} zł/h</div>

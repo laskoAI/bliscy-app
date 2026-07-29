@@ -11,6 +11,7 @@ export default function Nav() {
   const router = useRouter();
   const pathname = usePathname() ?? "";
   const isPublic = pathname.startsWith("/znajdz");
+  const isLanding = pathname === "/znajdz";
 
   function handleLogout() {
     logout();
@@ -39,7 +40,15 @@ export default function Nav() {
           </svg>
           <span className="wordmark text-2xl">bliscy</span>
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
+          {isLanding && (
+            <div className="hidden md:flex items-center gap-6 text-sm text-brand-700">
+              <a href="#kim" className="hover:text-brand-900">Kim są Bliscy</a>
+              <a href="#opinie" className="hover:text-brand-900">Opinie</a>
+              <a href="#jak" className="hover:text-brand-900">Jak to działa</a>
+              <a href="#faq" className="hover:text-brand-900">FAQ</a>
+            </div>
+          )}
           {isPublic ? (
             <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2">
               Zaczynamy →

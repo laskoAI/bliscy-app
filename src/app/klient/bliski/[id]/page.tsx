@@ -5,6 +5,7 @@ import { useEffect, useState, use } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDB, fmtDateTime } from "@/lib/hooks";
 import { currentUser, loadDB, saveDB, uid } from "@/lib/store";
+import { Avatar } from "@/components/Avatar";
 
 export default function BliskiProfilPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -78,9 +79,7 @@ export default function BliskiProfilPage({ params }: { params: Promise<{ id: str
 
       <div className="mt-4 bg-white rounded-3xl border border-brand-200 p-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-warm-100 flex items-center justify-center text-2xl">
-            {user.fullName.charAt(0)}
-          </div>
+          <Avatar seed={user.fullName} size={64} alt={user.fullName} />
           <div>
             <h1 className="text-2xl font-bold">{user.fullName}</h1>
             <div className="text-brand-500">{helper.city} · {helper.hourlyRate} zł/h</div>

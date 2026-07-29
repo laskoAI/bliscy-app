@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDB } from "@/lib/hooks";
 import { currentUser, loadDB, saveDB, uid } from "@/lib/store";
+import { Avatar } from "@/components/Avatar";
 
 // ------------------------------
 // Konfiguracja onboardingu

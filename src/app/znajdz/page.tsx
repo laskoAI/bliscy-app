@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Avatar } from "@/components/Avatar";
 
 // Publiczny landing — czysta propozycja wartości.
 // Kreator jest na osobnej stronie: /znajdz/kreator
@@ -9,7 +10,7 @@ export default function ZnajdzLanding() {
       {/* HERO — czysta propozycja wartości */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
-        <div className="relative max-w-5xl mx-auto px-5 pt-16 pb-16 md:pt-24 md:pb-24 text-center">
+        <div className="relative max-w-5xl mx-auto px-5 pt-14 pb-10 md:pt-20 md:pb-14 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
             <span className="w-2 h-2 rounded-full bg-warm-400" /> Startujemy w Warszawie
           </span>
@@ -46,7 +47,7 @@ export default function ZnajdzLanding() {
       </section>
 
       {/* PROPOZYCJA WARTOŚCI — 3 filary */}
-      <section className="py-12 sm:py-16 md:py-20">
+      <section className="py-10 sm:py-12 md:py-14">
         <div className="max-w-5xl mx-auto px-5">
           <div className="grid md:grid-cols-3 gap-6">
             <ValueCard
@@ -69,7 +70,7 @@ export default function ZnajdzLanding() {
       </section>
 
       {/* KIM SĄ BLISCY — akcent na młodych studentów */}
-      <section className="py-12 sm:py-16 bg-brand-100">
+      <section id="kim" className="py-12 sm:py-16 bg-brand-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
             <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
@@ -101,9 +102,7 @@ export default function ZnajdzLanding() {
           {/* Przykładowy profil Bliskiego */}
           <div className="rounded-3xl bg-white border border-brand-200 p-6 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-warm-100 flex items-center justify-center text-3xl shrink-0">
-                👩‍🎓
-              </div>
+              <Avatar seed="Ania Nowak" size={64} alt="Ania" />
               <div>
                 <div className="font-bold text-lg">Ania, 23 lata</div>
                 <div className="text-sm text-brand-500">Studentka psychologii · Warszawa</div>
@@ -138,7 +137,8 @@ export default function ZnajdzLanding() {
               Ludzie, którym pomogliśmy
             </h2>
             <p className="mt-3 text-brand-700">
-              To nie są wielkie zmiany. To jedno popołudnie w tygodniu, w którym mama nie jest sama.
+              Wystarczy jedno popołudnie w tygodniu — i mama ma towarzystwo,
+              a Ty spokój, że ktoś tam był.
             </p>
           </div>
 
@@ -176,6 +176,90 @@ export default function ZnajdzLanding() {
             <div>
               <div className="text-3xl md:text-4xl font-extrabold text-warm-400">24h</div>
               <div className="mt-1 text-sm text-brand-100">tyle trwa nasza odpowiedź</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KONTROLA I RAPORTY — masz wgląd w każdą wizytę */}
+      <section className="py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+              W aplikacji
+            </span>
+            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-800">
+              Zawsze wiesz, co się dzieje u mamy.
+            </h2>
+            <p className="mt-4 text-brand-700 text-base sm:text-lg">
+              Nie musisz co chwilę dzwonić i pytać. Po każdej wizycie widzisz w aplikacji,
+              co się działo — konkretnie, punkt po punkcie.
+            </p>
+            <ul className="mt-6 space-y-3 text-brand-800">
+              <li className="flex items-start gap-3">
+                <span className="text-xl">✅</span>
+                <span><strong>Konkretne czynności</strong> — leki wzięte, ciśnienie zmierzone, śniadanie zjedzone.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">📝</span>
+                <span><strong>Krótki raport</strong> po każdej wizycie — co warto wiedzieć na następny raz.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">💬</span>
+                <span><strong>Możesz dopytać</strong> Bliskiego przez czat.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">⭐</span>
+                <span><strong>Ocena wizyty przez seniora</strong> — zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Mockup dashboardu wizyty */}
+          <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
+            {/* Header wizyty */}
+            <div className="flex items-center justify-between text-xs text-brand-500">
+              <span>Wtorek, 12 listopada · 14:00 — 16:00</span>
+              <span className="rounded-full bg-emerald-100 text-emerald-700 px-2 py-1 font-semibold">✓ Zakończona</span>
+            </div>
+            <div className="mt-3 flex items-center gap-3">
+              <Avatar seed="Kasia Wiśniewska" size={44} alt="Kasia" />
+              <div className="min-w-0">
+                <div className="font-semibold text-sm">Kasia u Pani Krystyny</div>
+                <div className="text-xs text-brand-500 truncate">Studentka fizjoterapii · Warszawa</div>
+              </div>
+            </div>
+
+            {/* Checklist wykonanych czynności */}
+            <div className="mt-5 rounded-2xl bg-brand-50 border border-brand-200 p-4">
+              <div className="text-xs font-semibold text-brand-700 uppercase tracking-wider">Wykonane podczas wizyty</div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <ChecklistItem done label="Śniadanie zjedzone" detail="owsianka + herbata" />
+                <ChecklistItem done label="Leki poranne wzięte" detail="ramipril, metformin" />
+                <ChecklistItem done label="Ciśnienie zmierzone" detail={<><strong>128/82</strong> · puls 72</>} />
+                <ChecklistItem done label="Spacer" detail="45 min, park Skaryszewski" />
+                <ChecklistItem pending label="Wieczorne leki" detail="do wzięcia o 20:00" />
+              </ul>
+            </div>
+
+            {/* Krótka notatka */}
+            <div className="mt-4">
+              <div className="text-xs font-semibold text-brand-500 uppercase tracking-wider">Notatka od Kasi</div>
+              <p className="mt-1.5 text-sm text-brand-700">
+                Pani Krystyna w dobrym humorze, apetyt dopisał. Podczas spaceru mówiła
+                trochę o bólu prawego kolana — może warto wspomnieć lekarzowi na wizycie w piątek.
+              </p>
+            </div>
+
+            {/* Ocena + akcja */}
+            <div className="mt-5 pt-4 border-t border-brand-100 flex items-center justify-between">
+              <div>
+                <div className="text-xs text-brand-500">Ocena od Pani Krystyny</div>
+                <div className="text-warm-500 text-lg leading-none">★★★★★</div>
+              </div>
+              <button className="text-xs text-warm-500 hover:text-warm-600 font-semibold">
+                Napisz do Kasi →
+              </button>
             </div>
           </div>
         </div>
@@ -287,8 +371,7 @@ function StepCard({ n, title, desc }: { n: number; title: string; desc: string }
   );
 }
 
-function TestimonialCard({ stars, quote, author, context }: { stars: number; quote: string; author: string; context: string }) {
-  return (
+function TestimonialCard({ stars, quote, author, context }: { stars: number; quote: string; author: string; context: string }) {  return (
     <div className="rounded-3xl border border-brand-200 bg-white p-6 flex flex-col">
       <div className="flex text-warm-500 text-lg">
         {Array.from({ length: stars }).map((_, i) => (
@@ -303,5 +386,36 @@ function TestimonialCard({ stars, quote, author, context }: { stars: number; quo
         <div className="text-xs text-brand-500">{context}</div>
       </div>
     </div>
+  );
+}
+
+function ChecklistItem({ done, pending, label, detail }: {
+  done?: boolean;
+  pending?: boolean;
+  label: string;
+  detail?: React.ReactNode;
+}) {
+  return (
+    <li className="flex items-start gap-3">
+      <span
+        className={`shrink-0 w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold border ${
+          done
+            ? "bg-emerald-500 border-emerald-500 text-white"
+            : pending
+            ? "bg-white border-warm-400 text-warm-500"
+            : "bg-white border-brand-300 text-brand-400"
+        }`}
+        aria-hidden
+      >
+        {done ? "✓" : pending ? "◷" : ""}
+      </span>
+      <div className="min-w-0 flex-1">
+        <div className={done ? "text-brand-800" : "text-brand-700"}>
+          {label}
+          {pending && <span className="ml-2 text-xs text-warm-500 font-semibold">jeszcze do wzięcia</span>}
+        </div>
+        {detail && <div className="text-xs text-brand-500 mt-0.5">{detail}</div>}
+      </div>
+    </li>
   );
 }
