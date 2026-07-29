@@ -18,7 +18,7 @@ export default function Nav() {
   }
 
   function handleReset() {
-    if (confirm("Zresetować wszystkie dane demo? Wróci stan początkowy.")) {
+    if (confirm("Zresetować dane w tej przeglądarce? Wrócisz do stanu początkowego.")) {
       resetDB();
       router.push("/");
     }
@@ -49,11 +49,11 @@ export default function Nav() {
               <span className="text-sm text-brand-600 hidden sm:inline">
                 {me.fullName} · <span className="text-brand-400">{me.role}</span>
               </span>
-              <button onClick={handleReset} className="text-xs text-brand-500 hover:text-brand-800">Reset demo</button>
+              <button onClick={handleReset} className="text-xs text-brand-500 hover:text-brand-800">Reset</button>
               <button onClick={handleLogout} className="text-sm text-brand-700 hover:text-brand-900">Wyloguj</button>
             </>
           ) : (
-            <button onClick={handleReset} className="text-xs text-brand-500 hover:text-brand-800">Reset demo</button>
+            <button onClick={handleReset} className="text-xs text-brand-500 hover:text-brand-800">Reset</button>
           )}
         </div>
       </div>

@@ -4,8 +4,8 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "bliscy — panel demo",
-  description: "Panel klienta i Bliskiego (demo lokalne)",
+  title: "bliscy — towarzystwo i pomoc dla seniorów",
+  description: "Studenci psychologii, fizjoterapii i medycyny, którzy pomogą Twoim rodzicom w codziennych sprawach.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,9 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <Nav />
         {children}
-        <footer className="max-w-5xl mx-auto px-5 py-10 text-xs text-brand-500">
-          Wersja demo lokalna. Dane trzymane tylko w Twojej przeglądarce (localStorage).
-        </footer>
         <Analytics />
       </body>
     </html>

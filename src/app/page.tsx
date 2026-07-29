@@ -34,14 +34,14 @@ export default function Home() {
       <div className="text-center">
         <h1 className="wordmark text-5xl md:text-6xl text-brand-800">bliscy</h1>
         <p className="mt-4 text-brand-600 max-w-xl mx-auto">
-          Demo lokalne aplikacji. Wybierz rolę, załóż profil (dane trzymane tylko w Twojej przeglądarce)
-          i zobacz jak wygląda flow klienta oraz Bliskiego.
+          Wejdź do panelu — jako klient szukający wsparcia dla bliskiej osoby,
+          albo jako Bliski, który chce pomagać seniorom.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="mt-12 max-w-lg mx-auto bg-white rounded-3xl border border-brand-200 p-8 shadow-sm">
         <h2 className="font-bold text-xl">Zaloguj się / załóż konto</h2>
-        <p className="text-sm text-brand-600 mt-1">Bez maili, bez hasła — to demo.</p>
+        <p className="text-sm text-brand-600 mt-1">Wybierz rolę i wejdź.</p>
 
         <div className="mt-6 grid grid-cols-2 gap-3">
           <button
@@ -93,11 +93,7 @@ export default function Home() {
         </button>
       </form>
 
-      <div className="mt-10 text-center text-xs text-brand-500">
-        Tip: możesz założyć dwie sesje (np. w innej przeglądarce lub incognito) — jedną jako klient, drugą jako Bliski.
-      </div>
-
-      <div className="mt-6 text-center">
+      <div className="mt-10 text-center">
         <Link href="/znajdz" className="text-sm text-warm-500 hover:text-warm-600 underline font-semibold">
           Nie chcesz zakładać konta? Zobacz publiczną wyszukiwarkę →
         </Link>

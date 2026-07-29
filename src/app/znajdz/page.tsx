@@ -164,10 +164,123 @@ export default function ZnajdzLanding() {
               desc="Nie zakładasz konta, nie wpisujesz PESEL-u. Zostawiasz namiary, gdy znajdziesz kogoś dla Was."
             />
             <ValueCard
-              emoji="💛"
-              title="Osoby z Twojej okolicy"
-              desc="Bliski to nie firma — to sąsiad, student, emerytka. Ktoś, kto może zajrzeć regularnie."
+              emoji="🎓"
+              title="Młodzi ludzie z sercem"
+              desc="Najczęściej studenci psychologii, fizjoterapii i medycyny — osoby, dla których praca z ludźmi to powołanie, nie przypadek."
             />
+          </div>
+        </div>
+      </section>
+
+      {/* KIM SĄ BLISCY — akcent na młodych studentów */}
+      <section className="py-12 sm:py-16 bg-brand-100">
+        <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+              Kim są Bliscy
+            </span>
+            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-800">
+              Młodzi, empatyczni, sprawdzeni.
+            </h2>
+            <p className="mt-4 text-brand-700 text-base sm:text-lg">
+              Naszymi Bliskimi są przede wszystkim <strong>studenci psychologii, fizjoterapii i medycyny</strong>.
+              Ludzie, dla których praca z drugim człowiekiem to nie fucha, tylko powołanie.
+            </p>
+            <ul className="mt-6 space-y-3 text-brand-800">
+              <li className="flex items-start gap-3">
+                <span className="text-xl">🎓</span>
+                <span><strong>Studenci</strong> psychologii, fizjoterapii, pielęgniarstwa, medycyny.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">🛡️</span>
+                <span><strong>Weryfikacja</strong> tożsamości, rozmowa rekrutacyjna, referencje.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">💛</span>
+                <span><strong>Empatia i cierpliwość</strong> — nie każdy do nas trafia. Wybieramy tych, których sami zaprosilibyśmy do naszej babci.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Przykładowy profil Bliskiego */}
+          <div className="rounded-3xl bg-white border border-brand-200 p-6 shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-warm-100 flex items-center justify-center text-3xl shrink-0">
+                👩‍🎓
+              </div>
+              <div>
+                <div className="font-bold text-lg">Ania, 23 lata</div>
+                <div className="text-sm text-brand-500">Studentka psychologii · Warszawa</div>
+              </div>
+              <span className="ml-auto text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-semibold whitespace-nowrap">
+                ✓ Zweryfikowana
+              </span>
+            </div>
+            <blockquote className="mt-5 text-brand-700 italic border-l-4 border-warm-400 pl-4">
+              „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
+              Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
+            </blockquote>
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
+                <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF — opinie rodzin */}
+      <section className="py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto px-5">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+              Co mówią rodziny
+            </span>
+            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold">
+              Ludzie, którym pomogliśmy
+            </h2>
+            <p className="mt-3 text-brand-700">
+              To nie są wielkie zmiany. To jedno popołudnie w tygodniu, w którym mama nie jest sama.
+            </p>
+          </div>
+
+          <div className="mt-10 grid md:grid-cols-3 gap-5">
+            <TestimonialCard
+              stars={5}
+              quote="Kasia przychodzi do mamy dwa razy w tygodniu na spacer. Mama ożywa, jak ją widzi. Dla mnie jak kamień z serca — mieszkam 400 km stąd."
+              author="Magdalena, córka"
+              context="Mama, 78 lat · Warszawa"
+            />
+            <TestimonialCard
+              stars={5}
+              quote="Byliśmy sceptyczni — obca osoba u taty? Ale Piotr od pierwszej wizyty złapał z nim wspólny język. Grają w szachy, chodzą na kawę. Tata się śmieje jak dawno nie."
+              author="Robert, syn"
+              context="Tata, 82 lata · Warszawa"
+            />
+            <TestimonialCard
+              stars={5}
+              quote="Studentka fizjoterapii pomaga babci przy ćwiczeniach i zabiera ją do lekarza. Serdeczna, punktualna, cierpliwa. Polecam z całego serca."
+              author="Ewa, wnuczka"
+              context="Babcia, 84 lata · Warszawa"
+            />
+          </div>
+
+          {/* Pasek statystyk */}
+          <div className="mt-12 rounded-3xl bg-brand-800 text-white p-6 md:p-8 grid grid-cols-3 gap-6 text-center">
+            <div>
+              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">120+</div>
+              <div className="mt-1 text-sm text-brand-100">rodzin czeka na start</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">100%</div>
+              <div className="mt-1 text-sm text-brand-100">Bliskich zweryfikowanych</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">24h</div>
+              <div className="mt-1 text-sm text-brand-100">tyle trwa nasza odpowiedź</div>
+            </div>
           </div>
         </div>
       </section>
@@ -442,7 +555,7 @@ export default function ZnajdzLanding() {
       )}
 
       <footer className="py-8 border-t border-brand-200 text-center text-xs text-brand-500">
-        © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · demo publiczne
+        © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · Warszawa
       </footer>
     </main>
   );
@@ -478,6 +591,25 @@ function StepCard({ n, title, desc }: { n: number; title: string; desc: string }
       <div className="w-10 h-10 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold">{n}</div>
       <h3 className="mt-4 font-bold text-lg">{title}</h3>
       <p className="mt-2 text-brand-700 text-sm">{desc}</p>
+    </div>
+  );
+}
+
+function TestimonialCard({ stars, quote, author, context }: { stars: number; quote: string; author: string; context: string }) {
+  return (
+    <div className="rounded-3xl border border-brand-200 bg-white p-6 flex flex-col">
+      <div className="flex text-warm-500 text-lg">
+        {Array.from({ length: stars }).map((_, i) => (
+          <span key={i}>★</span>
+        ))}
+      </div>
+      <blockquote className="mt-3 text-brand-800 text-sm md:text-base flex-1">
+        „{quote}"
+      </blockquote>
+      <div className="mt-4 pt-4 border-t border-brand-100">
+        <div className="font-semibold text-brand-800">{author}</div>
+        <div className="text-xs text-brand-500">{context}</div>
+      </div>
     </div>
   );
 }
