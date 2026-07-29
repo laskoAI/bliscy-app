@@ -40,7 +40,7 @@ export default function ZnajdzLanding() {
               <span>2 minuty</span>
             </div>
             <p className="mt-4 text-sm text-brand-600">
-              📍 Działamy w <strong>Warszawie</strong>. Kolejne miasta wkrótce.
+              📍 Działamy w <strong>Warszawie i okolicach</strong>.
             </p>
           </div>
         </div>

@@ -69,9 +69,17 @@ export default function KreatorPage() {
     if (step === 0) return relation !== "";
     if (step === 1) return ageRange !== "";
     if (step === 2) return needs.length > 0;
-    if (step === 3) return phone.trim().length > 0;
+    if (step === 3) return phone.replace(/\D/g, "").length === 9;
     return true;
   })();
+
+  function handlePhoneChange(raw: string) {
+    // tylko cyfry, max 9
+    const digits = raw.replace(/\D/g, "").slice(0, 9);
+    // sformatuj: XXX XXX XXX
+    const formatted = digits.replace(/(\d{3})(?=\d)/g, "$1 ").trim();
+    setPhone(formatted);
+  }
 
   async function goNext() {
     if (step < 3) {
@@ -81,10 +89,15 @@ export default function KreatorPage() {
     }
     // Krok 3 → wyślij zgłoszenie
     if (sending) return;
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length !== 9) {
+      setError("Numer musi mieć dokładnie 9 cyfr.");
+      return;
+    }
     setError("");
     setSending(true);
     const res = await submitPhoneLead({
-      phone: phone.trim(),
+      phone: `+48${digits}`,
       relation: relation || undefined,
       age_range: ageRange || undefined,
       needs: needs.length ? needs : undefined,
@@ -280,15 +293,25 @@ export default function KreatorPage() {
 
               <div className="mt-6">
                 <label className="text-sm font-semibold">Numer telefonu</label>
-                <input
-                  required
-                  autoFocus
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+48 ..."
-                  className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-4 text-lg"
-                />
+                <div className="mt-2 flex items-stretch rounded-xl border border-brand-200 focus-within:border-warm-400 focus-within:ring-4 focus-within:ring-warm-100 overflow-hidden bg-white">
+                  <span className="flex items-center justify-center px-4 bg-brand-100 text-brand-700 font-semibold text-lg select-none border-r border-brand-200">
+                    +48
+                  </span>
+                  <input
+                    required
+                    autoFocus
+                    type="tel"
+                    inputMode="numeric"
+                    autoComplete="tel-national"
+                    value={phone}
+                    onChange={(e) => handlePhoneChange(e.target.value)}
+                    placeholder="XXX XXX XXX"
+                    className="flex-1 min-w-0 px-4 py-4 text-lg focus:outline-none tracking-wider"
+                  />
+                </div>
+                <p className="mt-2 text-xs text-brand-500">
+                  {phone.replace(/\D/g, "").length}/9 cyfr
+                </p>
               </div>
 
               {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
