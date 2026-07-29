@@ -132,9 +132,6 @@ export default function KreatorPage() {
             Zapisaliśmy Twoje zgłoszenie. Zadzwonimy do Ciebie w ciągu <strong>24 godzin</strong> i pomożemy
             znaleźć Bliskiego dopasowanego do Waszych potrzeb.
           </p>
-          <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm text-brand-700">
-            📞 Odezwiemy się z numeru rozpoczynającego się od <strong>+48</strong>
-          </div>
           <Link
             href="/znajdz"
             className="mt-6 inline-block text-sm text-warm-500 hover:text-warm-600 underline font-semibold"
