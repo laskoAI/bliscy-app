@@ -41,9 +41,9 @@ export default function Nav() {
         </Link>
         <div className="flex items-center gap-4">
           {isPublic ? (
-            <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event("znajdz-start")); }} className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2">
+            <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2">
               Zaczynamy →
-            </a>
+            </Link>
           ) : me ? (
             <>
               <span className="text-sm text-brand-600 hidden sm:inline">

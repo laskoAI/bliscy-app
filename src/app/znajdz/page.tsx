@@ -1,115 +1,9 @@
-"use client";
+import Link from "next/link";
 
-import { useEffect, useState } from "react";
-import { submitPhoneLead } from "@/lib/supabase";
-
-// ------------------------------
-// Konfiguracja kreatora (public)
-// ------------------------------
-const RELATIONS = [
-  { key: "mama",    label: "Mama",       emoji: "👩" },
-  { key: "tata",    label: "Tata",       emoji: "👨" },
-  { key: "babcia",  label: "Babcia",     emoji: "👵" },
-  { key: "dziadek", label: "Dziadek",    emoji: "👴" },
-  { key: "siebie",  label: "Dla siebie", emoji: "🙂" },
-  { key: "inny",    label: "Ktoś inny",  emoji: "🫶" },
-] as const;
-
-const AGE_RANGES = [
-  { key: "60-70", label: "60–70 lat", emoji: "🌿" },
-  { key: "70-80", label: "70–80 lat", emoji: "🍂" },
-  { key: "80+",   label: "80+ lat",   emoji: "🌸" },
-] as const;
-
-const NEEDS = [
-  { key: "Rozmowa",             label: "Towarzystwo i rozmowa", emoji: "☕" },
-  { key: "Spacer",              label: "Spacery",               emoji: "🚶" },
-  { key: "Wyprowadzanie psa",   label: "Wyprowadzić psa",       emoji: "🐕" },
-  { key: "Zakupy",              label: "Zakupy",                emoji: "🛒" },
-  { key: "Apteka i leki",       label: "Apteka i leki",         emoji: "💊" },
-  { key: "Transport do lekarza",label: "Wizyta u lekarza",      emoji: "🏥" },
-  { key: "Sprawy urzędowe",     label: "Sprawy urzędowe",       emoji: "📋" },
-  { key: "Wspólny posiłek",     label: "Wspólny posiłek",       emoji: "🍲" },
-  { key: "Gry i pasje",         label: "Wspólne pasje",         emoji: "🎲" },
-  { key: "Pomoc z telefonem",   label: "Pomoc z telefonem",     emoji: "📱" },
-  { key: "Inne",                label: "Coś innego",            emoji: "✍️" },
-] as const;
+// Publiczny landing — czysta propozycja wartości.
+// Kreator jest na osobnej stronie: /znajdz/kreator
 
 export default function ZnajdzLanding() {
-  // Czy kreator jest już otwarty (po kliknięciu "Zaczynamy")
-  const [wizardOpen, setWizardOpen] = useState(false);
-
-  // Wybory kreatora
-  const [relation, setRelation] = useState<string>("");
-  const [city] = useState<string>("Warszawa"); // na razie tylko Warszawa
-  const [ageRange, setAgeRange] = useState<string>("");
-  const [needs, setNeeds] = useState<string[]>([]);
-  const [otherNeed, setOtherNeed] = useState<string>("");
-  const [showResults, setShowResults] = useState(false);
-
-  // Kontakt na końcu (inline w sekcji, nie w modalu) — tylko numer telefonu
-  const [contact, setContact] = useState({ phone: "" });
-  const [contactSent, setContactSent] = useState(false);
-  const [contactSending, setContactSending] = useState(false);
-  const [contactError, setContactError] = useState<string>("");
-
-  // Kliknięcie "Zaczynamy" w globalnej nawigacji
-  useEffect(() => {
-    const h = () => startWizard();
-    window.addEventListener("znajdz-start", h);
-    return () => window.removeEventListener("znajdz-start", h);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const canSeeResults = needs.length > 0;
-
-  function toggleNeed(k: string) {
-    setNeeds((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
-  }
-
-  function startWizard() {
-    setWizardOpen(true);
-    setTimeout(() => {
-      document.getElementById("kreator")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }
-
-  function scrollToResults() {
-    setShowResults(true);
-    setTimeout(() => {
-      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }
-
-  async function sendContact(e: React.FormEvent) {
-    e.preventDefault();
-    if (contactSending) return;
-    setContactError("");
-    setContactSending(true);
-
-    const res = await submitPhoneLead({
-      phone: contact.phone.trim(),
-      relation: relation || undefined,
-      age_range: ageRange || undefined,
-      needs: needs.length ? needs : undefined,
-      other_need: otherNeed.trim() || undefined,
-      city,
-      source: typeof window !== "undefined" ? window.location.href : undefined,
-    });
-
-    setContactSending(false);
-
-    if (!res.ok) {
-      setContactError("Coś poszło nie tak. Spróbuj ponownie za chwilę.");
-      return;
-    }
-
-    setContactSent(true);
-    setTimeout(() => {
-      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }
-
   return (
     <main>
       {/* HERO — czysta propozycja wartości */}
@@ -132,16 +26,16 @@ export default function ZnajdzLanding() {
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4">
-            <button
-              onClick={startWizard}
+            <Link
+              href="/znajdz/kreator"
               className="w-full sm:w-auto rounded-full bg-warm-500 hover:bg-warm-600 text-white font-extrabold px-12 py-6 text-2xl sm:text-3xl shadow-lg hover:shadow-xl transition"
             >
               Zaczynamy →
-            </button>
+            </Link>
             <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-sm text-brand-500">
               <span>Bez rejestracji</span>
               <span className="hidden sm:inline">·</span>
-              <span>3 pytania</span>
+              <span>3 kroki</span>
               <span className="hidden sm:inline">·</span>
               <span>2 minuty</span>
             </div>
@@ -322,12 +216,12 @@ export default function ZnajdzLanding() {
                 dopasuje się do Waszej sytuacji.
               </p>
             </div>
-            <button
-              onClick={startWizard}
+            <Link
+              href="/znajdz/kreator"
               className="rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3 whitespace-nowrap"
             >
               Sprawdź kto pomoże →
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -338,221 +232,28 @@ export default function ZnajdzLanding() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center">Jak to działa</h2>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             <StepCard n={1} title="Powiedz nam czego potrzebujesz" desc="3 krótkie pytania: dla kogo, w jakim mieście, w czym pomóc. Bez rejestracji." />
-            <StepCard n={2} title="Zobacz dopasowane osoby" desc="Pokazujemy zweryfikowanych Bliskich, którzy oferują to, o co pytasz." />
-            <StepCard n={3} title="Umów pierwsze spotkanie" desc="Zostawiasz namiary, my kontaktujemy Was. Pierwsza rozmowa bez zobowiązań." />
+            <StepCard n={2} title="Zostawiasz numer" desc="Kończysz kreator zostawiając telefon. Bez zobowiązań, bez opłat na start." />
+            <StepCard n={3} title="Oddzwaniamy w 24h" desc="Rozmawiamy z Tobą i dopasowujemy Bliskiego, który najlepiej pasuje do Waszej sytuacji." />
           </div>
         </div>
       </section>
 
-      {/* KREATOR — pokazuje się dopiero po kliknięciu "Zaczynamy" */}
-      {wizardOpen && (
-        <section id="kreator" className="py-12 sm:py-16 bg-brand-100">
-          <div className="max-w-3xl mx-auto px-5">
-            <div className="text-center">
-              <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-                3 krótkie pytania
-              </span>
-              <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">Znajdźmy odpowiednią osobę</h2>
-            </div>
-
-            <div className="mt-8 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
-              {/* Krok 1 */}
-              <StepHeader n={1} title="Dla kogo szukasz Bliskiego?" />
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {RELATIONS.map((r) => (
-                  <button
-                    key={r.key}
-                    onClick={() => setRelation(r.key)}
-                    className={`rounded-2xl border-2 p-4 text-left ${relation === r.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                  >
-                    <div className="text-3xl">{r.emoji}</div>
-                    <div className="mt-2 font-semibold text-sm">{r.label}</div>
-                  </button>
-                ))}
-              </div>
-
-              {/* Krok 2 — wiek (miasto na razie ustawione na Warszawę automatycznie) */}
-              <div className="mt-8">
-                <StepHeader n={2} title="Wiek seniora" small />
-                <div className="mt-3 grid sm:grid-cols-3 gap-2">
-                  {AGE_RANGES.map((a) => (
-                    <button
-                      key={a.key}
-                      onClick={() => setAgeRange(a.key)}
-                      className={`rounded-xl border-2 px-4 py-3 text-left flex items-center gap-3 ${ageRange === a.key ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                    >
-                      <span className="text-xl">{a.emoji}</span>
-                      <span className="font-semibold">{a.label}</span>
-                    </button>
-                  ))}
-                </div>
-                <p className="mt-2 text-xs text-brand-500">
-                  Miasto: Warszawa <span className="text-brand-400">· na razie działamy tylko tutaj</span>
-                </p>
-              </div>
-
-              {/* Krok 3 — potrzeby */}
-              <div className="mt-8">
-                <StepHeader n={3} title="W czym potrzebna jest pomoc?" small />
-                <p className="mt-1 text-sm text-brand-600">Zaznacz wszystko, co pasuje.</p>
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {NEEDS.map((n) => {
-                    const on = needs.includes(n.key);
-                    return (
-                      <button
-                        key={n.key}
-                        onClick={() => toggleNeed(n.key)}
-                        className={`rounded-2xl border-2 p-3 text-left ${on ? "border-warm-500 bg-warm-100/40" : "border-brand-200"}`}
-                      >
-                        <div className="text-xl">{n.emoji}</div>
-                        <div className="mt-1 font-semibold text-sm">{n.label}</div>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {needs.includes("Inne") && (
-                  <div className="mt-4">
-                    <label className="text-sm font-semibold">Napisz krótko, co jest potrzebne</label>
-                    <textarea
-                      value={otherNeed}
-                      onChange={(e) => setOtherNeed(e.target.value)}
-                      rows={2}
-                      placeholder="Np. pomoc przy porządkach, wspólne oglądanie meczu..."
-                      className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-3"
-                    />
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-8">
-                <button
-                  onClick={scrollToResults}
-                  disabled={!canSeeResults}
-                  className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-50 text-white font-semibold px-6 py-3 text-lg"
-                >
-                  Pokaż dopasowane osoby →
-                </button>
-                {!canSeeResults && (
-                  <p className="mt-2 text-xs text-brand-500 text-center">
-                    Zaznacz przynajmniej jedną potrzebę.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* KONTAKT — zamiast wyników, na razie prosimy o numer telefonu */}
-      {wizardOpen && showResults && canSeeResults && (
-        <section id="kontakt" className="py-12 sm:py-16 bg-brand-100">
-          <div className="max-w-2xl mx-auto px-5">
-            {contactSent ? (
-              <div className="rounded-3xl bg-white border border-brand-200 p-8 md:p-10 text-center shadow-sm">
-                <div className="text-5xl">💛</div>
-                <h2 className="wordmark mt-4 text-3xl sm:text-4xl text-brand-800">Dziękujemy!</h2>
-                <p className="mt-3 text-brand-700">
-                  Zapisaliśmy Twoje zgłoszenie. Zadzwonimy w ciągu 24 godzin i pomożemy znaleźć
-                  Bliskiego, który będzie pasować do Waszych potrzeb.
-                </p>
-                <p className="mt-4 text-sm text-brand-500">
-                  Możesz teraz zamknąć tę stronę.
-                </p>
-              </div>
-            ) : (
-              <div className="rounded-3xl bg-white border border-brand-200 p-6 md:p-10 shadow-sm">
-                <div className="text-center">
-                  <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-                    Ostatni krok
-                  </span>
-                  <h2 className="wordmark mt-3 text-3xl sm:text-4xl text-brand-800">
-                    Skontaktuj się z nami
-                  </h2>
-                  <p className="mt-3 text-brand-700">
-                    Zostaw numer telefonu — <strong>oddzwonimy w ciągu 24 godzin</strong> i pomożemy
-                    znaleźć osobę, która najlepiej dopasuje się do Waszych potrzeb.
-                  </p>
-                </div>
-
-                {/* Podsumowanie tego co wybrał */}
-                <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
-                  <div className="font-semibold text-brand-800 mb-2">Twoje potrzeby:</div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {relation && (
-                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                        {RELATIONS.find((r) => r.key === relation)?.emoji}{" "}
-                        {RELATIONS.find((r) => r.key === relation)?.label}
-                      </span>
-                    )}
-                    {ageRange && (
-                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                        {AGE_RANGES.find((a) => a.key === ageRange)?.label}
-                      </span>
-                    )}
-                    {needs.filter((n) => n !== "Inne").map((k) => {
-                      const n = NEEDS.find((x) => x.key === k);
-                      return (
-                        <span key={k} className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                          {n?.emoji} {n?.label}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <form onSubmit={sendContact} className="mt-6 space-y-3">
-                  <div>
-                    <label className="text-sm font-semibold">Numer telefonu</label>
-                    <input
-                      required
-                      type="tel"
-                      value={contact.phone}
-                      onChange={(e) => setContact({ ...contact, phone: e.target.value })}
-                      placeholder="+48 ..."
-                      className="mt-1 w-full rounded-xl border border-brand-200 px-4 py-3 text-lg"
-                      autoFocus
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={contactSending}
-                    className="w-full rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-60 text-white font-semibold px-6 py-4 text-lg mt-2"
-                  >
-                    {contactSending ? "Wysyłam..." : "Zgłoś się — oddzwonimy w 24h"}
-                  </button>
-                  {contactError && (
-                    <p className="text-sm text-red-600 text-center">{contactError}</p>
-                  )}
-                  <p className="text-xs text-brand-500 text-center">
-                    Nie sprzedajemy Twoich danych. Zadzwonimy tylko w sprawie tego zgłoszenia.
-                  </p>
-                </form>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* CTA końcowe (tylko gdy kreator jeszcze nie otwarty) */}
-      {!wizardOpen && (
-        <section className="py-14 sm:py-20 bg-brand-800 text-white">
-          <div className="max-w-3xl mx-auto px-5 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Ty nie musisz być wszędzie na raz.</h2>
-            <p className="mt-4 text-brand-100 max-w-xl mx-auto">
-              Sprawdź, czy w mieście Twoich rodziców jest ktoś, kto może zajrzeć.
-              To nic nie kosztuje — dopóki nie umówisz spotkania.
-            </p>
-            <button
-              onClick={startWizard}
-              className="mt-8 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg"
-            >
-              Zaczynamy →
-            </button>
-          </div>
-        </section>
-      )}
+      {/* CTA końcowe */}
+      <section className="py-14 sm:py-20 bg-brand-800 text-white">
+        <div className="max-w-3xl mx-auto px-5 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Ty nie musisz być wszędzie na raz.</h2>
+          <p className="mt-4 text-brand-100 max-w-xl mx-auto">
+            Sprawdź, czy w mieście Twoich rodziców jest ktoś, kto może zajrzeć.
+            To nic nie kosztuje — dopóki nie umówisz spotkania.
+          </p>
+          <Link
+            href="/znajdz/kreator"
+            className="mt-8 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg"
+          >
+            Zaczynamy →
+          </Link>
+        </div>
+      </section>
 
       <footer className="py-8 border-t border-brand-200 text-center text-xs text-brand-500">
         © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · Warszawa
@@ -570,17 +271,6 @@ function ValueCard({ emoji, title, desc }: { emoji: string; title: string; desc:
       <div className="text-3xl">{emoji}</div>
       <h3 className="mt-3 font-bold text-lg text-brand-800">{title}</h3>
       <p className="mt-2 text-sm text-brand-700">{desc}</p>
-    </div>
-  );
-}
-
-function StepHeader({ n, title, small }: { n: number; title: string; small?: boolean }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span className={`inline-flex items-center justify-center rounded-full bg-warm-500 text-white font-bold ${small ? "w-7 h-7 text-xs" : "w-8 h-8 text-sm"}`}>
-        {n}
-      </span>
-      <h2 className={small ? "font-bold text-lg" : "font-bold text-xl"}>{title}</h2>
     </div>
   );
 }
