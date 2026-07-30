@@ -231,123 +231,103 @@ export default function ZnajdzLanding() {
 
       {/* KONTROLA I RAPORTY — masz wgląd w każdą wizytę */}
       <section className="py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-5">
-          {/* Nagłówek sekcji */}
-          <div className="text-center max-w-2xl mx-auto">
+        <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
             <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
               W aplikacji
             </span>
             <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-800">
-              Prawdziwe spotkania, konkretne raporty.
+              Zawsze wiesz, co się dzieje u mamy.
             </h2>
-            <p className="mt-3 text-brand-700">
-              Kasia była u Pani Krystyny we wtorek — wróciły ze spaceru, zrobiły selfie,
-              a Ty od razu zobaczyłeś w aplikacji, jak minął ich dzień.
+            <p className="mt-4 text-brand-700 text-base sm:text-lg">
+              Nie musisz co chwilę dzwonić i pytać. Po każdej wizycie widzisz w aplikacji,
+              co się działo — konkretnie, punkt po punkcie.
             </p>
+            <ul className="mt-6 space-y-3 text-brand-800">
+              <li className="flex items-start gap-3">
+                <span className="text-xl">✅</span>
+                <span><strong>Konkretne czynności</strong> — leki wzięte, ciśnienie zmierzone, śniadanie zjedzone.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">📝</span>
+                <span><strong>Krótki raport</strong> po każdej wizycie — co warto wiedzieć na następny raz.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">📸</span>
+                <span><strong>Czasem zdjęcie</strong> — dla zapewnienia, że mama miała dobry dzień.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">⭐</span>
+                <span><strong>Ocena wizyty przez seniora</strong> — zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Zdjęcie selfie — duże, na całą szerokość, główna rola */}
-          <div className="mt-10 relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 max-w-3xl mx-auto">
-            <div className="relative aspect-[16/10] bg-brand-100">
+          {/* Mockup dashboardu wizyty */}
+          <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
+            {/* Header wizyty */}
+            <div className="flex items-center justify-between text-xs text-brand-500">
+              <span>Wtorek, 12 listopada · 14:00 — 16:00</span>
+              <span className="rounded-full bg-emerald-100 text-emerald-700 px-2 py-1 font-semibold">✓ Zakończona</span>
+            </div>
+            <div className="mt-3 flex items-center gap-3">
+              <img
+                src="/bliscy-kasia.jpg"
+                alt="Kasia"
+                width={44}
+                height={44}
+                className="w-11 h-11 rounded-full object-cover object-center shrink-0"
+                loading="lazy"
+              />
+              <div className="min-w-0">
+                <div className="font-semibold text-sm">Kasia u Pani Krystyny</div>
+                <div className="text-xs text-brand-500 truncate">Studentka fizjoterapii · Warszawa</div>
+              </div>
+            </div>
+
+            {/* Selfie z wizyty */}
+            <div className="mt-4 relative rounded-2xl overflow-hidden border border-brand-200 aspect-[16/10] bg-brand-100">
               <img
                 src="/bliscy-kasia-babcia.jpg"
-                alt="Kasia z Panią Krystyną — selfie ze spaceru"
+                alt="Kasia z Panią Krystyną po spacerze"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-900/75 via-brand-900/25 to-transparent" />
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
-                <div className="text-xs sm:text-sm opacity-90 drop-shadow">📸 Wtorek, 12 listopada · po spacerze</div>
-                <div className="mt-1 font-bold text-lg sm:text-2xl leading-tight drop-shadow">
-                  Kasia i Pani Krystyna
-                </div>
+              <div className="absolute top-2 left-2 text-xs bg-white/90 text-brand-700 px-2 py-1 rounded-full font-semibold shadow-sm">
+                📸 Po spacerze
               </div>
             </div>
-          </div>
 
-          {/* Dwie kolumny: benefity + dashboard */}
-          <div className="mt-12 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-brand-800">
-                Zawsze wiesz, co się dzieje u mamy.
-              </h3>
-              <p className="mt-3 text-brand-700">
-                Nie musisz co chwilę dzwonić i pytać. Po każdej wizycie widzisz konkretnie,
-                punkt po punkcie — co robili, czy wzięła leki, jak minął dzień.
-              </p>
-              <ul className="mt-6 space-y-3 text-brand-800">
-                <li className="flex items-start gap-3">
-                  <span className="text-xl">✅</span>
-                  <span><strong>Konkretne czynności</strong> — leki wzięte, ciśnienie zmierzone, śniadanie zjedzone.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-xl">📝</span>
-                  <span><strong>Krótki raport</strong> po każdej wizycie — co warto wiedzieć na następny raz.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-xl">📸</span>
-                  <span><strong>Czasem zdjęcie</strong> — dla zapewnienia, że mama miała dobry dzień.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-xl">⭐</span>
-                  <span><strong>Ocena wizyty przez seniora</strong> — zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
-                </li>
+            {/* Checklist wykonanych czynności */}
+            <div className="mt-4 rounded-2xl bg-brand-50 border border-brand-200 p-4">
+              <div className="text-xs font-semibold text-brand-700 uppercase tracking-wider">Wykonane podczas wizyty</div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <ChecklistItem done label="Śniadanie zjedzone" detail="owsianka + herbata" />
+                <ChecklistItem done label="Leki poranne wzięte" detail="ramipril, metformin" />
+                <ChecklistItem done label="Ciśnienie zmierzone" detail={<><strong>128/82</strong> · puls 72</>} />
+                <ChecklistItem done label="Spacer" detail="45 min, park Skaryszewski" />
+                <ChecklistItem pending label="Wieczorne leki" detail="do wzięcia o 20:00" />
               </ul>
             </div>
 
-            {/* Mockup dashboardu wizyty */}
-            <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
-              {/* Header wizyty */}
-              <div className="flex items-center justify-between text-xs text-brand-500">
-                <span>Wtorek, 12 listopada · 14:00 — 16:00</span>
-                <span className="rounded-full bg-emerald-100 text-emerald-700 px-2 py-1 font-semibold">✓ Zakończona</span>
-              </div>
-              <div className="mt-3 flex items-center gap-3">
-                <img
-                  src="/bliscy-kasia.jpg"
-                  alt="Kasia"
-                  width={44}
-                  height={44}
-                  className="w-11 h-11 rounded-full object-cover object-center shrink-0"
-                  loading="lazy"
-                />
-                <div className="min-w-0">
-                  <div className="font-semibold text-sm">Kasia u Pani Krystyny</div>
-                  <div className="text-xs text-brand-500 truncate">Studentka fizjoterapii · Warszawa</div>
-                </div>
-              </div>
+            {/* Krótka notatka */}
+            <div className="mt-4">
+              <div className="text-xs font-semibold text-brand-500 uppercase tracking-wider">Notatka od Kasi</div>
+              <p className="mt-1.5 text-sm text-brand-700">
+                Pani Krystyna w dobrym humorze, apetyt dopisał. Podczas spaceru mówiła
+                trochę o bólu prawego kolana — może warto wspomnieć lekarzowi na wizycie w piątek.
+              </p>
+            </div>
 
-              {/* Checklist wykonanych czynności */}
-              <div className="mt-5 rounded-2xl bg-brand-50 border border-brand-200 p-4">
-                <div className="text-xs font-semibold text-brand-700 uppercase tracking-wider">Wykonane podczas wizyty</div>
-                <ul className="mt-3 space-y-2 text-sm">
-                  <ChecklistItem done label="Śniadanie zjedzone" detail="owsianka + herbata" />
-                  <ChecklistItem done label="Leki poranne wzięte" detail="ramipril, metformin" />
-                  <ChecklistItem done label="Ciśnienie zmierzone" detail={<><strong>128/82</strong> · puls 72</>} />
-                  <ChecklistItem done label="Spacer" detail="45 min, park Skaryszewski" />
-                  <ChecklistItem pending label="Wieczorne leki" detail="do wzięcia o 20:00" />
-                </ul>
+            {/* Ocena + akcja */}
+            <div className="mt-5 pt-4 border-t border-brand-100 flex items-center justify-between">
+              <div>
+                <div className="text-xs text-brand-500">Ocena od Pani Krystyny</div>
+                <div className="text-warm-500 text-lg leading-none">★★★★★</div>
               </div>
-
-              {/* Krótka notatka */}
-              <div className="mt-4">
-                <div className="text-xs font-semibold text-brand-500 uppercase tracking-wider">Notatka od Kasi</div>
-                <p className="mt-1.5 text-sm text-brand-700">
-                  Pani Krystyna w dobrym humorze, apetyt dopisał. Podczas spaceru mówiła
-                  trochę o bólu prawego kolana — może warto wspomnieć lekarzowi na wizycie w piątek.
-                </p>
-              </div>
-
-              {/* Ocena + akcja */}
-              <div className="mt-5 pt-4 border-t border-brand-100 flex items-center justify-between">
-                <div>
-                  <div className="text-xs text-brand-500">Ocena od Pani Krystyny</div>
-                  <div className="text-warm-500 text-lg leading-none">★★★★★</div>
-                </div>
-                <button className="text-xs text-warm-500 hover:text-warm-600 font-semibold">
-                  Napisz do Kasi →
-                </button>
-              </div>
+              <button className="text-xs text-warm-500 hover:text-warm-600 font-semibold">
+                Napisz do Kasi →
+              </button>
             </div>
           </div>
         </div>
