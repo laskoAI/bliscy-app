@@ -171,17 +171,6 @@ export default function ZnajdzLanding() {
                 </div>
               </div>
             </div>
-
-            {/* Plakietka pod kartą — zawsze widoczna, wyśrodkowana */}
-            <div className="mt-5 flex justify-center">
-              <div className="inline-flex items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
-                <span className="text-2xl">✨</span>
-                <div>
-                  <div className="text-xs text-brand-500">Ania, studentka</div>
-                  <div className="text-sm font-semibold text-brand-800">Odwiedza Panią Krystynę</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
