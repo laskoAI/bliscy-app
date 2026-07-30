@@ -11,7 +11,7 @@ export default function ZnajdzLanding() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
         <div className="relative max-w-6xl mx-auto px-5 pt-12 pb-12 md:pt-20 md:pb-20">
-          <div className="grid md:grid-cols-[3fr_2fr] gap-10 md:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
             {/* Kolumna lewa — treść */}
             <div className="text-center md:text-left">
@@ -59,7 +59,7 @@ export default function ZnajdzLanding() {
             </div>
 
             {/* Kolumna prawa — zdjęcie babci */}
-            <div className="relative mx-auto w-full max-w-md">
+            <div className="relative mx-auto w-full max-w-lg">
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-[4/3] bg-brand-100">
                 <img
                   src="/bliscy-main.jpg"
@@ -136,35 +136,38 @@ export default function ZnajdzLanding() {
             </ul>
           </div>
 
-          {/* Przykładowy profil Bliskiego */}
-          <div className="rounded-3xl bg-white border border-brand-200 p-6 shadow-sm">
-            <div className="flex items-center gap-4">
+          {/* Przykładowy profil Bliskiego — duże zdjęcie na górze */}
+          <div className="rounded-3xl bg-white border border-brand-200 shadow-lg overflow-hidden">
+            <div className="relative aspect-[4/5] bg-brand-100">
               <img
                 src="/bliscy-ania.jpg"
                 alt="Ania"
-                width={64}
-                height={64}
-                className="w-16 h-16 rounded-full object-cover object-center shrink-0"
+                className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div>
-                <div className="font-bold text-lg">Ania, 23 lata</div>
-                <div className="text-sm text-brand-500">Studentka psychologii · Warszawa</div>
-              </div>
-              <span className="ml-auto text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-semibold whitespace-nowrap">
-                ✓ Zweryfikowana
-              </span>
-            </div>
-            <blockquote className="mt-5 text-brand-700 italic border-l-4 border-warm-400 pl-4">
-              „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
-              Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
-            </blockquote>
-            <div className="mt-5 flex flex-wrap gap-1.5">
-              {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
-                <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
-                  {s}
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
+              <div className="absolute top-4 right-4">
+                <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
+                  ✓ Zweryfikowana
                 </span>
-              ))}
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <div className="font-bold text-2xl leading-tight drop-shadow">Ania, 23 lata</div>
+                <div className="mt-1 text-sm opacity-90 drop-shadow">Studentka psychologii · Warszawa</div>
+              </div>
+            </div>
+            <div className="p-6">
+              <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm sm:text-base">
+                „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
+                Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
+              </blockquote>
+              <div className="mt-5 flex flex-wrap gap-1.5">
+                {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
+                  <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
