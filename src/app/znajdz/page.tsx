@@ -59,12 +59,12 @@ export default function ZnajdzLanding() {
             </div>
 
             {/* Kolumna prawa — zdjęcie babci */}
-            <div className="relative mx-auto w-full max-w-sm">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-square bg-brand-100">
+            <div className="relative mx-auto w-full max-w-md">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-[4/3] bg-brand-100">
                 <img
-                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=85"
-                  alt="Uśmiechnięta starsza pani"
-                  className="w-full h-full object-cover"
+                  src="/bliscy-main.jpg"
+                  alt="Uśmiechnięta starsza pani ze swoim Bliskim"
+                  className="w-full h-full object-cover object-center"
                   loading="eager"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-900/25 to-transparent" />
