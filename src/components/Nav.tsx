@@ -27,8 +27,12 @@ export default function Nav() {
 
   return (
     <nav className="border-b border-brand-200 bg-white/80 backdrop-blur sticky top-0 z-30">
-      <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link href={isPublic ? "/znajdz" : (me ? (me.role === "klient" ? "/klient" : "/bliski") : "/")} className="flex items-center gap-2">
+      <div className="max-w-6xl mx-auto px-5 h-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+        {/* Logo */}
+        <Link
+          href={isPublic ? "/znajdz" : (me ? (me.role === "klient" ? "/klient" : "/bliski") : "/")}
+          className="flex items-center gap-2"
+        >
           <svg viewBox="0 0 120 120" width="32" height="32">
             <path d="M8 108 C 10 82, 22 72, 40 74 L 52 74 L 52 108 Z" fill="#c8622f"/>
             <circle cx="38" cy="52" r="20" fill="#e8a15b"/>
@@ -40,17 +44,23 @@ export default function Nav() {
           </svg>
           <span className="wordmark text-2xl">bliscy</span>
         </Link>
-        <div className="flex items-center gap-6">
+
+        {/* Środek — wyśrodkowane linki (tylko na landingu) */}
+        <div className="flex justify-center">
           {isLanding && (
-            <div className="hidden md:flex items-center gap-6 text-sm text-brand-700">
+            <div className="hidden md:flex items-center gap-8 text-sm text-brand-700">
               <a href="#kim" className="hover:text-brand-900">Kim są Bliscy</a>
               <a href="#opinie" className="hover:text-brand-900">Opinie</a>
               <a href="#jak" className="hover:text-brand-900">Jak to działa</a>
               <a href="#faq" className="hover:text-brand-900">FAQ</a>
             </div>
           )}
+        </div>
+
+        {/* Prawy — CTA / user actions */}
+        <div className="flex items-center gap-4 justify-end">
           {isPublic ? (
-            <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2">
+            <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2 whitespace-nowrap">
               Zaczynamy →
             </Link>
           ) : me ? (

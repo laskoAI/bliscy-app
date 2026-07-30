@@ -7,41 +7,78 @@ import { Avatar } from "@/components/Avatar";
 export default function ZnajdzLanding() {
   return (
     <main>
-      {/* HERO — czysta propozycja wartości */}
+      {/* HERO — 2 kolumny: tekst po lewej, zdjęcie po prawej */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
-        <div className="relative max-w-5xl mx-auto px-5 pt-14 pb-10 md:pt-20 md:pb-14 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-            <span className="w-2 h-2 rounded-full bg-warm-400" /> Startujemy w Warszawie
-          </span>
+        <div className="relative max-w-6xl mx-auto px-5 pt-12 pb-12 md:pt-20 md:pb-20">
+          <div className="grid md:grid-cols-[3fr_2fr] gap-10 md:gap-12 items-center">
 
-          <h1 className="wordmark mt-6 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
-            Ktoś obok Twoich rodziców, <br className="hidden md:inline" />
-            <span className="text-warm-500">gdy Ciebie akurat nie ma</span>.
-          </h1>
+            {/* Kolumna lewa — treść */}
+            <div className="text-center md:text-left">
+              <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+                <span className="w-2 h-2 rounded-full bg-warm-400" /> Startujemy w Warszawie
+              </span>
 
-          <p className="mt-6 text-base sm:text-lg text-brand-700 max-w-2xl mx-auto">
-            Łączymy seniorów z pełnymi energii, młodymi ludźmi. Pomogą w codziennych sprawach,
-            zawiozą do lekarza, wyprowadzą psa — i przyniosą do domu odrobinę słońca.
-          </p>
+              <h1 className="wordmark mt-5 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
+                Ktoś obok Twoich rodziców,{" "}
+                <span className="text-warm-500">gdy Ciebie akurat nie ma</span>.
+              </h1>
 
-          <div className="mt-10 flex flex-col items-center gap-4">
-            <Link
-              href="/znajdz/kreator"
-              className="w-full sm:w-auto rounded-full bg-warm-500 hover:bg-warm-600 text-white font-extrabold px-12 py-6 text-2xl sm:text-3xl shadow-lg hover:shadow-xl transition"
-            >
-              Zaczynamy →
-            </Link>
-            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-sm text-brand-500">
-              <span>Bez rejestracji</span>
-              <span className="hidden sm:inline">·</span>
-              <span>3 kroki</span>
-              <span className="hidden sm:inline">·</span>
-              <span>2 minuty</span>
+              <p className="mt-5 text-base sm:text-lg text-brand-700 max-w-xl mx-auto md:mx-0">
+                Łączymy seniorów z pełnymi energii, młodymi ludźmi. Pomogą w codziennych sprawach,
+                zawiozą do lekarza, wyprowadzą psa — i przyniosą do domu odrobinę słońca.
+              </p>
+
+              {/* CTA — 2 przyciski obok siebie */}
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3">
+                <Link
+                  href="/znajdz/kreator"
+                  className="rounded-full bg-warm-500 hover:bg-warm-600 text-white font-extrabold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition text-center whitespace-nowrap"
+                >
+                  Wypróbuj za darmo →
+                </Link>
+                <a
+                  href="#jak"
+                  className="rounded-full border-2 border-brand-300 hover:border-brand-500 text-brand-800 font-semibold px-8 py-4 text-lg text-center whitespace-nowrap"
+                >
+                  Jak to działa?
+                </a>
+              </div>
+
+              <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1 text-sm text-brand-500">
+                <span>Bez rejestracji</span>
+                <span>·</span>
+                <span>3 kroki</span>
+                <span>·</span>
+                <span>2 minuty</span>
+              </div>
+
+              <p className="mt-4 text-sm text-brand-600 text-center md:text-left">
+                📍 Działamy w <strong>Warszawie i okolicach</strong>.
+              </p>
             </div>
-            <p className="mt-4 text-sm text-brand-600">
-              📍 Działamy w <strong>Warszawie i okolicach</strong>.
-            </p>
+
+            {/* Kolumna prawa — zdjęcie babci */}
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-square bg-brand-100">
+                <img
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=85"
+                  alt="Uśmiechnięta starsza pani"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-900/25 to-transparent" />
+              </div>
+              {/* Mała plakietka — ciepły akcent */}
+              <div className="hidden md:flex absolute -bottom-4 -left-4 items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
+                <span className="text-2xl">💛</span>
+                <div>
+                  <div className="text-xs text-brand-500">Pani Krystyna, 78 lat</div>
+                  <div className="text-sm font-semibold text-brand-800">Ma teraz swojego Bliskiego</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -127,7 +164,7 @@ export default function ZnajdzLanding() {
       </section>
 
       {/* SOCIAL PROOF — opinie rodzin */}
-      <section className="py-12 sm:py-16">
+      <section id="opinie" className="py-12 sm:py-16 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto">
             <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
@@ -268,11 +305,11 @@ export default function ZnajdzLanding() {
       {/* CO ROBIĄ BLISCY */}
       <section className="py-12 sm:py-16 bg-brand-100">
         <div className="max-w-5xl mx-auto px-5">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Z czym pomagają Bliscy</h2>
             <p className="mt-3 text-brand-700">
-              To nie opieka medyczna ani pielęgniarska. To codzienna obecność — spacer,
-              rozmowa, wizyta u lekarza, sprawy w urzędzie.
+              To nie opieka medyczna. To zwykłe, ludzkie rzeczy, które robią różnicę —
+              wspólne wyjście, załatwiona sprawa, ktoś do rozmowy przy herbacie.
             </p>
           </div>
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -313,13 +350,55 @@ export default function ZnajdzLanding() {
       </section>
 
       {/* JAK TO DZIAŁA */}
-      <section className="py-12 sm:py-16">
+      <section id="jak" className="py-12 sm:py-16 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-5">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center">Jak to działa</h2>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
-            <StepCard n={1} title="Powiedz nam czego potrzebujesz" desc="3 krótkie pytania: dla kogo, w jakim mieście, w czym pomóc. Bez rejestracji." />
-            <StepCard n={2} title="Zostawiasz numer" desc="Kończysz kreator zostawiając telefon. Bez zobowiązań, bez opłat na start." />
-            <StepCard n={3} title="Oddzwaniamy w 24h" desc="Rozmawiamy z Tobą i dopasowujemy Bliskiego, który najlepiej pasuje do Waszej sytuacji." />
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
+              Krok po kroku
+            </span>
+            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-800">
+              4 proste kroki do codziennego spokoju o bliskich
+            </h2>
+            <p className="mt-3 text-brand-700">
+              Bez zakładania konta, bez formalności na start. Ma być prosto — dla Ciebie
+              i dla Twojej mamy.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-5 md:gap-6">
+            <FlowStep
+              n={1}
+              emoji="📝"
+              title="Powiedz, kogo szukacie"
+              desc="Kilka klików: dla kogo, w jakim wieku, w czym pomóc. 2 minuty, bez rejestracji."
+            />
+            <FlowStep
+              n={2}
+              emoji="📞"
+              title="Dzwonimy w 24h"
+              desc="Krótka rozmowa — poznajemy Was i Wasze potrzeby, zanim kogokolwiek zaproponujemy."
+            />
+            <FlowStep
+              n={3}
+              emoji="🤝"
+              title="Poznajecie Bliskiego"
+              desc="Proponujemy 1–2 dopasowane osoby. Pierwsze spotkanie u Was w domu — sprawdzacie chemię."
+            />
+            <FlowStep
+              n={4}
+              emoji="💛"
+              title="Zaczynacie się widywać"
+              desc="Ustalacie rytm razem. Po każdej wizycie masz w aplikacji raport — co robili, jak było."
+            />
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/znajdz/kreator"
+              className="inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition"
+            >
+              Zaczynamy od kroku 1 →
+            </Link>
           </div>
         </div>
       </section>
@@ -361,12 +440,19 @@ function ValueCard({ emoji, title, desc }: { emoji: string; title: string; desc:
   );
 }
 
-function StepCard({ n, title, desc }: { n: number; title: string; desc: string }) {
+function FlowStep({ n, emoji, title, desc }: { n: number; emoji: string; title: string; desc: string }) {
   return (
-    <div className="rounded-3xl border border-brand-200 p-6 bg-white">
-      <div className="w-10 h-10 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold">{n}</div>
-      <h3 className="mt-4 font-bold text-lg">{title}</h3>
-      <p className="mt-2 text-brand-700 text-sm">{desc}</p>
+    <div className="rounded-3xl border border-brand-200 bg-white p-6 flex gap-4">
+      <div className="shrink-0 flex flex-col items-center">
+        <div className="w-10 h-10 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold text-sm">
+          {n}
+        </div>
+        <div className="mt-3 text-3xl">{emoji}</div>
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-bold text-lg text-brand-800">{title}</h3>
+        <p className="mt-2 text-brand-700 text-sm sm:text-base leading-relaxed">{desc}</p>
+      </div>
     </div>
   );
 }
