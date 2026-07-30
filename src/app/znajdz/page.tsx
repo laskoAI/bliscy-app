@@ -20,7 +20,7 @@ export default function ZnajdzLanding() {
               </span>
 
               <h1 className="wordmark mt-5 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
-                Ktoś obok Twoich rodziców,{" "}
+                Bliski obok Twoich rodziców,{" "}
                 <span className="text-warm-500">gdy Ciebie akurat nie ma</span>.
               </h1>
 
@@ -62,7 +62,7 @@ export default function ZnajdzLanding() {
             <div className="relative mx-auto w-full max-w-sm">
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-square bg-brand-100">
                 <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=85"
+                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=85"
                   alt="Uśmiechnięta starsza pani"
                   className="w-full h-full object-cover"
                   loading="eager"
