@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Avatar } from "@/components/Avatar";
 
 // Publiczny landing — czysta propozycja wartości.
 // Kreator jest na osobnej stronie: /znajdz/kreator
@@ -272,7 +271,14 @@ export default function ZnajdzLanding() {
               <span className="rounded-full bg-emerald-100 text-emerald-700 px-2 py-1 font-semibold">✓ Zakończona</span>
             </div>
             <div className="mt-3 flex items-center gap-3">
-              <Avatar seed="Kasia Wiśniewska" size={44} alt="Kasia" />
+              <img
+                src="/bliscy-kasia.jpg"
+                alt="Kasia"
+                width={44}
+                height={44}
+                className="w-11 h-11 rounded-full object-cover object-center shrink-0"
+                loading="lazy"
+              />
               <div className="min-w-0">
                 <div className="font-semibold text-sm">Kasia u Pani Krystyny</div>
                 <div className="text-xs text-brand-500 truncate">Studentka fizjoterapii · Warszawa</div>
