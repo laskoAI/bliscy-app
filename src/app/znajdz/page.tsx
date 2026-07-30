@@ -139,7 +139,14 @@ export default function ZnajdzLanding() {
           {/* Przykładowy profil Bliskiego */}
           <div className="rounded-3xl bg-white border border-brand-200 p-6 shadow-sm">
             <div className="flex items-center gap-4">
-              <Avatar seed="Ania Nowak" size={64} alt="Ania" />
+              <img
+                src="/bliscy-ania.jpg"
+                alt="Ania"
+                width={64}
+                height={64}
+                className="w-16 h-16 rounded-full object-cover object-center shrink-0"
+                loading="lazy"
+              />
               <div>
                 <div className="font-bold text-lg">Ania, 23 lata</div>
                 <div className="text-sm text-brand-500">Studentka psychologii · Warszawa</div>
