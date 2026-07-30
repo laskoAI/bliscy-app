@@ -137,44 +137,49 @@ export default function ZnajdzLanding() {
           </div>
 
           {/* Przykładowy profil Bliskiego — duże zdjęcie na górze */}
-          <div className="relative mx-auto w-full max-w-sm rounded-3xl bg-white border border-brand-200 shadow-lg overflow-hidden">
-            <div className="relative aspect-square bg-brand-100">
-              <img
-                src="/bliscy-ania.jpg"
-                alt="Ania"
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
-              <div className="absolute top-4 right-4">
-                <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
-                  ✓ Zweryfikowana
-                </span>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="font-bold text-xl leading-tight drop-shadow">Ania, 23 lata</div>
-                <div className="mt-1 text-sm opacity-90 drop-shadow">Studentka psychologii · Warszawa</div>
-              </div>
-            </div>
-            <div className="p-5">
-              <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm">
-                „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
-                Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
-              </blockquote>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
-                  <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
-                    {s}
+          <div className="mx-auto w-full max-w-sm">
+            <div className="relative rounded-3xl bg-white border border-brand-200 shadow-lg overflow-hidden">
+              <div className="relative aspect-square bg-brand-100">
+                <img
+                  src="/bliscy-ania.jpg"
+                  alt="Ania"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
+                <div className="absolute top-4 right-4">
+                  <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
+                    ✓ Zweryfikowana
                   </span>
-                ))}
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="font-bold text-xl leading-tight drop-shadow">Ania, 23 lata</div>
+                  <div className="mt-1 text-sm opacity-90 drop-shadow">Studentka psychologii · Warszawa</div>
+                </div>
+              </div>
+              <div className="p-5">
+                <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm">
+                  „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
+                  Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
+                </blockquote>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
+                    <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-            {/* Plakietka — tak jak przy Pani Krystynie */}
-            <div className="hidden md:flex absolute -bottom-4 -right-4 items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
-              <span className="text-2xl">✨</span>
-              <div>
-                <div className="text-xs text-brand-500">Ania, studentka</div>
-                <div className="text-sm font-semibold text-brand-800">Odwiedza Panią Krystynę</div>
+
+            {/* Plakietka pod kartą — zawsze widoczna, wyśrodkowana */}
+            <div className="mt-5 flex justify-center">
+              <div className="inline-flex items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
+                <span className="text-2xl">✨</span>
+                <div>
+                  <div className="text-xs text-brand-500">Ania, studentka</div>
+                  <div className="text-sm font-semibold text-brand-800">Odwiedza Panią Krystynę</div>
+                </div>
               </div>
             </div>
           </div>
