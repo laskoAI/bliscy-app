@@ -455,12 +455,12 @@ export default function ZnajdzLanding() {
         <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-500">
           <div>© {new Date().getFullYear()} <span className="wordmark">bliscy</span> · Warszawa</div>
           <div className="flex items-center gap-5">
-            <a href="/regulamin.pdf" target="_blank" rel="noopener" className="hover:text-brand-800">
+            <Link href="/regulamin" className="hover:text-brand-800">
               Regulamin
-            </a>
-            <a href="/polityka-prywatnosci.pdf" target="_blank" rel="noopener" className="hover:text-brand-800">
+            </Link>
+            <Link href="/polityka-prywatnosci" className="hover:text-brand-800">
               Polityka prywatności
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

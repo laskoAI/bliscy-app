@@ -316,13 +316,13 @@ export default function KreatorPage() {
               <p className="mt-4 text-xs text-brand-500">
                 Nie sprzedajemy Twoich danych. Zadzwonimy tylko w sprawie tego zgłoszenia.
                 Zobacz{" "}
-                <a href="/polityka-prywatnosci.pdf" target="_blank" rel="noopener" className="underline hover:text-brand-800">
+                <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
                   politykę prywatności
-                </a>{" "}
+                </Link>{" "}
                 i{" "}
-                <a href="/regulamin.pdf" target="_blank" rel="noopener" className="underline hover:text-brand-800">
+                <Link href="/regulamin" className="underline hover:text-brand-800">
                   regulamin
-                </a>.
+                </Link>.
               </p>
             </>
           )}
