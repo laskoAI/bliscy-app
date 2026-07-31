@@ -451,8 +451,18 @@ export default function ZnajdzLanding() {
         </div>
       </section>
 
-      <footer className="py-8 border-t border-brand-200 text-center text-xs text-brand-500">
-        © {new Date().getFullYear()} <span className="wordmark">bliscy</span> · Warszawa
+      <footer className="py-8 border-t border-brand-200">
+        <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-500">
+          <div>© {new Date().getFullYear()} <span className="wordmark">bliscy</span> · Warszawa</div>
+          <div className="flex items-center gap-5">
+            <a href="/regulamin.pdf" target="_blank" rel="noopener" className="hover:text-brand-800">
+              Regulamin
+            </a>
+            <a href="/polityka-prywatnosci.pdf" target="_blank" rel="noopener" className="hover:text-brand-800">
+              Polityka prywatności
+            </a>
+          </div>
+        </div>
       </footer>
     </main>
   );
