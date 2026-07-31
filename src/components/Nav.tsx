@@ -50,7 +50,6 @@ export default function Nav() {
           {isLanding && (
             <div className="hidden md:flex items-center gap-8 text-sm text-brand-700">
               <a href="#kim" className="hover:text-brand-900">Kim są Bliscy</a>
-              <a href="#opinie" className="hover:text-brand-900">Opinie</a>
               <a href="#jak" className="hover:text-brand-900">Jak to działa</a>
               <a href="#faq" className="hover:text-brand-900">FAQ</a>
             </div>

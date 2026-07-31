@@ -174,61 +174,6 @@ export default function ZnajdzLanding() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF — opinie rodzin */}
-      <section id="opinie" className="py-12 sm:py-16 scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-5">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="inline-flex items-center rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-              Co mówią rodziny
-            </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold">
-              Ludzie, którym pomogliśmy
-            </h2>
-            <p className="mt-3 text-brand-700">
-              Wystarczy jedno popołudnie w tygodniu — i mama ma towarzystwo,
-              a Ty spokój, że ktoś tam był.
-            </p>
-          </div>
-
-          <div className="mt-10 grid md:grid-cols-3 gap-5">
-            <TestimonialCard
-              stars={5}
-              quote="Kasia przychodzi do mamy dwa razy w tygodniu na spacer. Mama ożywa, jak ją widzi. Dla mnie jak kamień z serca — mieszkam 400 km stąd."
-              author="Magdalena, córka"
-              context="Mama, 78 lat · Warszawa"
-            />
-            <TestimonialCard
-              stars={5}
-              quote="Byliśmy sceptyczni — obca osoba u taty? Ale Piotr od pierwszej wizyty złapał z nim wspólny język. Grają w szachy, chodzą na kawę. Tata się śmieje jak dawno nie."
-              author="Robert, syn"
-              context="Tata, 82 lata · Warszawa"
-            />
-            <TestimonialCard
-              stars={5}
-              quote="Studentka fizjoterapii pomaga babci przy ćwiczeniach i zabiera ją do lekarza. Serdeczna, punktualna, cierpliwa. Polecam z całego serca."
-              author="Ewa, wnuczka"
-              context="Babcia, 84 lata · Warszawa"
-            />
-          </div>
-
-          {/* Pasek statystyk */}
-          <div className="mt-12 rounded-3xl bg-brand-800 text-white p-6 md:p-8 grid grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">120+</div>
-              <div className="mt-1 text-sm text-brand-100">rodzin czeka na start</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">100%</div>
-              <div className="mt-1 text-sm text-brand-100">Bliskich zweryfikowanych</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-extrabold text-warm-400">24h</div>
-              <div className="mt-1 text-sm text-brand-100">tyle trwa nasza odpowiedź</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* KONTROLA I RAPORTY — masz wgląd w każdą wizytę */}
       <section className="py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -493,24 +438,6 @@ function FlowStep({ n, emoji, title, desc }: { n: number; emoji: string; title: 
       <div className="flex-1 min-w-0">
         <h3 className="font-bold text-lg text-brand-800">{title}</h3>
         <p className="mt-2 text-brand-700 text-sm sm:text-base leading-relaxed">{desc}</p>
-      </div>
-    </div>
-  );
-}
-
-function TestimonialCard({ stars, quote, author, context }: { stars: number; quote: string; author: string; context: string }) {  return (
-    <div className="rounded-3xl border border-brand-200 bg-white p-6 flex flex-col">
-      <div className="flex text-warm-500 text-lg">
-        {Array.from({ length: stars }).map((_, i) => (
-          <span key={i}>★</span>
-        ))}
-      </div>
-      <blockquote className="mt-3 text-brand-800 text-sm md:text-base flex-1">
-        „{quote}"
-      </blockquote>
-      <div className="mt-4 pt-4 border-t border-brand-100">
-        <div className="font-semibold text-brand-800">{author}</div>
-        <div className="text-xs text-brand-500">{context}</div>
       </div>
     </div>
   );
