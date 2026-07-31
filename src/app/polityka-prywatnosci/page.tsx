@@ -22,6 +22,9 @@ export default function PolitykaPage() {
         Warszawie.
       </p>
       <p>
+        Adres do korespondencji: ul. [Nazwa Ulicy i Numer], [Kod pocztowy] Warszawa.
+      </p>
+      <p>
         Kontakt elektroniczny:{" "}
         <a href="mailto:bliscykontakt@gmail.com">bliscykontakt@gmail.com</a>
       </p>
