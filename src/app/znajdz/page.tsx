@@ -360,7 +360,7 @@ export default function ZnajdzLanding() {
               Krok po kroku
             </span>
             <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-800">
-              4 proste kroki do codziennego spokoju o bliskich
+              4 proste kroki do codziennego spokoju o Twojego bliskiego
             </h2>
             <p className="mt-3 text-brand-700">
               Bez zakładania konta, bez formalności na start. Ma być prosto — dla Ciebie
@@ -372,26 +372,26 @@ export default function ZnajdzLanding() {
             <FlowStep
               n={1}
               emoji="📝"
-              title="Powiedz, kogo szukacie"
+              title="Powiedz, kogo szukasz"
               desc="Kilka klików: dla kogo, w jakim wieku, w czym pomóc. 2 minuty, bez rejestracji."
             />
             <FlowStep
               n={2}
               emoji="📞"
               title="Dzwonimy w 24h"
-              desc="Krótka rozmowa — poznajemy Was i Wasze potrzeby, zanim kogokolwiek zaproponujemy."
+              desc="Krótka rozmowa — poznajemy Twoje potrzeby, zanim kogokolwiek zaproponujemy."
             />
             <FlowStep
               n={3}
               emoji="🤝"
-              title="Poznajecie Bliskiego"
-              desc="Proponujemy 1–2 dopasowane osoby. Pierwsze spotkanie u Was w domu — sprawdzacie chemię."
+              title="Poznajesz swojego Bliskiego"
+              desc="Proponujemy 1–2 dopasowane osoby. Pierwsze spotkanie u Twojego bliskiego w domu — sprawdzasz, czy jest chemia."
             />
             <FlowStep
               n={4}
               emoji="💛"
-              title="Zaczynacie się widywać"
-              desc="Ustalacie rytm razem. Po każdej wizycie masz w aplikacji raport — co robili, jak było."
+              title="Zaczyna się regularna opieka"
+              desc="Ustalasz razem z Bliskim rytm i godziny wizyt. Po każdej z nich masz w aplikacji raport — co się działo, jak minął dzień."
             />
           </div>
 
