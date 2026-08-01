@@ -265,6 +265,15 @@ export default function KreatorPage() {
                 która najlepiej dopasuje się do Waszych potrzeb.
               </p>
 
+              {/* Hint MVP — uczciwie o etapie i braku zobowiązań */}
+              <div className="mt-4 rounded-2xl bg-brand-50 border border-brand-200 p-4 flex items-start gap-3">
+                <span className="text-xl shrink-0" aria-hidden>🌱</span>
+                <p className="text-sm text-brand-700">
+                  Jesteśmy na początku drogi — dzwonimy osobiście, żeby dobrze zrozumieć Waszą sytuację.
+                  Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
+                </p>
+              </div>
+
               {/* Podsumowanie potrzeb */}
               <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
                 <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto:</div>
