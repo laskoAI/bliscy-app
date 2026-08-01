@@ -58,9 +58,6 @@ export default function ZnajdzLanding() {
                 <span>2 minuty</span>
               </div>
 
-              <p className="mt-4 text-sm text-brand-600 text-center md:text-left">
-                📍 Działamy w <strong>Warszawie i okolicach</strong>.
-              </p>
             </div>
 
             {/* Kolumna prawa — zdjęcie babci */}
