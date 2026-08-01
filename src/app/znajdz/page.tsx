@@ -137,39 +137,47 @@ export default function ZnajdzLanding() {
 
           {/* Przykładowy profil Bliskiego — duże zdjęcie na górze */}
           <div className="mx-auto w-full max-w-sm">
-            <div className="relative rounded-3xl bg-white border border-brand-200 shadow-lg overflow-hidden">
-              <div className="relative aspect-square bg-brand-100">
-                <img
-                  src="/bliscy-ania.jpg"
-                  alt="Ania"
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
-                <div className="absolute top-4 right-4">
-                  <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
-                    ✓ Zweryfikowana
-                  </span>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="font-bold text-xl leading-tight drop-shadow">Ania, 23 lata</div>
-                  <div className="mt-1 text-sm opacity-90 drop-shadow">Studentka psychologii · Warszawa</div>
-                </div>
-              </div>
-              <div className="p-5">
-                <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm">
-                  „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
-                  Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
-                </blockquote>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
-                    <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
-                      {s}
+            <div className="relative">
+              <span className="absolute -top-3 left-4 z-10 rounded-full bg-brand-800 text-white text-xs font-semibold px-3 py-1 shadow">
+                Przykładowy profil
+              </span>
+              <div className="relative rounded-3xl bg-white border border-brand-200 shadow-lg overflow-hidden">
+                <div className="relative aspect-square bg-brand-100">
+                  <img
+                    src="/bliscy-ania.jpg"
+                    alt="Ania"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
+                  <div className="absolute top-4 right-4">
+                    <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
+                      ✓ Zweryfikowana
                     </span>
-                  ))}
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="font-bold text-xl leading-tight drop-shadow">Ania, 23 lata</div>
+                    <div className="mt-1 text-sm opacity-90 drop-shadow">Studentka psychologii · Warszawa</div>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm">
+                    „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
+                    Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
+                  </blockquote>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
+                      <span key={s} className="text-xs bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
+            <p className="mt-3 text-xs text-brand-500 text-center italic">
+              Wizerunek i cytat mają charakter demonstracyjny.
+            </p>
           </div>
         </div>
       </section>
@@ -209,7 +217,11 @@ export default function ZnajdzLanding() {
           </div>
 
           {/* Mockup dashboardu wizyty */}
-          <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
+          <div className="relative">
+            <span className="absolute -top-3 left-4 z-10 rounded-full bg-brand-800 text-white text-xs font-semibold px-3 py-1 shadow">
+              Przykładowa wizyta
+            </span>
+            <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
             {/* Header wizyty */}
             <div className="flex items-center justify-between text-xs text-brand-500">
               <span>Wtorek, 12 listopada · 14:00 — 16:00</span>
@@ -275,8 +287,12 @@ export default function ZnajdzLanding() {
               </button>
             </div>
           </div>
+          <p className="mt-3 text-xs text-brand-500 text-center italic">
+            Widok demonstracyjny — dane, notatka i ocena są przykładowe.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* CO ROBIĄ BLISCY */}
       <section className="py-12 sm:py-16 bg-brand-100">

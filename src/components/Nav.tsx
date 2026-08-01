@@ -30,7 +30,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-5 h-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
         {/* Logo */}
         <Link
-          href={isPublic ? "/znajdz" : (me ? (me.role === "klient" ? "/klient" : "/bliski") : "/")}
+          href={isPublic ? "/znajdz" : (me ? (me.role === "klient" ? "/klient" : "/bliski") : "/znajdz")}
           className="flex items-center gap-2"
         >
           <svg viewBox="0 0 120 120" width="32" height="32">
