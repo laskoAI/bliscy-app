@@ -166,16 +166,6 @@ export default function KontaktPage() {
             </p>
           </form>
         </div>
-
-        <p className="mt-6 text-center text-sm text-brand-600">
-          Wolisz najpierw powiedzieć nam więcej?{" "}
-          <Link
-            href="/znajdz/kreator"
-            className="text-warm-500 hover:text-warm-600 underline font-semibold"
-          >
-            Przejdź do kreatora
-          </Link>
-        </p>
       </div>
     </main>
   );
