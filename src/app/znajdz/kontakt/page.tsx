@@ -45,13 +45,11 @@ export default function KontaktPage() {
   // ---------- Widok potwierdzenia ----------
   if (sent) {
     return (
-      <main className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-5 py-14 bg-gradient-to-b from-brand-100 to-brand-50">
+      <main className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-5 py-14">
         <div className="max-w-lg w-full text-center rounded-3xl bg-white border border-brand-200 p-8 md:p-10 shadow-sm">
           <div className="text-6xl">💛</div>
-          <h1 className="wordmark mt-4 text-3xl sm:text-4xl text-brand-800">
-            Dziękujemy!
-          </h1>
-          <p className="mt-4 text-brand-700 text-base sm:text-lg leading-relaxed">
+          <h1 className="wordmark mt-4 text-3xl sm:text-4xl text-brand-800">Dziękujemy!</h1>
+          <p className="mt-4 text-brand-700 leading-relaxed">
             Zapisaliśmy Twoje zgłoszenie. Zadzwonimy do Ciebie w ciągu <strong>24 godzin</strong>
             {" "}— chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
@@ -69,20 +67,20 @@ export default function KontaktPage() {
     );
   }
 
-  // ---------- Formularz ----------
+  // ---------- Widok formularza — layout jak w kreatorze ----------
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-brand-100 to-brand-50">
-      <div className="max-w-2xl mx-auto px-5 py-8 md:py-14">
-        <Link
-          href="/znajdz"
-          className="text-sm text-brand-500 hover:text-brand-800"
-        >
-          ← Wróć
-        </Link>
+    <main className="min-h-[calc(100vh-4rem)] px-5 py-8 md:py-12">
+      <div className="max-w-2xl mx-auto">
+        {/* Nagłówek — spójny z kreatorem, ale bez progress bara */}
+        <div className="flex items-center justify-between text-sm text-brand-600">
+          <Link href="/znajdz" className="hover:text-brand-800">← Wyjdź</Link>
+        </div>
 
-        <div className="mt-6 md:mt-10 text-center">
-          <div className="inline-flex" aria-hidden>
-            <svg viewBox="0 0 120 120" width="72" height="72">
+        {/* Karta — dokładnie jak krok kreatora */}
+        <form id="kontakt-form" onSubmit={handleSubmit} className="mt-6 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
+          {/* Logo bliscy */}
+          <div className="flex justify-center" aria-hidden>
+            <svg viewBox="0 0 120 120" width="64" height="64">
               <path d="M8 108 C 10 82, 22 72, 40 74 L 52 74 L 52 108 Z" fill="#c8622f"/>
               <circle cx="38" cy="52" r="20" fill="#e8a15b"/>
               <path d="M20 48 C 22 32, 34 28, 46 30 C 50 31, 55 34, 56 42 C 50 38, 42 37, 34 40 C 28 42, 24 45, 20 48 Z" fill="#f5efe4"/>
@@ -92,42 +90,43 @@ export default function KontaktPage() {
               <path d="M60 60 C 55 55, 50 58, 52 64 C 54 70, 60 74, 60 78 C 60 74, 66 70, 68 64 C 70 58, 65 55, 60 60 Z" fill="#c8622f"/>
             </svg>
           </div>
-          <h1 className="wordmark mt-4 text-3xl sm:text-4xl md:text-5xl text-brand-800 leading-tight">
+
+          <h1 className="wordmark mt-4 text-2xl sm:text-3xl text-brand-800 text-center">
             Zaczynamy od rozmowy.
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-brand-700 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-3 text-brand-700 text-center">
             Zostaw numer, a <strong>zadzwonimy do Ciebie w ciągu 24 godzin</strong>.
             Chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
-        </div>
 
-        <div className="mt-8 md:mt-10 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
-          {/* Trzy uspokajające punkty */}
-          <ul className="space-y-3 text-sm text-brand-700">
-            <li className="flex items-start gap-3">
-              <span className="text-lg shrink-0" aria-hidden>💛</span>
-              <span>
-                Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> — nie call center, nie bot.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-lg shrink-0" aria-hidden>🕊️</span>
-              <span>
-                To zwykła rozmowa. <strong>Nic nie zamawiasz, do niczego się nie zobowiązujesz.</strong>
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-lg shrink-0" aria-hidden>🤝</span>
-              <span>
-                Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
-                lepszą wersję <em>bliscy</em>.
-              </span>
-            </li>
-          </ul>
+          {/* Trzy uspokajające punkty — jak "hint" w kreatorze */}
+          <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4">
+            <ul className="space-y-3 text-sm text-brand-700">
+              <li className="flex items-start gap-3">
+                <span className="text-lg shrink-0" aria-hidden>💛</span>
+                <span>
+                  Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> — nie call center, nie bot.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-lg shrink-0" aria-hidden>🕊️</span>
+                <span>
+                  To zwykła rozmowa. <strong>Nic nie zamawiasz, do niczego się nie zobowiązujesz.</strong>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-lg shrink-0" aria-hidden>🤝</span>
+                <span>
+                  Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
+                  lepszą wersję <em>bliscy</em>.
+                </span>
+              </li>
+            </ul>
+          </div>
 
-          {/* Formularz */}
-          <form onSubmit={handleSubmit} className="mt-8">
-            <label className="text-sm font-semibold text-brand-800">Twój numer telefonu</label>
+          {/* Pole telefonu — dokładnie jak w kreatorze */}
+          <div className="mt-6">
+            <label className="text-sm font-semibold">Numer telefonu</label>
             <div className="mt-2 flex items-stretch rounded-xl border border-brand-200 focus-within:border-warm-400 focus-within:ring-4 focus-within:ring-warm-100 overflow-hidden bg-white">
               <span className="flex items-center justify-center px-4 bg-brand-100 text-brand-700 font-semibold text-lg select-none border-r border-brand-200">
                 +48
@@ -147,35 +146,40 @@ export default function KontaktPage() {
             <p className="mt-2 text-xs text-brand-500">
               {phone.replace(/\D/g, "").length}/9 cyfr
             </p>
+          </div>
 
-            {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+          {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
-            <button
-              type="submit"
-              disabled={!canSend || sending}
-              className="mt-6 w-full rounded-full bg-warm-500 hover:bg-warm-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition"
-            >
-              {sending ? "Wysyłam..." : "Zadzwońcie do mnie →"}
-            </button>
+          {/* Nota RODO — spójna z kreatorem */}
+          <p className="mt-4 text-xs text-brand-500 leading-relaxed">
+            Zostawiając numer, zgadzasz się na kontakt telefoniczny w sprawie Twojego zgłoszenia.
+          </p>
+          <p className="mt-2 text-xs text-brand-500 leading-relaxed">
+            Administratorem danych są Norbert Laskowski i Mikołaj Komorek (kontakt:{" "}
+            <a href="mailto:bliscykontakt@gmail.com" className="underline hover:text-brand-800">
+              bliscykontakt@gmail.com
+            </a>
+            ). Masz prawo dostępu do danych, ich sprostowania oraz usunięcia. Szczegóły w{" "}
+            <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
+              Polityce Prywatności
+            </Link>{" "}
+            i{" "}
+            <Link href="/regulamin" className="underline hover:text-brand-800">
+              Regulaminie
+            </Link>.
+          </p>
+        </form>
 
-            <p className="mt-4 text-xs text-brand-500 leading-relaxed">
-              Zostawiając numer, zgadzasz się na kontakt telefoniczny w sprawie Twojego zgłoszenia.
-            </p>
-            <p className="mt-2 text-xs text-brand-500 leading-relaxed">
-              Administratorem danych są Norbert Laskowski i Mikołaj Komorek (kontakt:{" "}
-              <a href="mailto:bliscykontakt@gmail.com" className="underline hover:text-brand-800">
-                bliscykontakt@gmail.com
-              </a>
-              ). Masz prawo dostępu do danych, ich sprostowania oraz usunięcia. Szczegóły w{" "}
-              <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
-                Polityce Prywatności
-              </Link>{" "}
-              i{" "}
-              <Link href="/regulamin" className="underline hover:text-brand-800">
-                Regulaminie
-              </Link>.
-            </p>
-          </form>
+        {/* Przycisk główny — poza kartą, jak w nawigacji kreatora */}
+        <div className="mt-6 flex items-center justify-end">
+          <button
+            type="submit"
+            form="kontakt-form"
+            disabled={!canSend || sending}
+            className="rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-50 text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+          >
+            {sending ? "Wysyłam..." : "Zgłoś się — oddzwonimy w 24h"}
+          </button>
         </div>
       </div>
     </main>

@@ -17,6 +17,7 @@ const RELATIONS = [
 ] as const;
 
 const AGE_RANGES = [
+  { key: "50-60", label: "50–60 lat", emoji: "🌱" },
   { key: "60-70", label: "60–70 lat", emoji: "🌿" },
   { key: "70-80", label: "70–80 lat", emoji: "🍂" },
   { key: "80+",   label: "80+ lat",   emoji: "🌸" },

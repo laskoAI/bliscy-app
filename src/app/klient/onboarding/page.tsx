@@ -11,6 +11,7 @@ import { Avatar } from "@/components/Avatar";
 // Konfiguracja onboardingu
 // ------------------------------
 const AGE_RANGES = [
+  { key: "50-60", label: "50–60 lat", emoji: "🌱" },
   { key: "60-70", label: "60–70 lat", emoji: "🌿" },
   { key: "70-80", label: "70–80 lat", emoji: "🍂" },
   { key: "80+",   label: "80+ lat",   emoji: "🌸" },
@@ -358,6 +359,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 function guessBirthYear(range: string): number {
   const now = new Date().getFullYear();
+  if (range === "50-60") return now - 55;
   if (range === "60-70") return now - 65;
   if (range === "70-80") return now - 75;
   if (range === "80+")   return now - 82;
