@@ -410,8 +410,7 @@ export default function ZnajdzLanding() {
         <div className="max-w-3xl mx-auto px-5 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Ty nie musisz być wszędzie na raz.</h2>
           <p className="mt-4 text-brand-100 max-w-xl mx-auto">
-            Sprawdź, czy w mieście Twoich rodziców jest ktoś, kto może zajrzeć.
-            To nic nie kosztuje - dopóki nie umówisz spotkania.
+            Gdy nie możesz być obok, dajemy Twojemu bliskiemu kogoś, kto zajrzy z sercem - dokładnie wtedy, kiedy trzeba.
           </p>
           <Link
             href="/znajdz/kreator"
