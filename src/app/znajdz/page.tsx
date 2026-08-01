@@ -221,10 +221,6 @@ export default function ZnajdzLanding() {
                 <span><strong>Krótki raport</strong> po każdej wizycie — co warto wiedzieć na następny raz.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-xl">📸</span>
-                <span><strong>Czasem zdjęcie</strong> — dla zapewnienia, że mama miała dobry dzień.</span>
-              </li>
-              <li className="flex items-start gap-3">
                 <span className="text-xl">⭐</span>
                 <span><strong>Ocena wizyty przez seniora</strong> — zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
               </li>
@@ -328,9 +324,9 @@ export default function ZnajdzLanding() {
               ["📋", "Sprawy urzędowe"],
               ["✍️", "Coś innego"],
             ].map(([e, t]) => (
-              <div key={t} className="rounded-2xl bg-white border border-brand-200 p-5 flex items-center gap-3">
-                <span className="text-2xl">{e}</span>
-                <span className="font-semibold">{t}</span>
+              <div key={t} className="rounded-2xl bg-white border border-brand-200 p-4 sm:p-5 flex items-center gap-2 sm:gap-3 min-w-0">
+                <span className="text-xl sm:text-2xl shrink-0">{e}</span>
+                <span className="font-semibold text-sm sm:text-base min-w-0 break-words">{t}</span>
               </div>
             ))}
           </div>
@@ -368,7 +364,7 @@ export default function ZnajdzLanding() {
             </h2>
             <p className="mt-3 text-brand-700">
               Bez zakładania konta, bez formalności na start. Ma być prosto — dla Ciebie
-              i dla Twojej mamy.
+              i dla Twojego bliskiego.
             </p>
           </div>
 
