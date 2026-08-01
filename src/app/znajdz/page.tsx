@@ -12,7 +12,7 @@ export default function ZnajdzLanding() {
         <div className="relative max-w-6xl mx-auto px-5 pt-6 sm:pt-8 pb-6 md:pb-8">
 
           {/* BANNER MVP — z delikatną ramką na gradiencie hero */}
-          <div className="mb-6 md:mb-8 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left rounded-2xl border border-warm-300/50 px-5 sm:px-6 py-4 sm:py-5">
+          <div className="mb-6 md:mb-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left rounded-2xl border border-warm-300/50 px-5 sm:px-6 py-4 sm:py-5">
             <div className="text-3xl sm:text-4xl shrink-0" aria-hidden>🌱</div>
             <p className="flex-1 text-sm sm:text-base text-warm-700 leading-relaxed max-w-3xl">
               <strong>Dopiero startujemy z projektem bliscy.</strong> Zanim pójdziemy krok dalej,

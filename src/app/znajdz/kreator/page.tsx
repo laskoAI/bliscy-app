@@ -260,19 +260,50 @@ export default function KreatorPage() {
           {/* KROK 3 — kontakt */}
           {step === 3 && (
             <>
-              <h1 className="wordmark text-2xl sm:text-3xl text-brand-800">Zostaw numer telefonu</h1>
-              <p className="mt-2 text-brand-700">
-                <strong>Oddzwonimy w ciągu 24 godzin</strong> i pomożemy znaleźć osobę,
-                która najlepiej dopasuje się do Waszych potrzeb.
+              {/* Logo bliscy */}
+              <div className="flex justify-center" aria-hidden>
+                <svg viewBox="0 0 120 120" width="64" height="64">
+                  <path d="M8 108 C 10 82, 22 72, 40 74 L 52 74 L 52 108 Z" fill="#c8622f"/>
+                  <circle cx="38" cy="52" r="20" fill="#e8a15b"/>
+                  <path d="M20 48 C 22 32, 34 28, 46 30 C 50 31, 55 34, 56 42 C 50 38, 42 37, 34 40 C 28 42, 24 45, 20 48 Z" fill="#f5efe4"/>
+                  <path d="M112 108 C 110 82, 98 72, 80 74 L 68 74 L 68 108 Z" fill="#4b6b3a"/>
+                  <circle cx="82" cy="52" r="20" fill="#e8a15b"/>
+                  <path d="M64 46 C 66 30, 78 26, 92 30 C 100 32, 104 40, 102 50 C 96 42, 86 40, 78 44 C 72 46, 68 46, 64 46 Z" fill="#2b2417"/>
+                  <path d="M60 60 C 55 55, 50 58, 52 64 C 54 70, 60 74, 60 78 C 60 74, 66 70, 68 64 C 70 58, 65 55, 60 60 Z" fill="#c8622f"/>
+                </svg>
+              </div>
+
+              <h1 className="wordmark mt-4 text-2xl sm:text-3xl text-brand-800 text-center">
+                Zaczynamy od rozmowy.
+              </h1>
+              <p className="mt-3 text-brand-700 text-center">
+                Zostaw numer, a <strong>zadzwonimy do Ciebie w ciągu 24 godzin</strong>.
+                Chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
               </p>
 
-              {/* Hint MVP — spójny z landingiem */}
-              <div className="mt-4 rounded-2xl bg-brand-50 border border-brand-200 p-4 flex items-start gap-3">
-                <span className="text-xl shrink-0" aria-hidden>☎️</span>
-                <p className="text-sm text-brand-700">
-                  Dopiero startujemy z projektem <strong>bliscy</strong> — zadzwonimy osobiście,
-                  żeby spokojnie wysłuchać Waszych potrzeb.
-                </p>
+              {/* Trzy uspokajające punkty */}
+              <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4">
+                <ul className="space-y-3 text-sm text-brand-700">
+                  <li className="flex items-start gap-3">
+                    <span className="text-lg shrink-0" aria-hidden>💛</span>
+                    <span>
+                      Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> — nie call center, nie bot.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-lg shrink-0" aria-hidden>🕊️</span>
+                    <span>
+                      To zwykła rozmowa. <strong>Nic nie zamawiasz, do niczego się nie zobowiązujesz.</strong>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-lg shrink-0" aria-hidden>🤝</span>
+                    <span>
+                      Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
+                      lepszą wersję <em>bliscy</em>.
+                    </span>
+                  </li>
+                </ul>
               </div>
 
               {/* Podsumowanie potrzeb — tylko gdy user wypełnił wcześniejsze kroki */}
