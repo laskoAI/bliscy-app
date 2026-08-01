@@ -108,8 +108,8 @@ export default function ZnajdzLanding() {
             />
             <ValueCard
               emoji="⏱️"
-              title="Bez zbędnych kroków"
-              desc="Kilka prostych pytań i chwila Twojego czasu. Bez zakładania konta, logowania i zbędnych kroków."
+              title="Bez formalności na start"
+              desc="Kilka pytań, chwila czasu - bez zakładania konta i zbędnych kroków."
             />
             <ValueCard
               emoji="🎓"
@@ -362,7 +362,7 @@ export default function ZnajdzLanding() {
               4 proste kroki do codziennego spokoju o Twojego bliskiego
             </h2>
             <p className="mt-3 text-brand-700">
-              Bez zakładania konta, bez zbędnych kroków. Ma być prosto - dla Ciebie
+              Bez zakładania konta, bez zbędnych formalności. Ma być prosto - dla Ciebie
               i dla Twojego bliskiego.
             </p>
           </div>
