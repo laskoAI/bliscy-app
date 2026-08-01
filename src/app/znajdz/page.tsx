@@ -109,7 +109,7 @@ export default function ZnajdzLanding() {
             <ValueCard
               emoji="⏱️"
               title="Bez formalności na start"
-              desc="Kilka pytań, chwila czasu - żadnych papierów ani zakładania konta."
+              desc="Kilka pytań, chwila czasu - bez zakładania konta i zbędnych formalności."
             />
             <ValueCard
               emoji="🎓"
