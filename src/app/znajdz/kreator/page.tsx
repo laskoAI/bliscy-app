@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { submitPhoneLead } from "@/lib/supabase";
 
 // ------------------------------
@@ -47,17 +46,7 @@ const STEPS: { id: StepId; label: string }[] = [
 ];
 
 export default function KreatorPage() {
-  return (
-    <Suspense fallback={<div className="min-h-[calc(100vh-4rem)]" />}>
-      <KreatorContent />
-    </Suspense>
-  );
-}
-
-function KreatorContent() {
-  const searchParams = useSearchParams();
-  const initialStep: StepId = searchParams.get("step") === "phone" ? 3 : 0;
-  const [step, setStep] = useState<StepId>(initialStep);
+  const [step, setStep] = useState<StepId>(0);
 
   // Wybory kreatora
   const [relation, setRelation] = useState<string>("");

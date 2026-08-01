@@ -9,10 +9,10 @@ export default function ZnajdzLanding() {
       {/* HERO — baner MVP na górze + 2 kolumny */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
-        <div className="relative max-w-6xl mx-auto px-5 pt-6 sm:pt-8 pb-12 md:pb-20">
+        <div className="relative max-w-6xl mx-auto px-5 pt-6 sm:pt-8 pb-6 md:pb-8">
 
-          {/* BANNER MVP — bez własnego tła, na gradiencie hero */}
-          <div className="max-w-5xl mx-auto mb-10 md:mb-14 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left">
+          {/* BANNER MVP — z delikatną ramką na gradiencie hero */}
+          <div className="max-w-5xl mx-auto mb-10 md:mb-14 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left rounded-2xl border border-warm-300/50 px-5 sm:px-6 py-4 sm:py-5">
             <div className="text-3xl sm:text-4xl shrink-0" aria-hidden>🌱</div>
             <p className="flex-1 text-sm sm:text-base text-warm-700 leading-relaxed max-w-3xl">
               <strong>Dopiero startujemy z projektem bliscy.</strong> Zanim pójdziemy krok dalej,
@@ -20,7 +20,7 @@ export default function ZnajdzLanding() {
               i spokojnie wysłuchamy, jak możemy pomóc.
             </p>
             <Link
-              href="/znajdz/kreator?step=phone"
+              href="/znajdz/kontakt"
               className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
             >
               Zostaw numer →
@@ -98,7 +98,7 @@ export default function ZnajdzLanding() {
       </section>
 
       {/* PROPOZYCJA WARTOŚCI — 3 filary */}
-      <section className="py-10 sm:py-12 md:py-14">
+      <section className="pt-4 sm:pt-6 pb-10 sm:pb-12 md:pb-14">
         <div className="max-w-5xl mx-auto px-5">
           <div className="grid md:grid-cols-3 gap-6">
             <ValueCard
