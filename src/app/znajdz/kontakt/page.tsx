@@ -53,7 +53,7 @@ export default function KontaktPage() {
           </h1>
           <p className="mt-4 text-brand-700 text-base sm:text-lg leading-relaxed">
             Zapisaliśmy Twoje zgłoszenie. Zadzwonimy do Ciebie w ciągu <strong>24 godzin</strong>
-            {" "}— chcemy spokojnie porozmawiać o tym, jak możemy pomóc.
+            {" "}— chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
           <p className="mt-3 text-sm text-brand-600">
             Nie musisz się już nigdzie klikać. Odezwiemy się sami.
@@ -87,7 +87,7 @@ export default function KontaktPage() {
           </h1>
           <p className="mt-4 text-base sm:text-lg text-brand-700 max-w-xl mx-auto leading-relaxed">
             Zostaw numer, a <strong>zadzwonimy do Ciebie w ciągu 24 godzin</strong>.
-            Spokojnie porozmawiamy o Waszej rodzinie i o tym, jak możemy pomóc.
+            Chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
         </div>
 
