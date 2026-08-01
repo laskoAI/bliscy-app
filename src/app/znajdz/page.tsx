@@ -89,7 +89,7 @@ export default function ZnajdzLanding() {
                 </div>
               </div>
               <p className="mt-6 md:mt-8 text-xs text-brand-500 text-center italic">
-                Wizerunek i cytat mają charakter demonstracyjny.
+                Wizerunek i cytat mają charakter poglądowy.
               </p>
             </div>
 
@@ -191,7 +191,7 @@ export default function ZnajdzLanding() {
               </div>
             </div>
             <p className="mt-3 text-xs text-brand-500 text-center italic">
-              Wizerunek i cytat mają charakter demonstracyjny.
+              Wizerunek i cytat mają charakter poglądowy.
             </p>
           </div>
         </div>
@@ -299,7 +299,7 @@ export default function ZnajdzLanding() {
             </div>
           </div>
           <p className="mt-3 text-xs text-brand-500 text-center italic">
-            Widok demonstracyjny — dane, notatka i ocena są przykładowe.
+            Widok poglądowy — dane, notatka i ocena są przykładowe.
           </p>
         </div>
       </div>
