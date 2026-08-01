@@ -317,14 +317,12 @@ export default function KreatorPage() {
               {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
               <p className="mt-4 text-xs text-brand-500 leading-relaxed">
-                Zostawiając numer, prosisz nas o telefon w sprawie swojego zgłoszenia.
-                Administratorami Twoich danych są Norbert Laskowski i Mikołaj Komorek (Warszawa),
-                kontakt:{" "}
+                Numer trafia do Norberta Laskowskiego i Mikołaja Komorka (Warszawa,{" "}
                 <a href="mailto:bliscykontakt@gmail.com" className="underline hover:text-brand-800">
                   bliscykontakt@gmail.com
-                </a>. Numeru użyjemy wyłącznie po to, żeby do Ciebie zadzwonić — nie sprzedajemy
-                danych, nie wysyłamy newslettera. Możesz w każdej chwili poprosić o usunięcie danych.
-                Szczegóły w{" "}
+                </a>
+                ). Zadzwonimy tylko w tej sprawie — bez marketingu, bez newslettera. Wszystko możesz
+                cofnąć. Szczegóły w{" "}
                 <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
                   polityce prywatności
                 </Link>{" "}
