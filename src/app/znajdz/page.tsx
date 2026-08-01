@@ -6,27 +6,29 @@ import Link from "next/link";
 export default function ZnajdzLanding() {
   return (
     <main>
-      {/* BANNER MVP — rozbudowany, na samej górze */}
-      <section className="bg-warm-100/70 border-b border-warm-200">
-        <div className="max-w-5xl mx-auto px-5 py-6 sm:py-8">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
-            <div className="text-4xl sm:text-5xl shrink-0" aria-hidden>☎️</div>
-            <div className="flex-1 min-w-0">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-warm-700 leading-snug">
-                Zaczynamy od tego, co najważniejsze: od rozmowy.
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-warm-700 leading-relaxed">
-                Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
-                która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
-                jakiej pomocy szukacie dla swojej rodziny.
-              </p>
+      {/* BANNER MVP — zaokrąglona karta na górze */}
+      <section className="pt-6 sm:pt-8">
+        <div className="max-w-5xl mx-auto px-5">
+          <div className="rounded-3xl bg-warm-100/70 border border-warm-200 p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
+              <div className="text-4xl sm:text-5xl shrink-0" aria-hidden>☎️</div>
+              <div className="flex-1 min-w-0">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-warm-700 leading-snug">
+                  Zaczynamy od tego, co najważniejsze: od rozmowy.
+                </h2>
+                <p className="mt-2 text-sm sm:text-base text-warm-700 leading-relaxed">
+                  Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
+                  która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
+                  jakiej pomocy szukacie dla swojej rodziny.
+                </p>
+              </div>
+              <Link
+                href="/znajdz/kreator?step=phone"
+                className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
+              >
+                Zostaw numer →
+              </Link>
             </div>
-            <Link
-              href="/znajdz/kreator?step=phone"
-              className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
-            >
-              Zostaw numer →
-            </Link>
           </div>
         </div>
       </section>
