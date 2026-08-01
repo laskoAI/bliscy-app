@@ -105,6 +105,44 @@ export default function ZnajdzLanding() {
         </div>
       </section>
 
+      {/* JESTEŚMY NA POCZĄTKU — uczciwie o etapie MVP */}
+      <section className="py-10 sm:py-14">
+        <div className="max-w-3xl mx-auto px-5">
+          <div className="rounded-3xl bg-brand-100 border border-brand-200 p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="text-3xl shrink-0" aria-hidden>🌱</div>
+              <div className="flex-1">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-brand-800">
+                  Jesteśmy na początku drogi.
+                </h2>
+                <p className="mt-3 text-brand-700">
+                  <strong>bliscy</strong> to pomysł, który dopiero uruchamiamy w Warszawie.
+                  Nie mamy jeszcze setek zrealizowanych wizyt ani gotowej wyszukiwarki online.
+                  Mamy za to zespół, w który wierzymy, i chęć zrobienia tego dobrze.
+                </p>
+                <p className="mt-3 text-brand-700">
+                  Zależy nam, żeby zrozumieć, czego naprawdę potrzebują pierwsze rodziny —
+                  dlatego zamiast klikania i formalności, po prostu zadzwonimy do Ciebie
+                  i porozmawiamy.
+                </p>
+                <p className="mt-4 text-sm text-brand-600">
+                  Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
+                  Jeśli po rozmowie stwierdzisz, że to nie dla Was, po prostu Ci to powiemy.
+                </p>
+                <div className="mt-5">
+                  <Link
+                    href="/znajdz/kreator"
+                    className="inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
+                  >
+                    Zostaw numer — porozmawiajmy →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* KIM SĄ BLISCY — akcent na młodych studentów */}
       <section id="kim" className="py-12 sm:py-16 bg-brand-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
