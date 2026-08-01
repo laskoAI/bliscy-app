@@ -244,10 +244,14 @@ export default function KreatorPage() {
                   <textarea
                     value={otherNeed}
                     onChange={(e) => setOtherNeed(e.target.value)}
-                    rows={2}
-                    placeholder="Np. porządki, wspólne oglądanie meczu..."
+                    rows={3}
+                    placeholder="Nie podawaj tu danych o zdrowiu ani nazwiska bliskiej osoby — o tym porozmawiamy przez telefon."
                     className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-3"
                   />
+                  <p className="mt-2 text-xs text-brand-500">
+                    Bez informacji o zdrowiu i danych osobowych bliskiej osoby — te szczegóły
+                    ustalimy w rozmowie telefonicznej.
+                  </p>
                 </div>
               )}
             </>
