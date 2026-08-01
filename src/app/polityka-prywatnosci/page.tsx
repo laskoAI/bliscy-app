@@ -22,7 +22,7 @@ export default function PolitykaPage() {
         Warszawie.
       </p>
       <p>
-        Adres do korespondencji: ul. [Nazwa Ulicy i Numer], [Kod pocztowy] Warszawa.
+        Adres do korespondencji: ul. Chmielna 2 lok. 31, 00-020 Warszawa.
       </p>
       <p>
         Kontakt elektroniczny:{" "}
