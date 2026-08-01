@@ -317,18 +317,20 @@ export default function KreatorPage() {
               {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
               <p className="mt-4 text-xs text-brand-500 leading-relaxed">
-                Numer trafia do Norberta Laskowskiego i Mikołaja Komorka (Warszawa,{" "}
+                Zostawiając numer, zgadzasz się na kontakt telefoniczny w sprawie Twojego zgłoszenia.
+              </p>
+              <p className="mt-2 text-xs text-brand-500 leading-relaxed">
+                Administratorem danych są Norbert Laskowski i Mikołaj Komorek (kontakt:{" "}
                 <a href="mailto:bliscykontakt@gmail.com" className="underline hover:text-brand-800">
                   bliscykontakt@gmail.com
                 </a>
-                ). Zadzwonimy tylko w tej sprawie — bez marketingu, bez newslettera. Wszystko możesz
-                cofnąć. Szczegóły w{" "}
+                ). Masz prawo dostępu do danych, ich sprostowania oraz usunięcia. Szczegóły w{" "}
                 <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
-                  polityce prywatności
+                  Polityce Prywatności
                 </Link>{" "}
                 i{" "}
                 <Link href="/regulamin" className="underline hover:text-brand-800">
-                  regulaminie
+                  Regulaminie
                 </Link>.
               </p>
             </>
