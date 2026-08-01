@@ -6,37 +6,27 @@ import Link from "next/link";
 export default function ZnajdzLanding() {
   return (
     <main>
-      {/* BANNER MVP — zaokrąglona karta na górze */}
-      <section className="pt-6 sm:pt-8">
-        <div className="max-w-5xl mx-auto px-5">
-          <div className="rounded-3xl bg-warm-100/70 border border-warm-200 p-6 sm:p-8">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
-              <div className="text-4xl sm:text-5xl shrink-0" aria-hidden>☎️</div>
-              <div className="flex-1 min-w-0">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-warm-700 leading-snug">
-                  Zaczynamy od tego, co najważniejsze: od rozmowy.
-                </h2>
-                <p className="mt-2 text-sm sm:text-base text-warm-700 leading-relaxed">
-                  Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
-                  która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
-                  jakiej pomocy szukacie dla swojej rodziny.
-                </p>
-              </div>
-              <Link
-                href="/znajdz/kreator?step=phone"
-                className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
-              >
-                Zostaw numer →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HERO — 2 kolumny: tekst po lewej, zdjęcie po prawej */}
+      {/* HERO — baner MVP na górze + 2 kolumny */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
-        <div className="relative max-w-6xl mx-auto px-5 pt-12 pb-12 md:pt-20 md:pb-20">
+        <div className="relative max-w-6xl mx-auto px-5 pt-6 sm:pt-8 pb-12 md:pb-20">
+
+          {/* BANNER MVP — bez własnego tła, na gradiencie hero */}
+          <div className="max-w-5xl mx-auto mb-10 md:mb-14 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left">
+            <div className="text-3xl sm:text-4xl shrink-0" aria-hidden>🌱</div>
+            <p className="flex-1 text-sm sm:text-base text-warm-700 leading-relaxed max-w-3xl">
+              <strong>Dopiero startujemy z projektem bliscy.</strong> Zanim pójdziemy krok dalej,
+              chcemy dobrze poznać Wasze realne potrzeby — dlatego po prostu do Ciebie zadzwonimy
+              i spokojnie wysłuchamy, jak możemy pomóc.
+            </p>
+            <Link
+              href="/znajdz/kreator?step=phone"
+              className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
+            >
+              Zostaw numer →
+            </Link>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
             {/* Kolumna lewa — treść */}
