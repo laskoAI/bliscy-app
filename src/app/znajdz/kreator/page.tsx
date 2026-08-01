@@ -309,7 +309,7 @@ export default function KreatorPage() {
               {/* Podsumowanie potrzeb — tylko gdy user wypełnił wcześniejsze kroki */}
               {(relation || ageRange || needs.filter((n) => n !== "Inne").length > 0) && (
                 <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
-                  <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto:</div>
+                  <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto pomoże z:</div>
                   <div className="flex flex-wrap gap-1.5">
                     {relation && (
                       <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
