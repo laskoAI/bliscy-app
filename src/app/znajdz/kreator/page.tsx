@@ -270,7 +270,7 @@ export default function KreatorPage() {
                 <span className="text-xl shrink-0" aria-hidden>☎️</span>
                 <p className="text-sm text-brand-700">
                   Dopiero startujemy z projektem <strong>bliscy</strong> — zadzwonimy osobiście,
-                  żeby spokojnie wysłuchać Waszej sytuacji.
+                  żeby spokojnie wysłuchać Waszych potrzeb.
                 </p>
               </div>
 

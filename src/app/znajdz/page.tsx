@@ -11,7 +11,7 @@ export default function ZnajdzLanding() {
         <div className="max-w-5xl mx-auto px-5 py-3 sm:py-4 flex items-start sm:items-center justify-center gap-3 text-center">
           <span className="text-lg sm:text-xl shrink-0" aria-hidden>🌱</span>
           <p className="text-xs sm:text-sm text-warm-700 leading-relaxed">
-            <strong>Dopiero startujemy z projektem bliscy</strong> — zadzwonimy osobiście, żeby spokojnie wysłuchać Waszej sytuacji.
+            <strong>Dopiero startujemy z projektem bliscy</strong> — zadzwonimy osobiście, żeby spokojnie wysłuchać Waszych potrzeb.
           </p>
         </div>
       </div>
