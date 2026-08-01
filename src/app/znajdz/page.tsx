@@ -8,11 +8,12 @@ export default function ZnajdzLanding() {
     <main>
       {/* BANNER — informacja o etapie MVP na samej górze */}
       <div className="bg-warm-100/60 border-b border-warm-200">
-        <div className="max-w-5xl mx-auto px-5 py-2.5 flex items-center justify-center gap-2 text-xs sm:text-sm text-warm-700 text-center">
-          <span aria-hidden>🌱</span>
-          <span>
-            Dopiero startujemy z projektem <strong>bliscy</strong> — chcemy dobrze poznać Wasze potrzeby, zanim ruszymy szerzej.
-          </span>
+        <div className="max-w-5xl mx-auto px-5 py-3 sm:py-4 flex items-start sm:items-center justify-center gap-3 text-center">
+          <span className="text-lg sm:text-xl shrink-0" aria-hidden>🌱</span>
+          <p className="text-xs sm:text-sm text-warm-700 leading-relaxed">
+            <strong>Dopiero startujemy z projektem bliscy.</strong>{" "}
+            <span className="text-warm-600">Chcemy dobrze poznać Wasze potrzeby, zanim pójdziemy krok dalej.</span>
+          </p>
         </div>
       </div>
 
