@@ -362,7 +362,7 @@ export default function ZnajdzLanding() {
               4 proste kroki do codziennego spokoju o Twojego bliskiego
             </h2>
             <p className="mt-3 text-brand-700">
-              Bez zakładania konta, bez formalności na start. Ma być prosto - dla Ciebie
+              Bez zakładania konta, bez zbędnych kroków. Ma być prosto - dla Ciebie
               i dla Twojego bliskiego.
             </p>
           </div>
