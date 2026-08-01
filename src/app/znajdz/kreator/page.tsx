@@ -265,12 +265,13 @@ export default function KreatorPage() {
                 która najlepiej dopasuje się do Waszych potrzeb.
               </p>
 
-              {/* Hint MVP — uczciwie o etapie i braku zobowiązań */}
+              {/* Hint MVP — spójny z landingiem */}
               <div className="mt-4 rounded-2xl bg-brand-50 border border-brand-200 p-4 flex items-start gap-3">
-                <span className="text-xl shrink-0" aria-hidden>🌱</span>
+                <span className="text-xl shrink-0" aria-hidden>☎️</span>
                 <p className="text-sm text-brand-700">
-                  Jesteśmy na początku drogi — dzwonimy osobiście, żeby dobrze zrozumieć Waszą sytuację.
-                  Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
+                  Dopiero startujemy z projektem <strong>bliscy</strong> — zadzwonimy osobiście,
+                  żeby spokojnie wysłuchać Waszej sytuacji. Zostawiając numer, nic nie zamawiasz
+                  i do niczego się nie zobowiązujesz.
                 </p>
               </div>
 

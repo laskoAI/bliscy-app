@@ -6,6 +6,16 @@ import Link from "next/link";
 export default function ZnajdzLanding() {
   return (
     <main>
+      {/* BANNER — informacja o etapie MVP na samej górze */}
+      <div className="bg-warm-100/60 border-b border-warm-200">
+        <div className="max-w-5xl mx-auto px-5 py-2.5 flex items-center justify-center gap-2 text-xs sm:text-sm text-warm-700 text-center">
+          <span aria-hidden>🌱</span>
+          <span>
+            Dopiero startujemy z projektem <strong>bliscy</strong> — chcemy dobrze poznać Wasze potrzeby, zanim ruszymy szerzej.
+          </span>
+        </div>
+      </div>
+
       {/* HERO — 2 kolumny: tekst po lewej, zdjęcie po prawej */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
@@ -110,24 +120,20 @@ export default function ZnajdzLanding() {
         <div className="max-w-3xl mx-auto px-5">
           <div className="rounded-3xl bg-brand-100 border border-brand-200 p-6 md:p-8">
             <div className="flex items-start gap-4">
-              <div className="text-3xl shrink-0" aria-hidden>🌱</div>
+              <div className="text-3xl shrink-0" aria-hidden>☎️</div>
               <div className="flex-1">
                 <h2 className="text-xl sm:text-2xl font-extrabold text-brand-800">
-                  Jesteśmy na początku drogi.
+                  Zaczynamy od tego, co najważniejsze: od rozmowy.
                 </h2>
                 <p className="mt-3 text-brand-700">
-                  <strong>bliscy</strong> to pomysł, który dopiero uruchamiamy w Warszawie.
-                  Nie mamy jeszcze setek zrealizowanych wizyt ani gotowej wyszukiwarki online.
-                  Mamy za to zespół, w który wierzymy, i chęć zrobienia tego dobrze.
-                </p>
-                <p className="mt-3 text-brand-700">
-                  Zależy nam, żeby zrozumieć, czego naprawdę potrzebują pierwsze rodziny —
-                  dlatego zamiast klikania i formalności, po prostu zadzwonimy do Ciebie
-                  i porozmawiamy.
+                  Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
+                  która odpowiada na Wasze realne potrzeby — dlatego zamiast klikania i formalności,
+                  zadzwonimy do Ciebie osobiście, żeby spokojnie wysłuchać, jakiej pomocy szukacie
+                  dla swojej rodziny.
                 </p>
                 <p className="mt-4 text-sm text-brand-600">
                   Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
-                  Jeśli po rozmowie stwierdzisz, że to nie dla Was, po prostu Ci to powiemy.
+                  Jeśli po rozmowie stwierdzisz, że to nie dla Was — po prostu Ci to powiemy.
                 </p>
                 <div className="mt-5">
                   <Link
