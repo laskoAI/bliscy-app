@@ -45,7 +45,7 @@ export default function Nav() {
           <span className="wordmark text-2xl">bliscy</span>
         </Link>
 
-        {/* Środek — wyśrodkowane linki (tylko na landingu) */}
+        {/* Środek - wyśrodkowane linki (tylko na landingu) */}
         <div className="flex justify-center">
           {isLanding && (
             <div className="hidden md:flex items-center gap-8 text-sm text-brand-700">
@@ -56,7 +56,7 @@ export default function Nav() {
           )}
         </div>
 
-        {/* Prawy — CTA / user actions */}
+        {/* Prawy - CTA / user actions */}
         <div className="flex items-center gap-4 justify-end">
           {isPublic ? (
             <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2 whitespace-nowrap">

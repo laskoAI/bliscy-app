@@ -51,7 +51,7 @@ export default function KontaktPage() {
           <h1 className="wordmark mt-4 text-3xl sm:text-4xl text-brand-800">Dziękujemy!</h1>
           <p className="mt-4 text-brand-700 leading-relaxed">
             Zapisaliśmy Twoje zgłoszenie. Zadzwonimy do Ciebie w ciągu <strong>24 godzin</strong>
-            {" "}— chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
+            {" "}- chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
           <p className="mt-3 text-sm text-brand-600">
             Nie musisz się już nigdzie klikać. Odezwiemy się sami.
@@ -67,16 +67,16 @@ export default function KontaktPage() {
     );
   }
 
-  // ---------- Widok formularza — layout jak w kreatorze ----------
+  // ---------- Widok formularza - layout jak w kreatorze ----------
   return (
     <main className="min-h-[calc(100vh-4rem)] px-5 py-8 md:py-12">
       <div className="max-w-2xl mx-auto">
-        {/* Nagłówek — spójny z kreatorem, ale bez progress bara */}
+        {/* Nagłówek - spójny z kreatorem, ale bez progress bara */}
         <div className="flex items-center justify-between text-sm text-brand-600">
           <Link href="/znajdz" className="hover:text-brand-800">← Wyjdź</Link>
         </div>
 
-        {/* Karta — dokładnie jak krok kreatora */}
+        {/* Karta - dokładnie jak krok kreatora */}
         <form id="kontakt-form" onSubmit={handleSubmit} className="mt-6 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
           {/* Logo bliscy */}
           <div className="flex justify-center" aria-hidden>
@@ -99,13 +99,13 @@ export default function KontaktPage() {
             Chcemy poznać Twoje potrzeby i wspólnie zbudować lepszą usługę.
           </p>
 
-          {/* Trzy uspokajające punkty — jak "hint" w kreatorze */}
+          {/* Trzy uspokajające punkty - jak "hint" w kreatorze */}
           <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4">
             <ul className="space-y-3 text-sm text-brand-700">
               <li className="flex items-start gap-3">
                 <span className="text-lg shrink-0" aria-hidden>💛</span>
                 <span>
-                  Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> — nie call center, nie bot.
+                  Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> - nie call center, nie bot.
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -117,14 +117,14 @@ export default function KontaktPage() {
               <li className="flex items-start gap-3">
                 <span className="text-lg shrink-0" aria-hidden>🤝</span>
                 <span>
-                  Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
+                  Chcemy <strong>poznać Twoje potrzeby</strong> - na ich podstawie budujemy
                   lepszą wersję <em>bliscy</em>.
                 </span>
               </li>
             </ul>
           </div>
 
-          {/* Pole telefonu — dokładnie jak w kreatorze */}
+          {/* Pole telefonu - dokładnie jak w kreatorze */}
           <div className="mt-6">
             <label className="text-sm font-semibold">Numer telefonu</label>
             <div className="mt-2 flex items-stretch rounded-xl border border-brand-200 focus-within:border-warm-400 focus-within:ring-4 focus-within:ring-warm-100 overflow-hidden bg-white">
@@ -150,7 +150,7 @@ export default function KontaktPage() {
 
           {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
-          {/* Nota RODO — spójna z kreatorem */}
+          {/* Nota RODO - spójna z kreatorem */}
           <p className="mt-4 text-xs text-brand-500 leading-relaxed">
             Zostawiając numer, zgadzasz się na kontakt telefoniczny w sprawie Twojego zgłoszenia.
           </p>
@@ -170,7 +170,7 @@ export default function KontaktPage() {
           </p>
         </form>
 
-        {/* Przycisk główny — poza kartą, jak w nawigacji kreatora */}
+        {/* Przycisk główny - poza kartą, jak w nawigacji kreatora */}
         <div className="mt-6 flex items-center justify-end">
           <button
             type="submit"
@@ -178,7 +178,7 @@ export default function KontaktPage() {
             disabled={!canSend || sending}
             className="rounded-xl bg-warm-500 hover:bg-warm-600 disabled:opacity-50 text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
           >
-            {sending ? "Wysyłam..." : "Zgłoś się — oddzwonimy w 24h"}
+            {sending ? "Wysyłam..." : "Zgłoś się - oddzwonimy w 24h"}
           </button>
         </div>
       </div>

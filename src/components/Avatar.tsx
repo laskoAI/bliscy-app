@@ -1,6 +1,6 @@
 // Awatary generowane przez DiceBear (proceduralne SVG).
 // Ta sama wartość `seed` = zawsze ten sam wizerunek.
-// Styl `personas` — miękkie, ludzkie ilustracje pasujące do palety marki.
+// Styl `personas` - miękkie, ludzkie ilustracje pasujące do palety marki.
 
 type AvatarProps = {
   seed: string;

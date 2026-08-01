@@ -118,7 +118,7 @@ export default function ProfilPage() {
 
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={transport} onChange={(e) => setTransport(e.target.checked)} />
-          <span className="text-sm">Mam własne auto — mogę zawieźć</span>
+          <span className="text-sm">Mam własne auto - mogę zawieźć</span>
         </label>
 
         <div className="flex items-center gap-3">

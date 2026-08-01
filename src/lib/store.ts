@@ -1,4 +1,4 @@
-// Prosty store w localStorage — bez backendu, na potrzeby MVP demo.
+// Prosty store w localStorage - bez backendu, na potrzeby MVP demo.
 // Wszystko żyje w przeglądarce użytkownika.
 
 export type Role = "klient" | "bliski";
@@ -103,7 +103,7 @@ export function uid(): string {
 }
 
 // -----------------------------
-// Seed — kilku Bliskich na start
+// Seed - kilku Bliskich na start
 // -----------------------------
 function seedDB(): DB {
   const now = new Date();
@@ -129,7 +129,7 @@ function seedDB(): DB {
   const helperProfiles: Helper[] = [
     {
       id: "seed-h1",
-      bio: "Studentka pielęgniarstwa. Uwielbiam rozmawiać z seniorami — moja babcia nauczyła mnie, że każda historia jest ważna.",
+      bio: "Studentka pielęgniarstwa. Uwielbiam rozmawiać z seniorami - moja babcia nauczyła mnie, że każda historia jest ważna.",
       city: "Warszawa",
       hourlyRate: 45,
       services: ["Spacer", "Rozmowa", "Zakupy", "Transport do lekarza"],
@@ -149,7 +149,7 @@ function seedDB(): DB {
     },
     {
       id: "seed-h4",
-      bio: "Emerytowany strażak, kocham psy. Wyprowadzam pieski od 20 lat — moje własne trzy, teraz też cudze.",
+      bio: "Emerytowany strażak, kocham psy. Wyprowadzam pieski od 20 lat - moje własne trzy, teraz też cudze.",
       city: "Warszawa",
       hourlyRate: 45,
       services: ["Wyprowadzanie psa", "Spacer", "Zakupy", "Drobne naprawy"],

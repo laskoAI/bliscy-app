@@ -2,7 +2,7 @@ import LegalLayout from "@/components/LegalLayout";
 
 export const metadata = {
   title: "Regulamin | bliscy",
-  description: "Regulamin serwisu bliscy — zasady zostawiania zgłoszenia i kontaktu telefonicznego.",
+  description: "Regulamin serwisu bliscy - zasady zostawiania zgłoszenia i kontaktu telefonicznego.",
 };
 
 export default function RegulaminPage() {
@@ -69,12 +69,12 @@ export default function RegulaminPage() {
       <p>
         Zgłoszenie może zostawić osoba, która ma pełną zdolność do czynności prawnych, czyli w
         praktyce osoba pełnoletnia. Jeśli szukasz pomocy dla kogoś innego, powinieneś być z tą osobą
-        w takiej relacji, która uzasadnia kontakt w jej sprawie — najczęściej jesteś jej dzieckiem,
+        w takiej relacji, która uzasadnia kontakt w jej sprawie - najczęściej jesteś jej dzieckiem,
         wnukiem lub inną bliską osobą.
       </p>
       <p>
         Na tym etapie działamy w <strong>Warszawie i okolicach</strong>. Zgłoszenie z innego miasta
-        możesz zostawić i jest to sensowne, bo pokazuje nam, gdzie jest zapotrzebowanie — ale nie
+        możesz zostawić i jest to sensowne, bo pokazuje nam, gdzie jest zapotrzebowanie - ale nie
         zadzwonimy z propozycją, której nie umiemy zrealizować. Powiemy wprost, że jeszcze tam nie
         działamy.
       </p>
@@ -95,7 +95,7 @@ export default function RegulaminPage() {
         przekażemy Twojego numeru nikomu do celów marketingowych i nie zapiszemy Cię na newsletter.
       </p>
       <p>
-        W każdej chwili możesz wycofać tę zgodę — wystarczy powiedzieć to w rozmowie albo napisać na{" "}
+        W każdej chwili możesz wycofać tę zgodę - wystarczy powiedzieć to w rozmowie albo napisać na{" "}
         <a href="mailto:bliscykontakt@gmail.com">bliscykontakt@gmail.com</a>. Wtedy przestajemy
         dzwonić i usuwamy numer.
       </p>
@@ -108,7 +108,7 @@ export default function RegulaminPage() {
       <ul>
         <li>Podaj prawdziwy numer telefonu i prawdziwe imię. Bez tego nie zadzwonimy.</li>
         <li>
-          Nie podawaj w formularzu danych identyfikujących osobę, dla której szukasz pomocy — nie
+          Nie podawaj w formularzu danych identyfikujących osobę, dla której szukasz pomocy - nie
           potrzebujemy jej imienia, nazwiska ani adresu na tym etapie.
         </li>
         <li>
@@ -128,7 +128,7 @@ export default function RegulaminPage() {
       <h2>9. Za co odpowiadamy my</h2>
       <p>
         Dokładamy starań, żeby strona działała i żeby zadzwonić w podanym terminie. Nie możemy jednak
-        zagwarantować, że dla każdego zgłoszenia znajdziemy odpowiednią osobę — jesteśmy na początku i
+        zagwarantować, że dla każdego zgłoszenia znajdziemy odpowiednią osobę - jesteśmy na początku i
         czasem po prostu nie będziemy mieć kogo zaproponować. W takiej sytuacji powiemy to otwarcie i
         nie będziemy Cię zwodzić.
       </p>
@@ -144,8 +144,8 @@ export default function RegulaminPage() {
 
       <h2>10. Reklamacje</h2>
       <p>
-        Jeśli coś poszło nie tak — nie zadzwoniliśmy, zachowaliśmy się nieprofesjonalnie, coś Cię
-        zaniepokoiło — napisz na{" "}
+        Jeśli coś poszło nie tak - nie zadzwoniliśmy, zachowaliśmy się nieprofesjonalnie, coś Cię
+        zaniepokoiło - napisz na{" "}
         <a href="mailto:bliscykontakt@gmail.com">bliscykontakt@gmail.com</a>. Opisz, co się stało i
         czego oczekujesz. Odpowiadamy w ciągu 14 dni. Jeśli reklamacja dotyczy zachowania konkretnej
         osoby, sprawdzimy sprawę i poinformujemy Cię o wyniku.

@@ -118,9 +118,9 @@ function VisitCard({ v, db, actions, noteEditor }: {
       <div className="flex justify-between gap-3">
         <div>
           <div className="text-sm text-brand-500">{fmtDateTime(v.startsAt)}</div>
-          <div className="mt-1 font-semibold">{senior?.fullName ?? "—"}</div>
+          <div className="mt-1 font-semibold">{senior?.fullName ?? "-"}</div>
           <div className="text-sm text-brand-600">
-            klient: {client?.fullName ?? "—"}
+            klient: {client?.fullName ?? "-"}
             {senior?.address && <> · {senior.address}</>}
           </div>
           {v.noteClient && <div className="mt-2 text-sm text-brand-700">📝 {v.noteClient}</div>}

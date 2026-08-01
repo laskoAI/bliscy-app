@@ -2,7 +2,7 @@ import LegalLayout from "@/components/LegalLayout";
 
 export const metadata = {
   title: "Polityka prywatności | bliscy",
-  description: "Polityka prywatności — jak przetwarzamy Twoje dane osobowe w serwisie bliscy.",
+  description: "Polityka prywatności - jak przetwarzamy Twoje dane osobowe w serwisie bliscy.",
 };
 
 export default function PolitykaPage() {
@@ -12,7 +12,7 @@ export default function PolitykaPage() {
         Zostawiasz nam swój numer telefonu, więc należy Ci się jasna informacja, co z nim robimy.
         Poniżej opisujemy to bez prawniczej mowy, ale kompletnie. Jeśli po przeczytaniu coś będzie
         niejasne, napisz na{" "}
-        <a href="mailto:bliscykontakt@gmail.com">bliscykontakt@gmail.com</a> — odpowiemy.
+        <a href="mailto:bliscykontakt@gmail.com">bliscykontakt@gmail.com</a> - odpowiemy.
       </p>
 
       <h2>1. Kto odpowiada za Twoje dane</h2>
@@ -72,27 +72,27 @@ export default function PolitykaPage() {
       <ul>
         <li>
           <strong>Skontaktowanie się z Tobą telefonicznie</strong>, żeby porozmawiać o sytuacji
-          Twojego bliskiego i o tym, czy możemy pomóc — art. 6 ust. 1 lit. b RODO (podjęcie działań
+          Twojego bliskiego i o tym, czy możemy pomóc - art. 6 ust. 1 lit. b RODO (podjęcie działań
           na Twoje żądanie przed zawarciem umowy). To Ty prosisz nas o kontakt, zostawiając numer.
         </li>
         <li>
           <strong>Dobranie konkretnej osoby, która mogłaby pomóc</strong>, jeśli po rozmowie obie
-          strony będą tego chciały — art. 6 ust. 1 lit. b RODO.
+          strony będą tego chciały - art. 6 ust. 1 lit. b RODO.
         </li>
         <li>
           <strong>Zrozumienie, czego potrzebują rodziny</strong>, i podjęcie decyzji, czy i w jakim
           kształcie rozwijać usługę. Analizujemy odpowiedzi łącznie, w postaci statystyk, bez
-          odnoszenia ich do konkretnych osób — art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony
+          odnoszenia ich do konkretnych osób - art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony
           interes polegający na rozwoju usługi). Możesz się temu sprzeciwić, patrz punkt 6.
         </li>
         <li>
-          <strong>Prowadzenie anonimowych statystyk odwiedzin strony</strong> — art. 6 ust. 1 lit. f
+          <strong>Prowadzenie anonimowych statystyk odwiedzin strony</strong> - art. 6 ust. 1 lit. f
           RODO (nasz prawnie uzasadniony interes polegający na sprawdzeniu, czy strona jest
           zrozumiała i czy ktoś ją odwiedza).
         </li>
         <li>
           <strong>Obrona przed ewentualnymi roszczeniami</strong> lub wykazanie, że działaliśmy
-          zgodnie z prawem — art. 6 ust. 1 lit. f RODO.
+          zgodnie z prawem - art. 6 ust. 1 lit. f RODO.
         </li>
       </ul>
       <p>
@@ -104,21 +104,21 @@ export default function PolitykaPage() {
       <h2>4. Jak długo trzymamy Twoje dane</h2>
       <ul>
         <li>
-          Jeśli po rozmowie nie zaczynamy współpracy — <strong>usuwamy Twoje imię i numer
+          Jeśli po rozmowie nie zaczynamy współpracy - <strong>usuwamy Twoje imię i numer
           telefonu najpóźniej w ciągu 12 miesięcy</strong> od wysłania zgłoszenia. Zachowujemy
           jedynie odpowiedzi z formularza pozbawione danych kontaktowych, w formie, która nie
           pozwala już ustalić, kto je wysłał, bo służą nam do statystyk.
         </li>
         <li>
-          Jeśli zaczynamy współpracę — trzymamy dane tak długo, jak trwa współpraca, a potem przez
+          Jeśli zaczynamy współpracę - trzymamy dane tak długo, jak trwa współpraca, a potem przez
           okres wymagany przepisami lub potrzebny do rozliczenia i obrony przed roszczeniami.
         </li>
         <li>
-          Jeśli poprosisz o usunięcie danych wcześniej — usuwamy je niezwłocznie, najpóźniej w ciągu
+          Jeśli poprosisz o usunięcie danych wcześniej - usuwamy je niezwłocznie, najpóźniej w ciągu
           30 dni.
         </li>
         <li>
-          Nie odbierasz telefonu — próbujemy dodzwonić się maksymalnie trzy razy w ciągu dwóch
+          Nie odbierasz telefonu - próbujemy dodzwonić się maksymalnie trzy razy w ciągu dwóch
           tygodni. Potem uznajemy, że nie jesteś zainteresowany, i usuwamy numer.
         </li>
       </ul>
@@ -131,11 +131,11 @@ export default function PolitykaPage() {
       </p>
       <ul>
         <li>
-          <strong>Supabase Inc.</strong> — zgłoszenia z formularza zapisują się w bazie danych
+          <strong>Supabase Inc.</strong> - zgłoszenia z formularza zapisują się w bazie danych
           Supabase Inc.
         </li>
         <li>
-          <strong>Vercel Inc.</strong> — firma hostująca tę stronę i dostarczająca narzędzie do
+          <strong>Vercel Inc.</strong> - firma hostująca tę stronę i dostarczająca narzędzie do
           anonimowych statystyk odwiedzin.
         </li>
       </ul>
@@ -146,7 +146,7 @@ export default function PolitykaPage() {
         oba podmioty przystąpiły, oraz standardowych klauzul umownych.
       </p>
       <p>
-        Dane mogą też zostać udostępnione osobie, którą zaproponujemy jako Bliskiego — ale wyłącznie
+        Dane mogą też zostać udostępnione osobie, którą zaproponujemy jako Bliskiego - ale wyłącznie
         w zakresie niezbędnym do umówienia pierwszego spotkania, dopiero po Twojej wyraźnej zgodzie
         wyrażonej w rozmowie telefonicznej, i nigdy wcześniej.
       </p>
@@ -158,18 +158,18 @@ export default function PolitykaPage() {
       <h2>6. Twoje prawa</h2>
       <p>Masz prawo:</p>
       <ul>
-        <li><strong>dostępu</strong> do swoich danych — możesz zapytać, co o Tobie mamy, i dostać kopię,</li>
-        <li><strong>sprostowania</strong> — jeśli coś zapisaliśmy błędnie,</li>
-        <li><strong>usunięcia</strong> — napisz jedno zdanie i usuwamy wszystko,</li>
-        <li><strong>ograniczenia przetwarzania</strong> — możesz zażądać, żebyśmy dane zachowali, ale przestali ich używać,</li>
-        <li><strong>przenoszenia danych</strong> — możesz dostać swoje dane w formacie do odczytu maszynowego,</li>
+        <li><strong>dostępu</strong> do swoich danych - możesz zapytać, co o Tobie mamy, i dostać kopię,</li>
+        <li><strong>sprostowania</strong> - jeśli coś zapisaliśmy błędnie,</li>
+        <li><strong>usunięcia</strong> - napisz jedno zdanie i usuwamy wszystko,</li>
+        <li><strong>ograniczenia przetwarzania</strong> - możesz zażądać, żebyśmy dane zachowali, ale przestali ich używać,</li>
+        <li><strong>przenoszenia danych</strong> - możesz dostać swoje dane w formacie do odczytu maszynowego,</li>
         <li>
-          <strong>sprzeciwu</strong> — wobec przetwarzania opartego na naszym prawnie uzasadnionym
+          <strong>sprzeciwu</strong> - wobec przetwarzania opartego na naszym prawnie uzasadnionym
           interesie, czyli wobec wykorzystywania Twoich odpowiedzi do statystyk i analizy
           zapotrzebowania,
         </li>
         <li>
-          <strong>skargi do organu nadzorczego</strong> — Prezes Urzędu Ochrony Danych Osobowych,
+          <strong>skargi do organu nadzorczego</strong> - Prezes Urzędu Ochrony Danych Osobowych,
           ul. Stawki 2, 00-193 Warszawa.
         </li>
       </ul>
@@ -183,7 +183,7 @@ export default function PolitykaPage() {
       <p>
         Nie. Podanie danych jest całkowicie dobrowolne. Bez imienia i numeru telefonu nie będziemy
         jednak w stanie do Ciebie zadzwonić, a to jedyne, co ten formularz robi. Pola dotyczące
-        miasta i opisu sytuacji są nieobowiązkowe — możesz je pominąć i nic się nie stanie.
+        miasta i opisu sytuacji są nieobowiązkowe - możesz je pominąć i nic się nie stanie.
       </p>
 
       <h2>8. Czy podejmujemy decyzje automatycznie</h2>
@@ -196,7 +196,7 @@ export default function PolitykaPage() {
       <p>
         Ta strona nie używa plików cookies do analityki, marketingu ani profilowania. Narzędzie
         statystyczne, z którego korzystamy, działa bez ciasteczek. Mogą działać wyłącznie pliki
-        niezbędne do technicznego funkcjonowania strony, jeśli takie są używane przez hosting — nie
+        niezbędne do technicznego funkcjonowania strony, jeśli takie są używane przez hosting - nie
         służą one do śledzenia Cię i nie wymagają Twojej zgody.
       </p>
 

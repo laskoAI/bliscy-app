@@ -1,22 +1,22 @@
 import Link from "next/link";
 
-// Publiczny landing — czysta propozycja wartości.
+// Publiczny landing - czysta propozycja wartości.
 // Kreator jest na osobnej stronie: /znajdz/kreator
 
 export default function ZnajdzLanding() {
   return (
     <main>
-      {/* HERO — baner MVP na górze + 2 kolumny */}
+      {/* HERO - baner MVP na górze + 2 kolumny */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100 to-brand-50" />
         <div className="relative max-w-6xl mx-auto px-5 pt-6 sm:pt-8 pb-6 md:pb-8">
 
-          {/* BANNER MVP — z delikatną ramką na gradiencie hero */}
+          {/* BANNER MVP - z delikatną ramką na gradiencie hero */}
           <div className="mb-6 md:mb-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left rounded-2xl border border-warm-300/50 px-5 sm:px-6 py-4 sm:py-5">
             <div className="text-3xl sm:text-4xl shrink-0" aria-hidden>🌱</div>
             <p className="flex-1 text-sm sm:text-base text-warm-700 leading-relaxed max-w-3xl">
               <strong>Dopiero startujemy z projektem bliscy.</strong> Zanim pójdziemy krok dalej,
-              chcemy dobrze poznać Wasze realne potrzeby — dlatego po prostu do Ciebie zadzwonimy
+              chcemy dobrze poznać Wasze realne potrzeby - dlatego po prostu do Ciebie zadzwonimy
               i spokojnie wysłuchamy, jak możemy pomóc.
             </p>
             <Link
@@ -29,7 +29,7 @@ export default function ZnajdzLanding() {
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
-            {/* Kolumna lewa — treść */}
+            {/* Kolumna lewa - treść */}
             <div className="text-center md:text-left">
               <h1 className="wordmark text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
                 Bliski obok Twoich rodziców,{" "}
@@ -38,10 +38,10 @@ export default function ZnajdzLanding() {
 
               <p className="mt-5 text-base sm:text-lg text-brand-700 max-w-xl mx-auto md:mx-0">
                 Łączymy seniorów z pełnymi energii, młodymi ludźmi. Pomogą w codziennych sprawach,
-                zawiozą do lekarza, wyprowadzą psa — i przyniosą do domu odrobinę słońca.
+                zawiozą do lekarza, wyprowadzą psa - i przyniosą do domu odrobinę słońca.
               </p>
 
-              {/* CTA — 2 przyciski obok siebie */}
+              {/* CTA - 2 przyciski obok siebie */}
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3">
                 <Link
                   href="/znajdz/kreator"
@@ -67,7 +67,7 @@ export default function ZnajdzLanding() {
 
             </div>
 
-            {/* Kolumna prawa — zdjęcie babci */}
+            {/* Kolumna prawa - zdjęcie babci */}
             <div className="mx-auto w-full max-w-lg">
               <div className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-[4/3] bg-brand-100">
@@ -79,7 +79,7 @@ export default function ZnajdzLanding() {
                   />
                   <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-900/25 to-transparent" />
                 </div>
-                {/* Mała plakietka — ciepły akcent */}
+                {/* Mała plakietka - ciepły akcent */}
                 <div className="hidden md:flex absolute -bottom-4 -left-4 items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
                   <span className="text-2xl">💛</span>
                   <div>
@@ -97,7 +97,7 @@ export default function ZnajdzLanding() {
         </div>
       </section>
 
-      {/* PROPOZYCJA WARTOŚCI — 3 filary */}
+      {/* PROPOZYCJA WARTOŚCI - 3 filary */}
       <section className="pt-4 sm:pt-6 pb-10 sm:pb-12 md:pb-14">
         <div className="max-w-5xl mx-auto px-5">
           <div className="grid md:grid-cols-3 gap-6">
@@ -114,13 +114,13 @@ export default function ZnajdzLanding() {
             <ValueCard
               emoji="🎓"
               title="Młodzi ludzie z sercem"
-              desc="Najczęściej studenci psychologii, fizjoterapii i medycyny — osoby, dla których praca z ludźmi to powołanie, nie przypadek."
+              desc="Najczęściej studenci psychologii, fizjoterapii i medycyny - osoby, dla których praca z ludźmi to powołanie, nie przypadek."
             />
           </div>
         </div>
       </section>
 
-      {/* KIM SĄ BLISCY — akcent na młodych studentów */}
+      {/* KIM SĄ BLISCY - akcent na młodych studentów */}
       <section id="kim" className="py-12 sm:py-16 bg-brand-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
@@ -145,12 +145,12 @@ export default function ZnajdzLanding() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">💛</span>
-                <span><strong>Empatia i cierpliwość</strong> — nie każdy do nas trafia. Wybieramy tych, których sami zaprosilibyśmy do naszej babci.</span>
+                <span><strong>Empatia i cierpliwość</strong> - nie każdy do nas trafia. Wybieramy tych, których sami zaprosilibyśmy do naszej babci.</span>
               </li>
             </ul>
           </div>
 
-          {/* Przykładowy profil Bliskiego — duże zdjęcie na górze */}
+          {/* Przykładowy profil Bliskiego - duże zdjęcie na górze */}
           <div className="mx-auto w-full max-w-sm">
             <div className="relative">
               <span className="absolute -top-3 left-4 z-10 rounded-full bg-brand-800 text-white text-xs font-semibold px-3 py-1 shadow">
@@ -178,7 +178,7 @@ export default function ZnajdzLanding() {
                 <div className="p-5">
                   <blockquote className="text-brand-700 italic border-l-4 border-warm-400 pl-4 text-sm">
                     „Moja babcia mieszka sama i wiem, jak bardzo cieszy ją zwykła rozmowa.
-                    Chcę być dla kogoś taką osobą — poczytać, pójść na spacer, po prostu być."
+                    Chcę być dla kogoś taką osobą - poczytać, pójść na spacer, po prostu być."
                   </blockquote>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {["☕ Rozmowa", "🚶 Spacer", "🛒 Zakupy", "🏥 Lekarz"].map((s) => (
@@ -197,7 +197,7 @@ export default function ZnajdzLanding() {
         </div>
       </section>
 
-      {/* KONTROLA I RAPORTY — masz wgląd w każdą wizytę */}
+      {/* KONTROLA I RAPORTY - masz wgląd w każdą wizytę */}
       <section className="py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-5 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
@@ -209,20 +209,20 @@ export default function ZnajdzLanding() {
             </h2>
             <p className="mt-4 text-brand-700 text-base sm:text-lg">
               Nie musisz co chwilę dzwonić i pytać. Po każdej wizycie widzisz w aplikacji,
-              co się działo — konkretnie, punkt po punkcie.
+              co się działo - konkretnie, punkt po punkcie.
             </p>
             <ul className="mt-6 space-y-3 text-brand-800">
               <li className="flex items-start gap-3">
                 <span className="text-xl">✅</span>
-                <span><strong>Konkretne czynności</strong> — leki wzięte, ciśnienie zmierzone, śniadanie zjedzone.</span>
+                <span><strong>Konkretne czynności</strong> - leki wzięte, ciśnienie zmierzone, śniadanie zjedzone.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">📝</span>
-                <span><strong>Krótki raport</strong> po każdej wizycie — co warto wiedzieć na następny raz.</span>
+                <span><strong>Krótki raport</strong> po każdej wizycie - co warto wiedzieć na następny raz.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">⭐</span>
-                <span><strong>Ocena wizyty przez seniora</strong> — zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
+                <span><strong>Ocena wizyty przez seniora</strong> - zobaczysz, czy mama dobrze się czuła w towarzystwie.</span>
               </li>
             </ul>
           </div>
@@ -235,7 +235,7 @@ export default function ZnajdzLanding() {
             <div className="rounded-3xl bg-white border border-brand-200 p-5 md:p-6 shadow-sm">
             {/* Header wizyty */}
             <div className="flex items-center justify-between text-xs text-brand-500">
-              <span>Wtorek, 12 listopada · 14:00 — 16:00</span>
+              <span>Wtorek, 12 listopada · 14:00 - 16:00</span>
               <span className="rounded-full bg-emerald-100 text-emerald-700 px-2 py-1 font-semibold">✓ Zakończona</span>
             </div>
             <div className="mt-3 flex items-center gap-3">
@@ -283,7 +283,7 @@ export default function ZnajdzLanding() {
               <div className="text-xs font-semibold text-brand-500 uppercase tracking-wider">Notatka od Kasi</div>
               <p className="mt-1.5 text-sm text-brand-700">
                 Pani Krystyna w dobrym humorze, apetyt dopisał. Podczas spaceru mówiła
-                trochę o bólu prawego kolana — może warto wspomnieć lekarzowi na wizycie w piątek.
+                trochę o bólu prawego kolana - może warto wspomnieć lekarzowi na wizycie w piątek.
               </p>
             </div>
 
@@ -299,7 +299,7 @@ export default function ZnajdzLanding() {
             </div>
           </div>
           <p className="mt-3 text-xs text-brand-500 text-center italic">
-            Widok poglądowy — dane, notatka i ocena są przykładowe.
+            Widok poglądowy - dane, notatka i ocena są przykładowe.
           </p>
         </div>
       </div>
@@ -311,7 +311,7 @@ export default function ZnajdzLanding() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Z czym pomagają Bliscy</h2>
             <p className="mt-3 text-brand-700">
-              To nie opieka medyczna. To zwykłe, ludzkie rzeczy, które robią różnicę —
+              To nie opieka medyczna. To zwykłe, ludzkie rzeczy, które robią różnicę -
               wspólne wyjście, załatwiona sprawa, ktoś do rozmowy przy herbacie.
             </p>
           </div>
@@ -338,7 +338,7 @@ export default function ZnajdzLanding() {
                 Pomożemy Ci znaleźć osobę, która zajmie się Twoim seniorem
               </div>
               <p className="mt-2 text-brand-700">
-                Powiedz nam, czego potrzebujesz — połączymy Cię z Bliskim, który najlepiej
+                Powiedz nam, czego potrzebujesz - połączymy Cię z Bliskim, który najlepiej
                 dopasuje się do Waszej sytuacji.
               </p>
             </div>
@@ -363,7 +363,7 @@ export default function ZnajdzLanding() {
               4 proste kroki do codziennego spokoju o Twojego bliskiego
             </h2>
             <p className="mt-3 text-brand-700">
-              Bez zakładania konta, bez formalności na start. Ma być prosto — dla Ciebie
+              Bez zakładania konta, bez formalności na start. Ma być prosto - dla Ciebie
               i dla Twojego bliskiego.
             </p>
           </div>
@@ -379,19 +379,19 @@ export default function ZnajdzLanding() {
               n={2}
               emoji="📞"
               title="Dzwonimy w 24h"
-              desc="Krótka rozmowa — poznajemy Twoje potrzeby, zanim kogokolwiek zaproponujemy."
+              desc="Krótka rozmowa - poznajemy Twoje potrzeby, zanim kogokolwiek zaproponujemy."
             />
             <FlowStep
               n={3}
               emoji="🤝"
               title="Poznajesz swojego Bliskiego"
-              desc="Proponujemy 1–2 dopasowane osoby. Pierwsze spotkanie u Twojego bliskiego w domu — sprawdzasz, czy jest chemia."
+              desc="Proponujemy 1–2 dopasowane osoby. Pierwsze spotkanie u Twojego bliskiego w domu - sprawdzasz, czy jest chemia."
             />
             <FlowStep
               n={4}
               emoji="💛"
               title="Zaczyna się regularna opieka"
-              desc="Ustalasz razem z Bliskim rytm i godziny wizyt. Po każdej z nich masz w aplikacji raport — co się działo, jak minął dzień."
+              desc="Ustalasz razem z Bliskim rytm i godziny wizyt. Po każdej z nich masz w aplikacji raport - co się działo, jak minął dzień."
             />
           </div>
 
@@ -412,7 +412,7 @@ export default function ZnajdzLanding() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">Ty nie musisz być wszędzie na raz.</h2>
           <p className="mt-4 text-brand-100 max-w-xl mx-auto">
             Sprawdź, czy w mieście Twoich rodziców jest ktoś, kto może zajrzeć.
-            To nic nie kosztuje — dopóki nie umówisz spotkania.
+            To nic nie kosztuje - dopóki nie umówisz spotkania.
           </p>
           <Link
             href="/znajdz/kreator"

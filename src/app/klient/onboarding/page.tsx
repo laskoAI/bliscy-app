@@ -123,7 +123,7 @@ export default function OnboardingKlient() {
       {step === 0 && (
         <section className="mt-8">
           <h2 className="text-xl font-semibold">Kim jest ta osoba dla Ciebie?</h2>
-          <p className="mt-1 text-sm text-brand-600">Wybierz najbliższą kategorię — to nam pomoże w komunikacji.</p>
+          <p className="mt-1 text-sm text-brand-600">Wybierz najbliższą kategorię - to nam pomoże w komunikacji.</p>
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {RELATIONS.map((r) => (
               <button
@@ -163,7 +163,7 @@ export default function OnboardingKlient() {
       {step === 1 && (
         <section className="mt-8">
           <h2 className="text-xl font-semibold">Ile ma lat?</h2>
-          <p className="mt-1 text-sm text-brand-600">Wybierz przedział — nie musisz podawać dokładnego wieku.</p>
+          <p className="mt-1 text-sm text-brand-600">Wybierz przedział - nie musisz podawać dokładnego wieku.</p>
           <div className="mt-6 grid gap-3">
             {AGE_RANGES.map((a) => (
               <button

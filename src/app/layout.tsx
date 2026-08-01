@@ -4,7 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "bliscy — towarzystwo i pomoc dla seniorów",
+  title: "bliscy - towarzystwo i pomoc dla seniorów",
   description: "Studenci psychologii, fizjoterapii i medycyny, którzy pomogą Twoim rodzicom w codziennych sprawach.",
 };
 

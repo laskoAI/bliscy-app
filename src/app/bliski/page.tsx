@@ -67,8 +67,8 @@ export default function BliskiDashboard() {
                   className="block bg-white rounded-2xl border border-brand-200 p-5 hover:border-warm-400"
                 >
                   <div className="text-sm text-brand-500">{fmtDateTime(v.startsAt)}</div>
-                  <div className="mt-1 font-semibold">{senior?.fullName ?? "—"}</div>
-                  <div className="text-sm text-brand-600">klient: {client?.fullName ?? "—"}</div>
+                  <div className="mt-1 font-semibold">{senior?.fullName ?? "-"}</div>
+                  <div className="text-sm text-brand-600">klient: {client?.fullName ?? "-"}</div>
                 </Link>
               );
             })}

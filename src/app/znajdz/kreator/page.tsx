@@ -178,7 +178,7 @@ export default function KreatorPage() {
 
         {/* Karta z krokiem */}
         <div className="mt-6 rounded-3xl bg-white border border-brand-200 p-6 md:p-8 shadow-sm">
-          {/* KROK 0 — dla kogo */}
+          {/* KROK 0 - dla kogo */}
           {step === 0 && (
             <>
               <h1 className="wordmark text-2xl sm:text-3xl text-brand-800">
@@ -199,11 +199,11 @@ export default function KreatorPage() {
             </>
           )}
 
-          {/* KROK 1 — wiek */}
+          {/* KROK 1 - wiek */}
           {step === 1 && (
             <>
               <h1 className="wordmark text-2xl sm:text-3xl text-brand-800">Ile ma lat?</h1>
-              <p className="mt-2 text-sm text-brand-600">Wystarczy przedział — nie musisz podawać dokładnego wieku.</p>
+              <p className="mt-2 text-sm text-brand-600">Wystarczy przedział - nie musisz podawać dokładnego wieku.</p>
               <div className="mt-6 grid gap-3">
                 {AGE_RANGES.map((a) => (
                   <button
@@ -219,7 +219,7 @@ export default function KreatorPage() {
             </>
           )}
 
-          {/* KROK 2 — potrzeby */}
+          {/* KROK 2 - potrzeby */}
           {step === 2 && (
             <>
               <h1 className="wordmark text-2xl sm:text-3xl text-brand-800">W czym potrzebna pomoc?</h1>
@@ -250,14 +250,14 @@ export default function KreatorPage() {
                     className="mt-2 w-full rounded-xl border border-brand-200 px-4 py-3"
                   />
                   <p className="mt-2 text-xs text-brand-500">
-                    Bez informacji o zdrowiu i danych osobowych bliskiej osoby — szczegóły ustalimy później.
+                    Bez informacji o zdrowiu i danych osobowych bliskiej osoby - szczegóły ustalimy później.
                   </p>
                 </div>
               )}
             </>
           )}
 
-          {/* KROK 3 — kontakt */}
+          {/* KROK 3 - kontakt */}
           {step === 3 && (
             <>
               {/* Logo bliscy */}
@@ -287,7 +287,7 @@ export default function KreatorPage() {
                   <li className="flex items-start gap-3">
                     <span className="text-lg shrink-0" aria-hidden>💛</span>
                     <span>
-                      Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> — nie call center, nie bot.
+                      Zadzwoni do Ciebie <strong>ktoś od nas osobiście</strong> - nie call center, nie bot.
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
@@ -299,14 +299,14 @@ export default function KreatorPage() {
                   <li className="flex items-start gap-3">
                     <span className="text-lg shrink-0" aria-hidden>🤝</span>
                     <span>
-                      Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
+                      Chcemy <strong>poznać Twoje potrzeby</strong> - na ich podstawie budujemy
                       lepszą wersję <em>bliscy</em>.
                     </span>
                   </li>
                 </ul>
               </div>
 
-              {/* Podsumowanie potrzeb — tylko gdy user wypełnił wcześniejsze kroki */}
+              {/* Podsumowanie potrzeb - tylko gdy user wypełnił wcześniejsze kroki */}
               {(relation || ageRange || needs.filter((n) => n !== "Inne").length > 0) && (
                 <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
                   <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto pomoże z:</div>
@@ -397,7 +397,7 @@ export default function KreatorPage() {
             {step === 3
               ? sending
                 ? "Wysyłam..."
-                : "Zgłoś się — oddzwonimy w 24h"
+                : "Zgłoś się - oddzwonimy w 24h"
               : "Dalej →"}
           </button>
         </div>

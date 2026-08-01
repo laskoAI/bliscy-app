@@ -30,7 +30,7 @@ export default function KlientDashboard() {
   return (
     <main className="max-w-5xl mx-auto px-5 py-10">
       <h1 className="text-3xl font-bold">Cześć, {me.fullName.split(" ")[0]} 👋</h1>
-      <p className="mt-2 text-brand-600">Panel klienta — zarządzaj seniorami, znajduj Bliskich, rezerwuj wizyty.</p>
+      <p className="mt-2 text-brand-600">Panel klienta - zarządzaj seniorami, znajduj Bliskich, rezerwuj wizyty.</p>
 
       {seniors.length === 0 && (
         <section className="mt-8 rounded-3xl bg-gradient-to-br from-warm-100 to-warm-100/40 border border-warm-400/30 p-6 md:p-8">
@@ -39,7 +39,7 @@ export default function KlientDashboard() {
             <div className="flex-1">
               <h2 className="text-xl font-bold text-brand-800">Zacznij od krótkiego kreatora</h2>
               <p className="mt-1 text-sm text-brand-700">
-                W 4 krokach powiedz nam o bliskiej osobie i tym, czego potrzebuje —
+                W 4 krokach powiedz nam o bliskiej osobie i tym, czego potrzebuje -
                 pokażemy Ci od razu 3 dopasowanych Bliskich.
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function KlientDashboard() {
                     <div>
                       <div className="text-sm text-brand-500">{fmtDateTime(v.startsAt)}</div>
                       <div className="mt-1 font-semibold">
-                        {senior?.fullName ?? "—"} z {helperUser?.fullName ?? "—"}
+                        {senior?.fullName ?? "-"} z {helperUser?.fullName ?? "-"}
                       </div>
                     </div>
                     <StatusBadge status={v.status} />

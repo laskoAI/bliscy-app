@@ -1,4 +1,4 @@
-// Konfiguracja Supabase (klient publiczny — anon key)
+// Konfiguracja Supabase (klient publiczny - anon key)
 // Używamy tego samego projektu co landing (waitlist).
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://ofrgucsumxydrkwvtrik.supabase.co";
 export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9mcmd1Y3N1bXh5ZHJrd3Z0cmlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyMjc5ODIsImV4cCI6MjEwMDgwMzk4Mn0.oYTNg76pz4gO7xQ-tNTcTGLvvqlIUzRgQs05s7rEXN8";

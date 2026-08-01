@@ -49,7 +49,7 @@ export default function WizytyPage() {
               <div className="flex justify-between gap-3">
                 <div>
                   <div className="text-sm text-brand-500">{fmtDateTime(v.startsAt)}</div>
-                  <div className="mt-1 font-semibold">{senior?.fullName ?? "—"} z {helperUser?.fullName ?? "—"}</div>
+                  <div className="mt-1 font-semibold">{senior?.fullName ?? "-"} z {helperUser?.fullName ?? "-"}</div>
                   {v.noteClient && <div className="mt-2 text-sm text-brand-700">📝 {v.noteClient}</div>}
                   {v.noteHelper && <div className="mt-1 text-sm text-leaf-500">💬 {helperUser?.fullName?.split(" ")[0]}: {v.noteHelper}</div>}
                 </div>
