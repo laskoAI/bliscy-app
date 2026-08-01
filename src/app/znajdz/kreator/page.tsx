@@ -316,15 +316,21 @@ export default function KreatorPage() {
 
               {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
-              <p className="mt-4 text-xs text-brand-500">
-                Nie sprzedajemy Twoich danych. Zadzwonimy tylko w sprawie tego zgłoszenia.
-                Zobacz{" "}
+              <p className="mt-4 text-xs text-brand-500 leading-relaxed">
+                Zostawiając numer, prosisz nas o telefon w sprawie swojego zgłoszenia.
+                Administratorami Twoich danych są Norbert Laskowski i Mikołaj Komorek (Warszawa),
+                kontakt:{" "}
+                <a href="mailto:bliscykontakt@gmail.com" className="underline hover:text-brand-800">
+                  bliscykontakt@gmail.com
+                </a>. Numeru użyjemy wyłącznie po to, żeby do Ciebie zadzwonić — nie sprzedajemy
+                danych, nie wysyłamy newslettera. Możesz w każdej chwili poprosić o usunięcie danych.
+                Szczegóły w{" "}
                 <Link href="/polityka-prywatnosci" className="underline hover:text-brand-800">
-                  politykę prywatności
+                  polityce prywatności
                 </Link>{" "}
                 i{" "}
                 <Link href="/regulamin" className="underline hover:text-brand-800">
-                  regulamin
+                  regulaminie
                 </Link>.
               </p>
             </>
