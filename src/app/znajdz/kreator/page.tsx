@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { submitPhoneLead } from "@/lib/supabase";
 
 // ------------------------------
@@ -46,7 +47,9 @@ const STEPS: { id: StepId; label: string }[] = [
 ];
 
 export default function KreatorPage() {
-  const [step, setStep] = useState<StepId>(0);
+  const searchParams = useSearchParams();
+  const initialStep: StepId = searchParams.get("step") === "phone" ? 3 : 0;
+  const [step, setStep] = useState<StepId>(initialStep);
 
   // Wybory kreatora
   const [relation, setRelation] = useState<string>("");
@@ -274,31 +277,33 @@ export default function KreatorPage() {
                 </p>
               </div>
 
-              {/* Podsumowanie potrzeb */}
-              <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
-                <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto:</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {relation && (
-                    <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                      {RELATIONS.find((r) => r.key === relation)?.emoji}{" "}
-                      {RELATIONS.find((r) => r.key === relation)?.label}
-                    </span>
-                  )}
-                  {ageRange && (
-                    <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                      {AGE_RANGES.find((a) => a.key === ageRange)?.label}
-                    </span>
-                  )}
-                  {needs.filter((n) => n !== "Inne").map((k) => {
-                    const n = NEEDS.find((x) => x.key === k);
-                    return (
-                      <span key={k} className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
-                        {n?.emoji} {n?.label}
+              {/* Podsumowanie potrzeb — tylko gdy user wypełnił wcześniejsze kroki */}
+              {(relation || ageRange || needs.filter((n) => n !== "Inne").length > 0) && (
+                <div className="mt-6 rounded-2xl bg-brand-50 border border-brand-200 p-4 text-sm">
+                  <div className="font-semibold text-brand-800 mb-2">Szukamy dla Ciebie kogoś kto:</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {relation && (
+                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                        {RELATIONS.find((r) => r.key === relation)?.emoji}{" "}
+                        {RELATIONS.find((r) => r.key === relation)?.label}
                       </span>
-                    );
-                  })}
+                    )}
+                    {ageRange && (
+                      <span className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                        {AGE_RANGES.find((a) => a.key === ageRange)?.label}
+                      </span>
+                    )}
+                    {needs.filter((n) => n !== "Inne").map((k) => {
+                      const n = NEEDS.find((x) => x.key === k);
+                      return (
+                        <span key={k} className="text-xs bg-white text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+                          {n?.emoji} {n?.label}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="mt-6">
                 <label className="text-sm font-semibold">Numer telefonu</label>

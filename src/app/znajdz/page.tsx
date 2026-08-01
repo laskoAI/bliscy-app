@@ -6,15 +6,30 @@ import Link from "next/link";
 export default function ZnajdzLanding() {
   return (
     <main>
-      {/* BANNER — informacja o etapie MVP na samej górze */}
-      <div className="bg-warm-100/60 border-b border-warm-200">
-        <div className="max-w-5xl mx-auto px-5 py-3 sm:py-4 flex items-start sm:items-center justify-center gap-3 text-center">
-          <span className="text-lg sm:text-xl shrink-0" aria-hidden>🌱</span>
-          <p className="text-xs sm:text-sm text-warm-700 leading-relaxed">
-            <strong>Dopiero startujemy z projektem bliscy</strong> — zadzwonimy osobiście, żeby spokojnie wysłuchać Waszych potrzeb.
-          </p>
+      {/* BANNER MVP — rozbudowany, na samej górze */}
+      <section className="bg-warm-100/70 border-b border-warm-200">
+        <div className="max-w-5xl mx-auto px-5 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
+            <div className="text-4xl sm:text-5xl shrink-0" aria-hidden>☎️</div>
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-warm-700 leading-snug">
+                Zaczynamy od tego, co najważniejsze: od rozmowy.
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-warm-700 leading-relaxed">
+                Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
+                która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
+                jakiej pomocy szukacie dla swojej rodziny.
+              </p>
+            </div>
+            <Link
+              href="/znajdz/kreator?step=phone"
+              className="shrink-0 inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-5 py-3 whitespace-nowrap"
+            >
+              Zostaw numer →
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* HERO — 2 kolumny: tekst po lewej, zdjęcie po prawej */}
       <section className="relative overflow-hidden">
@@ -61,24 +76,29 @@ export default function ZnajdzLanding() {
             </div>
 
             {/* Kolumna prawa — zdjęcie babci */}
-            <div className="relative mx-auto w-full max-w-lg">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-[4/3] bg-brand-100">
-                <img
-                  src="/bliscy-main.jpg"
-                  alt="Uśmiechnięta starsza pani ze swoim Bliskim"
-                  className="w-full h-full object-cover object-center"
-                  loading="eager"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-900/25 to-transparent" />
-              </div>
-              {/* Mała plakietka — ciepły akcent */}
-              <div className="hidden md:flex absolute -bottom-4 -left-4 items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
-                <span className="text-2xl">💛</span>
-                <div>
-                  <div className="text-xs text-brand-500">Pani Krystyna, 78 lat</div>
-                  <div className="text-sm font-semibold text-brand-800">Ma teraz swojego Bliskiego</div>
+            <div className="mx-auto w-full max-w-lg">
+              <div className="relative">
+                <div className="relative rounded-3xl overflow-hidden shadow-xl border border-brand-200 aspect-[4/3] bg-brand-100">
+                  <img
+                    src="/bliscy-main.jpg"
+                    alt="Uśmiechnięta starsza pani ze swoim Bliskim"
+                    className="w-full h-full object-cover object-center"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-900/25 to-transparent" />
+                </div>
+                {/* Mała plakietka — ciepły akcent */}
+                <div className="hidden md:flex absolute -bottom-4 -left-4 items-center gap-3 rounded-2xl bg-white border border-brand-200 shadow-lg px-4 py-3">
+                  <span className="text-2xl">💛</span>
+                  <div>
+                    <div className="text-xs text-brand-500">Pani Krystyna, 78 lat</div>
+                    <div className="text-sm font-semibold text-brand-800">Ma teraz swojego Bliskiego</div>
+                  </div>
                 </div>
               </div>
+              <p className="mt-6 md:mt-8 text-xs text-brand-500 text-center italic">
+                Wizerunek i cytat mają charakter demonstracyjny.
+              </p>
             </div>
 
           </div>
@@ -104,35 +124,6 @@ export default function ZnajdzLanding() {
               title="Młodzi ludzie z sercem"
               desc="Najczęściej studenci psychologii, fizjoterapii i medycyny — osoby, dla których praca z ludźmi to powołanie, nie przypadek."
             />
-          </div>
-        </div>
-      </section>
-
-      {/* JESTEŚMY NA POCZĄTKU — uczciwie o etapie MVP */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-3xl mx-auto px-5">
-          <div className="rounded-3xl bg-brand-100 border border-brand-200 p-6 md:p-8">
-            <div className="flex items-start gap-4">
-              <div className="text-3xl shrink-0" aria-hidden>☎️</div>
-              <div className="flex-1">
-                <h2 className="text-xl sm:text-2xl font-extrabold text-brand-800">
-                  Zaczynamy od tego, co najważniejsze: od rozmowy.
-                </h2>
-                <p className="mt-3 text-brand-700">
-                  Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
-                  która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
-                  jakiej pomocy szukacie dla swojej rodziny.
-                </p>
-                <div className="mt-5">
-                  <Link
-                    href="/znajdz/kreator"
-                    className="inline-flex items-center rounded-full bg-warm-500 hover:bg-warm-600 text-white font-semibold px-6 py-3"
-                  >
-                    Zostaw numer — porozmawiajmy →
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
