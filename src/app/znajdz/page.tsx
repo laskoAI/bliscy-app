@@ -25,10 +25,6 @@ export default function ZnajdzLanding() {
 
             {/* Kolumna lewa — treść */}
             <div className="text-center md:text-left">
-              <span className="inline-flex items-center gap-2 rounded-full bg-warm-100 text-warm-500 text-xs font-semibold px-3 py-1">
-                <span className="w-2 h-2 rounded-full bg-warm-400" /> Startujemy w Warszawie
-              </span>
-
               <h1 className="wordmark mt-5 text-4xl sm:text-5xl md:text-6xl text-brand-800 leading-tight">
                 Bliski obok Twoich rodziców,{" "}
                 <span className="text-warm-500">gdy Ciebie akurat nie ma</span>.
