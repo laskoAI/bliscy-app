@@ -117,9 +117,10 @@ export default function KontaktPage() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-lg shrink-0" aria-hidden>⏱️</span>
+              <span className="text-lg shrink-0" aria-hidden>🤝</span>
               <span>
-                Odezwiemy się <strong>w ciągu 24 godzin</strong>, w porze, która Ci pasuje.
+                Chcemy <strong>poznać Twoje potrzeby</strong> — na ich podstawie budujemy
+                lepszą wersję <em>bliscy</em>.
               </span>
             </li>
           </ul>
