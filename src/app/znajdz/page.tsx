@@ -131,21 +131,20 @@ export default function ZnajdzLanding() {
               Młodzi, empatyczni, sprawdzeni.
             </h2>
             <p className="mt-4 text-brand-700 text-base sm:text-lg">
-              Naszymi Bliskimi są przede wszystkim <strong>studenci psychologii, fizjoterapii i medycyny</strong>.
-              Ludzie, dla których praca z drugim człowiekiem to nie fucha, tylko powołanie.
+              Naszymi Bliskimi są przede wszystkim <strong>studenci psychologii, fizjoterapii i medycyny</strong> - ludzie, dla których opieka to nie przypadek, ale autentyczna pasja i chęć pomocy.
             </p>
             <ul className="mt-6 space-y-3 text-brand-800">
               <li className="flex items-start gap-3">
                 <span className="text-xl">🎓</span>
-                <span><strong>Studenci</strong> psychologii, fizjoterapii, pielęgniarstwa, medycyny.</span>
+                <span><strong>Młodzi profesjonaliści</strong><br/>Przyszli psycholodzy, fizjoterapeuci, pielęgniarki i lekarze z wiedzą i wyczuciem.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">🛡️</span>
-                <span><strong>Weryfikacja</strong> tożsamości, rozmowa rekrutacyjna, referencje.</span>
+                <span><strong>Pewni i zweryfikowani</strong><br/>Sprawdzamy tożsamość, przeprowadzamy osobiste rozmowy i weryfikujemy referencje.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">💛</span>
-                <span><strong>Empatia i cierpliwość</strong> - nie każdy do nas trafia. Wybieramy tych, których sami zaprosilibyśmy do naszej babci.</span>
+                <span><strong>Wybierani z sercem</strong><br/>Empatia i cierpliwość to dla nas podstawa. Zapraszamy do zespołu tylko tych, których bez wahania przedstawilibyśmy własnej babci.</span>
               </li>
             </ul>
           </div>
