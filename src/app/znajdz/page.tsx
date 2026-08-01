@@ -127,9 +127,8 @@ export default function ZnajdzLanding() {
                 </h2>
                 <p className="mt-3 text-brand-700">
                   Dopiero startujemy z projektem <strong>bliscy</strong>. Chcemy zbudować usługę,
-                  która odpowiada na Wasze realne potrzeby — dlatego zamiast klikania i formalności,
-                  zadzwonimy do Ciebie osobiście, żeby spokojnie wysłuchać, jakiej pomocy szukacie
-                  dla swojej rodziny.
+                  która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
+                  jakiej pomocy szukacie dla swojej rodziny.
                 </p>
                 <p className="mt-4 text-sm text-brand-600">
                   Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
