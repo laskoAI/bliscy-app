@@ -130,10 +130,6 @@ export default function ZnajdzLanding() {
                   która odpowiada na Wasze realne potrzeby. Zadzwonimy osobiście, by wysłuchać,
                   jakiej pomocy szukacie dla swojej rodziny.
                 </p>
-                <p className="mt-4 text-sm text-brand-600">
-                  Zostawiając numer, nic nie zamawiasz i do niczego się nie zobowiązujesz.
-                  Jeśli po rozmowie stwierdzisz, że to nie dla Was — po prostu Ci to powiemy.
-                </p>
                 <div className="mt-5">
                   <Link
                     href="/znajdz/kreator"
