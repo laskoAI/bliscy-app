@@ -63,11 +63,7 @@ export default function Nav() {
             <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2 whitespace-nowrap">
               Zaczynamy →
             </Link>
-          ) : isLegal ? (
-            <Link href="/znajdz" className="text-sm text-brand-600 hover:text-brand-900">
-              ← Wróć
-            </Link>
-          ) : me ? (
+          ) : isLegal ? null : me ? (
             <>
               <span className="text-sm text-brand-600 hidden sm:inline">
                 {me.fullName} · <span className="text-brand-400">{me.role}</span>
