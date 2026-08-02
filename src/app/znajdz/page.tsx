@@ -164,8 +164,8 @@ export default function ZnajdzLanding() {
                     loading="lazy"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/70 via-brand-900/20 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className="text-xs bg-emerald-500 text-white px-3 py-1 rounded-full font-semibold shadow">
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                    <span className="text-[10px] sm:text-xs bg-emerald-500 text-white px-2 sm:px-3 py-1 rounded-full font-semibold shadow whitespace-nowrap">
                       ✓ Zweryfikowana
                     </span>
                   </div>

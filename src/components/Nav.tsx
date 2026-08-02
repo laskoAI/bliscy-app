@@ -11,6 +11,7 @@ export default function Nav() {
   const router = useRouter();
   const pathname = usePathname() ?? "";
   const isPublic = pathname.startsWith("/znajdz");
+  const isLegal = pathname === "/regulamin" || pathname === "/polityka-prywatnosci";
   const isLanding = pathname === "/znajdz";
 
   function handleLogout() {
@@ -61,6 +62,10 @@ export default function Nav() {
           {isPublic ? (
             <Link href="/znajdz/kreator" className="rounded-full bg-warm-500 hover:bg-warm-600 text-white text-sm font-semibold px-4 py-2 whitespace-nowrap">
               Zaczynamy →
+            </Link>
+          ) : isLegal ? (
+            <Link href="/znajdz" className="text-sm text-brand-600 hover:text-brand-900">
+              ← Wróć
             </Link>
           ) : me ? (
             <>
